@@ -30,7 +30,7 @@ const Card = () => {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
 
-                        <div className="card-footer" >
+                        <div className="card-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <button type="button" className="btn btn-warning btn-rounded" >PlAY</button>
                         </div>
                     </div>
