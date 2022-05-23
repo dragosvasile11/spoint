@@ -20,7 +20,7 @@ const Card = () => {
                     <div className="card h-100" style={{ backgroundColor: '#2d2d2d'}} >
                         <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" className="card-img-top"
                              alt="Los Angeles Skyscrapers"/>
-                        <div className="card-body" >
+                        <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <h5 className="card-title">Romania</h5>
                         </div>
                         <div >
