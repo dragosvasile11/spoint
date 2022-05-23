@@ -31,7 +31,7 @@ const Card = () => {
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
 
                         <div className="card-footer" >
-
+                            <button type="button" className="btn btn-warning btn-rounded" >PlAY</button>
                         </div>
                     </div>
                 </div>
