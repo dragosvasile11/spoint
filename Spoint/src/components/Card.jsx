@@ -23,7 +23,11 @@ const Card = () => {
                         <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <h5 className="card-title">Romania</h5>
                         </div>
-                        <div >
+                        <div style={{ padding: '0% 15% 0%'}}>
+                            <div className="progress" >
+                                <div className="progress-bar" role="progressbar" style={{ width: '75%'}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"/>
+                            </div>
+                        </div>
 
                         <div className="card-footer" >
 
