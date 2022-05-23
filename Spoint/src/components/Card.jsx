@@ -28,6 +28,7 @@ const Card = () => {
                                 <div className="progress-bar" role="progressbar" style={{ width: '75%'}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"/>
                             </div>
                         </div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
 
                         <div className="card-footer" >
 
