@@ -12,11 +12,13 @@ const Card = () => {
                         <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <h5 className="card-title">Famous Places</h5>
                         </div>
-                        <MDBProgress height='13'>
-                            <MDBProgressBar width='25' valuemin={0} valuemax={100}>
-                                25%
-                            </MDBProgressBar>
-                        </MDBProgress>
+                        <div style={{ padding: '0% 15% 0%'}}>
+                            <MDBProgress height='13'>
+                                <MDBProgressBar width='25' valuemin={0} valuemax={100}>
+                                    25%
+                                </MDBProgressBar>
+                            </MDBProgress>
+                        </div>
                         <div className="card-footer">
                             <small className="text-muted">Last updated 3 mins ago</small>
                         </div>
