@@ -1,6 +1,7 @@
 import React from 'react';
 import background from "../images/background.jpg";
 import logo from "../images/logo.png";
+import { Link } from "react-router-dom"
 import {MDBBtn} from "mdb-react-ui-kit";
 
 const Header = () => {
@@ -25,17 +26,17 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarExample01">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item active">
-                                    <a className="nav-link" aria-current="page" href=""><img src={logo} alt="Logo" /></a>
+                                    <Link className="nav-link" aria-current="page" to="/"><img src={logo} alt="Logo" /></Link>
                                 </li>
                             </ul>
 
                             <ul className="navbar-nav flex-row">
                                 <li className="nav-item">
-                                    <a className="nav-link pe-2">
+                                    <Link className="nav-link pe-2">
                                         <MDBBtn rounded color='warning'>
                                             ALREADY HAVE AN ACCOUNT?
                                         </MDBBtn>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -55,9 +56,11 @@ const Header = () => {
                                     laboriosam numquam expedita ullam saepe ipsam, deserunt provident corporis,
                                     sit non accusamus maxime, magni nulla quasi iste ipsa architecto? Autem!
                                 </p>
-                                <MDBBtn rounded color='warning'>
-                                    PLAY NOW FOR FREE
-                                </MDBBtn>
+                                <Link to="/login-form">
+                                    <MDBBtn rounded color='warning'>
+                                        PLAY NOW FOR FREE
+                                    </MDBBtn>
+                                </Link>
                             </div>
                         </div>
                     </div>
