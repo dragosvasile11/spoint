@@ -6,6 +6,7 @@ import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
+import Map from "./components/Map";
 
 const App = () => (
   <Router>
@@ -16,6 +17,7 @@ const App = () => (
                   <p>Checking</p>
                   <p>Checking</p>
                   <p>Checking</p>
+                  <Map />
                   <Card/>
                   <div>
                     <p>Checking</p>
