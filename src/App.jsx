@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
-import LoginForm from "../src/components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import SignInForm from "./components/SignInForm";
 import Map from "./components/Map";
 import CornerMap from "./components/CornerMap";
 
@@ -29,9 +30,14 @@ const App = () => (
                   <Footer />
               </>
           } />
-          <Route path="/login-form" element={
+          <Route path="/signUp-form" element={
               <>
-                  <LoginForm/>
+                  <SignUpForm/>
+              </>
+          } />
+          <Route path="/signIn-form" element={
+              <>
+                  <SignInForm/>
               </>
           } />
           <Route path="/guess" element = {
