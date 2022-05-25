@@ -39,7 +39,7 @@ const Card = () => {
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>250/1000</p></div>
 
                         <div className="card-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <MDBBtn rounded color='warning'>PLAY</MDBBtn>
@@ -60,7 +60,7 @@ const Card = () => {
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>500/1000</p></div>
                         <div className="card-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             <MDBBtn rounded color='warning'>PLAY</MDBBtn>
                         </div>
