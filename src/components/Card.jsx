@@ -42,7 +42,7 @@ const Card = () => {
                     <div className="card h-100" style={{ backgroundColor: '#2d2d2d'}}>
                         <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" className="card-img-top"
                              alt="Palm Springs Road"/>
-                        <div className="card-body">
+                        <div className="card-body" style={{ display: 'flex' }}>
                             <h5 className="card-title">World</h5>
                         </div>
                         <div className="card-footer">
