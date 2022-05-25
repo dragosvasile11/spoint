@@ -24,4 +24,6 @@ export class CornerMap extends Component {
     }
 }
 
-export default CornerMap;
+export default GoogleApiWrapper({
+    apiKey: ''
+})(CornerMap);
