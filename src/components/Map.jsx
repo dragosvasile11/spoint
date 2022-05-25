@@ -10,20 +10,17 @@ const Map = () => {
         zoom: 1
     };
     return (
-        <div style={{ padding: '5% 25% 5%' }}>
-            <div style={{
-                width: '880px',
-                height: '495px',
-                backgroundColor: '#eeeeee'
-            }}>
-                <ReactStreetview
-                    apiKey={googleMapsApiKey}
-                    streetViewPanoramaOptions={streetViewPanoramaOptions}
-                />
-            </div>
+        <div style={{
+            width: '800px',
+            height: '400px',
+            backgroundColor: '#eeeeee'
+        }}>
+            <ReactStreetview
+                apiKey={googleMapsApiKey}
+                streetViewPanoramaOptions={streetViewPanoramaOptions}
+            />
         </div>
-
-    );
+    )
 };
 
 export default Map;
