@@ -5,6 +5,7 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import LoginForm from "../src/components/LoginForm";
+import Map from "./components/Map";
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
                   <p>Checking</p>
                   <p>Checking</p>
                   <p>Checking</p>
+                  <Map />
                   <Card/>
                   <div>
                     <p>Checking</p>
