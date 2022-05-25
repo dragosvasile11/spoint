@@ -1,4 +1,5 @@
 import React from 'react';
+import {MDBProgress, MDBProgressBar} from "mdb-react-ui-kit";
 
 const Card = () => {
     return (
@@ -24,9 +25,11 @@ const Card = () => {
                             <h5 className="card-title">Romania</h5>
                         </div>
                         <div style={{ padding: '0% 15% 0%'}}>
-                            <div className="progress" >
-                                <div className="progress-bar" role="progressbar" style={{ width: '75%'}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"/>
-                            </div>
+                            <MDBProgress height='13'>
+                                <MDBProgressBar width='25' valuemin={0} valuemax={100}>
+                                    25%
+                                </MDBProgressBar>
+                            </MDBProgress>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
 
