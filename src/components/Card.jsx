@@ -5,7 +5,7 @@ const Card = () => {
     return (
         <>
             <div className="row row-cols-1 row-cols-md-3 g-4" style={{ padding: '5% 25% 5%', color: 'whitesmoke'}}>
-                <div className="col" >
+                <div className="col" style={{ color: 'whitesmoke'}}>
                     <div className="card h-100" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#2d2d2d'}} >
                         <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" className="card-img-top"
                              alt="Skyscrapers"/>
