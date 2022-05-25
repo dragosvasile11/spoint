@@ -6,6 +6,7 @@ import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import LoginForm from "../src/components/LoginForm";
 import Map from "./components/Map";
+import CornerMap from "./components/CornerMap";
 
 const App = () => (
   <Router>
@@ -13,11 +14,9 @@ const App = () => (
           <Route path="/" element={
               <>
                   <Header/>
-                  <p>Checking</p>
-                  <p>Checking</p>
-                  <p>Checking</p>
-                  <Map />
+
                   <Card/>
+
                   <div>
                     <p>Checking</p>
                       <p>Checking</p>
@@ -34,6 +33,13 @@ const App = () => (
               <>
                   <LoginForm/>
               </>
+          } />
+          <Route path="/guess" element = {
+              <>
+                  <div><Map /></div>
+                  <div><CornerMap /></div>
+              </>
+
           } />
       </Routes>
   </Router>
