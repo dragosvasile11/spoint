@@ -46,7 +46,11 @@ const Card = () => {
                             <h5 className="card-title">World</h5>
                         </div>
                         <div style={{ padding: '0% 15% 0%'}}>
-
+                            <MDBProgress height='13'>
+                                <MDBProgressBar width='25' valuemin={0} valuemax={100}>
+                                    25%
+                                </MDBProgressBar>
+                            </MDBProgress>
                         </div>
                         <div className="card-footer">
                             <small className="text-muted">Last updated 3 mins ago</small>
