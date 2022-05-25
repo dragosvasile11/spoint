@@ -31,7 +31,6 @@ const App = () => (
           } />
           <Route path="/login-form" element={
               <>
-                  <Header/>
                   <LoginForm/>
               </>
           } />
