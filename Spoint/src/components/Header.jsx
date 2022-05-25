@@ -1,7 +1,7 @@
 import React from 'react';
 import background from "../images/background.jpg";
-import './Header.css';
 import logo from "../images/logo.png";
+import {MDBBtn} from "mdb-react-ui-kit";
 
 const Header = () => {
     return (
@@ -32,7 +32,9 @@ const Header = () => {
                             <ul className="navbar-nav flex-row">
                                 <li className="nav-item">
                                     <a className="nav-link pe-2">
-                                        <button type="button" className="btn btn-warning btn-rounded">ALREADY HAVE AN ACCOUNT?</button>
+                                        <MDBBtn rounded color='warning'>
+                                            ALREADY HAVE AN ACCOUNT?
+                                        </MDBBtn>
                                     </a>
                                 </li>
                             </ul>
@@ -53,7 +55,9 @@ const Header = () => {
                                     laboriosam numquam expedita ullam saepe ipsam, deserunt provident corporis,
                                     sit non accusamus maxime, magni nulla quasi iste ipsa architecto? Autem!
                                 </p>
-                                <button type="button" className="btn btn-warning btn-rounded">PLAY NOW FOR FREE</button>
+                                <MDBBtn rounded color='warning'>
+                                    PLAY NOW FOR FREE
+                                </MDBBtn>
                             </div>
                         </div>
                     </div>
