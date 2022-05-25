@@ -19,6 +19,7 @@ const Card = () => {
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
                         <div className="card-footer">
                             <small className="text-muted">Last updated 3 mins ago</small>
                         </div>
