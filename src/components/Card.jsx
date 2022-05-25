@@ -1,5 +1,5 @@
 import React from 'react';
-import {MDBProgress, MDBProgressBar} from "mdb-react-ui-kit";
+import {MDBBtn, MDBProgress, MDBProgressBar} from "mdb-react-ui-kit";
 
 const Card = () => {
     return (
@@ -54,7 +54,7 @@ const Card = () => {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
                         <div className="card-footer">
-                            <small className="text-muted">Last updated 3 mins ago</small>
+                            <MDBBtn rounded color='warning'>PLAY</MDBBtn>
                         </div>
                     </div>
                 </div>
