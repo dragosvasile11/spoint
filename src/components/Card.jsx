@@ -13,9 +13,9 @@ const Card = () => {
                             <h5 className="card-title">Famous Places</h5>
                         </div>
                         <div style={{ padding: '0% 15% 0%'}}>
-                            <MDBProgress height='13'>
-                                <MDBProgressBar width='25' valuemin={0} valuemax={100}>
-                                    25%
+                            <MDBProgress height='12' style={{ borderRadius: '25px' }}>
+                                <MDBProgressBar width='75' valuemin={0} valuemax={100}>
+                                    75%
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>
@@ -33,7 +33,7 @@ const Card = () => {
                             <h5 className="card-title">Romania</h5>
                         </div>
                         <div style={{ padding: '0% 15% 0%'}}>
-                            <MDBProgress height='13'>
+                            <MDBProgress height='12' style={{ borderRadius: '25px' }}>
                                 <MDBProgressBar width='25' valuemin={0} valuemax={100}>
                                     25%
                                 </MDBProgressBar>
@@ -54,9 +54,9 @@ const Card = () => {
                             <h5 className="card-title">World</h5>
                         </div>
                         <div style={{ padding: '0% 15% 0%'}}>
-                            <MDBProgress height='13'>
-                                <MDBProgressBar width='25' valuemin={0} valuemax={100}>
-                                    25%
+                            <MDBProgress height='12' style={{ borderRadius: '25px' }}>
+                                <MDBProgressBar width='50' valuemin={0} valuemax={100}>
+                                    50%
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>
