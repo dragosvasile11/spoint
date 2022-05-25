@@ -45,6 +45,9 @@ const Card = () => {
                         <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <h5 className="card-title">World</h5>
                         </div>
+                        <div style={{ padding: '0% 15% 0%'}}>
+
+                        </div>
                         <div className="card-footer">
                             <small className="text-muted">Last updated 3 mins ago</small>
                         </div>
