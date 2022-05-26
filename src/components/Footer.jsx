@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
                 <div className="text-center p-3" >
                     © 2022 Copyright:
-                    <a className="text-white"> Army of Two</a>
+                    <a className="text-white"> Spoint</a>
                 </div>
             </footer>
         </>
