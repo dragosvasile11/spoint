@@ -11,7 +11,7 @@ export class CornerMap extends Component {
         return (
             <Map
                 google={this.props.google}
-                zoom={14}
+                zoom={1.8}
                 style={mapStyles}
                 initialCenter={
                     {
