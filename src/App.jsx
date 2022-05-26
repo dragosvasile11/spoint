@@ -41,6 +41,11 @@ const App = () => (
                   <SignInForm/>
               </>
           } />
+          <Route path="/about" element={
+              <>
+                  <h1>ABOUT PAGE</h1>
+              </>
+          } />
       </Routes>
   </Router>
 );
