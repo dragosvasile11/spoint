@@ -18,7 +18,6 @@ const App = () => (
                   <p>Checking</p>
                   <p>Checking</p>
                   <p>Checking</p>
-                  <Map />
                   <Card/>
                   <div>
                     <p>Checking</p>
@@ -51,7 +50,9 @@ const App = () => (
                   <StreetViewMap />
           } />
           <Route path="/gameplay" element = {
+              <>
               <GamePlay />
+              </>
           } />
       </Routes>
   </Router>
