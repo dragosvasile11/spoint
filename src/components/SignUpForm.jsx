@@ -19,7 +19,7 @@ function Copyright(props) {
         return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
                 {'Copyright © '}
-                <Link color="inherit" to="/">
+                <Link color="inherit" href="/">
                     Spoint
                 </Link>{' '}
                 {new Date().getFullYear()}
@@ -59,6 +59,13 @@ function Copyright(props) {
             setHasErrors(temp)
             return temp
         }
+
+        useEffect(() => {
+
+            if (firstName !== "") {
+                validate()
+            }
+        }, [lastName, email, password, confirmPassword])
 
         const handleSubmit = (event) => {
             event.preventDefault();
@@ -221,7 +228,7 @@ function Copyright(props) {
                             </Button>
                             <Grid container justifyContent="center">
                                 <Grid item>
-                                    <Link to="/signIn-form" variant="body2">
+                                    <Link href="/signIn-form" variant="body2">
                                         Already have an account? Sign in
                                     </Link>
                                 </Grid>
