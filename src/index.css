@@ -22,3 +22,7 @@
 #scroll-to.up{
     transform : rotateX(180deg) !important;
 }
+
+#footer-container {
+    padding: 1%!important
+}
