@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <>
-            <footer className="footer bg-dark text-center text-white fixed-bottom" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }} >
+            <footer className="footer bg-dark text-center text-white fixed-bottom" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)', height: '13vh'}} >
                 <div className="container p-4 pb-0" >
                     <section className="mb-4">
                         <a className="btn btn-outline-light btn-floating m-1" href="#" role="button"
