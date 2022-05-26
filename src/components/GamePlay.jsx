@@ -1,10 +1,11 @@
 import React from 'react';
+import Card from "./Card";
 
 const GamePlay = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Card />
+        </>
     );
 };
 
