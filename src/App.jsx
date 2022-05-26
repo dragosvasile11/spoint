@@ -7,7 +7,6 @@ import Card from "../src/components/Card";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
 import Map from "./components/Map";
-import CornerMap from "./components/CornerMap";
 
 const App = () => (
   <Router>
