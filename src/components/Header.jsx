@@ -52,11 +52,13 @@ const Header = () => {
                         <div className="container d-flex align-items-center text-center h-100">
                             <div>
                                 <h1 className="mb-5">SPOT THE POINT!</h1>
-                                <p>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis molestiae
-                                    laboriosam numquam expedita ullam saepe ipsam, deserunt provident corporis,
-                                    sit non accusamus maxime, magni nulla quasi iste ipsa architecto? Autem!
-                                </p>
+                                <section>
+                                    YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE
+                                    IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST
+                                    YOUR WIT AND CURIOSITY AT HAND.
+
+                                    <p>LUCKY FOR YOU, YOU'RE IN THE RIGHT PLACE !</p>
+                                </section>
                                 <Link to="/signUp-form">
                                     <MDBBtn rounded color='warning'>
                                         PLAY NOW FOR FREE
