@@ -15,6 +15,10 @@ const App = () => (
           <Route path="/" element={
               <>
                   <Header/>
+                  <p>Checking</p>
+                  <p>Checking</p>
+                  <p>Checking</p>
+                  <Map />
                   <Card/>
                   <div>
                     <p>Checking</p>
@@ -36,6 +40,11 @@ const App = () => (
           <Route path="/signIn-form" element={
               <>
                   <SignInForm/>
+              </>
+          } />
+          <Route path="/about" element={
+              <>
+                  <h1>ABOUT PAGE</h1>
               </>
           } />
           <Route path="/guess" element = {
