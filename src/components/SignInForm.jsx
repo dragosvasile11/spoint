@@ -12,12 +12,13 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {useEffect, useState} from "react";
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" to="/">
+            <Link color="inherit" href="/">
                 Spoint
             </Link>{' '}
             {new Date().getFullYear()}
@@ -29,8 +30,40 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+
+    const [hasErrors, setHasErrors] = useState({
+                                        email: false,
+                                        password: false})
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+
+    useEffect(() => {
+        const validate = () => {
+            let temp = {}
+
+            temp.email = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+            // !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+            temp.password = password === "";
+
+            setHasErrors(temp)
+        }
+        if (email !== "") {
+            validate()
+        }
+    }, [email, password])
+
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        for (const [key, value] of Object.entries(hasErrors)) {
+            console.log(key + " " + value)
+            if (value) {
+                console.log("FORM INCOMPLETE")
+                return
+            }
+        }
+
         const data = new FormData(event.currentTarget);
         console.log({
             email: data.get('email'),
@@ -82,6 +115,15 @@ export default function SignInSide() {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
+                                color="warning"
+                                onChange={(event) => {
+                                    setEmail(event.target.value)
+                                    let temp = hasErrors
+                                    temp.email = (event.target.value === "")
+                                    setHasErrors(temp)
+                                }}
+                                error={hasErrors.email}
+                                helperText={hasErrors.email ? "Field is required" : ""}
                             />
                             <TextField
                                 margin="normal"
@@ -92,6 +134,15 @@ export default function SignInSide() {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
+                                color="warning"
+                                onChange={(event) => {
+                                    setPassword(event.target.value)
+                                    let temp = hasErrors
+                                    temp.password = (event.target.value === "")
+                                    setHasErrors(temp)
+                                }}
+                                error={hasErrors.password}
+                                helperText={hasErrors.password ? "Field is required" : ""}
                             />
                             <FormControlLabel
                                 control={<Checkbox value="remember" color="primary" />}
@@ -107,12 +158,12 @@ export default function SignInSide() {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link to="/" variant="body2">
+                                    <Link href="/" variant="body2">
                                         Forgot password?
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link to="/signUp-form" variant="body2">
+                                    <Link href="/signUp-form" variant="body2">
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>
