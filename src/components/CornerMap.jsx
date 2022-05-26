@@ -13,6 +13,7 @@ export class CornerMap extends Component {
                 google={this.props.google}
                 zoom={1.8}
                 style={mapStyles}
+                disableDefaultUI={true}
                 initialCenter={
                     {
                         lat: -1.2884,
