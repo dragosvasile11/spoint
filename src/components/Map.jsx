@@ -4,6 +4,12 @@ import {MDBBtn} from "mdb-react-ui-kit";
 import Modal from "./Modal";
 
 
+const BUTTON_WRAPPER_STYLES = {
+    position: 'relative',
+    zIndex: 1
+}
+
+
 const Map = () => {
     const googleMapsApiKey = '';
     const [isOpen, setIsOpen] = useState(false)
