@@ -27,6 +27,29 @@ class GoogleMap extends Component {
             };
         });
     }
+
+    render() {
+        return (
+            <div>
+                <Map
+                    google={this.props.google}
+                    style={{ width: "100%", height: "100%"}}
+                    className={"map"}
+                    zoom={1.7}
+                    disableDefaultUI={true}
+                    initialCenter={
+                        {
+                            lat: 0,
+                            lng: 0
+                        }
+                    }
+                    onClick={this.onClick}
+                >
+
+                </Map>
+            </div>
+        );
+    }
 }
 
 export default GoogleApiWrapper({
