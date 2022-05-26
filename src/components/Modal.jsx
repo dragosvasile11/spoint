@@ -12,6 +12,15 @@ const MODAL_STYLES = {
     zIndex: 1000
 }
 
+const OVERLAY_STYLE = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, .7)',
+    zIndex: 1000
+}
 
 const Modal = ({ open, children , onClose}) => {
     if (!open) return null
