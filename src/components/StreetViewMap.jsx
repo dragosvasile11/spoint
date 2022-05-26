@@ -27,7 +27,9 @@ const StreetViewMap = () => {
         position: {lat: 44.439004, lng: 26.112520},
         pov: {heading: 100, pitch: 0},
         zoom: 1,
-        disableDefaultUI: true
+        zoomControl: true,
+        addressControl: false,
+        fullscreenControl: false
     };
     return (
         <>
@@ -41,12 +43,9 @@ const StreetViewMap = () => {
                 />
             </div>
             <div style={BUTTON_WRAPPER_STYLES}>
-                <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Guess</MDBBtn>
+                <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Give it a Guess!</MDBBtn>
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
-
             </div>
-
-
         </>
 
     )
