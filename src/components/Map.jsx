@@ -39,6 +39,7 @@ const Map = () => {
             </div>
             <div style={BUTTON_WRAPPER_STYLES}>
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Guess</MDBBtn>
+                <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
 
             </div>
 
