@@ -70,7 +70,7 @@ export default function SignInSide() {
         console.log({
             email: data.get('email'),
             password: data.get('password'),
-            rememberMe: data.get('rememberMe'),
+            rememberMe: !!data.get('rememberMe'),
         });
     };
 
