@@ -213,7 +213,7 @@ function Copyright(props) {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <FormControlLabel
-                                        control={<Checkbox value="allowExtraEmails" color="primary" />}
+                                        control={<Checkbox value="allowExtraEmails" color="warning" />}
                                         label="I want to receive inspiration, marketing promotions and updates via email."
                                     />
                                 </Grid>
@@ -223,12 +223,13 @@ function Copyright(props) {
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
+                                color="warning"
                             >
                                 Sign Up
                             </Button>
                             <Grid container justifyContent="center">
                                 <Grid item>
-                                    <Link href="/signIn-form" variant="body2">
+                                    <Link href="/signIn-form" variant="body2" color="#ED6C02">
                                         Already have an account? Sign in
                                     </Link>
                                 </Grid>
