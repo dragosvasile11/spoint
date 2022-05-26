@@ -37,17 +37,18 @@ export default function SignInSide() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const validate = () => {
+        let temp = {}
+
+        temp.email = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+        temp.password = password === "";
+        setHasErrors(temp)
+
+        return temp
+    }
 
     useEffect(() => {
-        const validate = () => {
-            let temp = {}
 
-            temp.email = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
-            // !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
-            temp.password = password === "";
-
-            setHasErrors(temp)
-        }
         if (email !== "") {
             validate()
         }
@@ -56,7 +57,8 @@ export default function SignInSide() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        for (const [key, value] of Object.entries(hasErrors)) {
+        let temp = validate()
+        for (const [key, value] of Object.entries(temp)) {
             console.log(key + " " + value)
             if (value) {
                 console.log("FORM INCOMPLETE")
@@ -68,6 +70,7 @@ export default function SignInSide() {
         console.log({
             email: data.get('email'),
             password: data.get('password'),
+            rememberMe: data.get('rememberMe'),
         });
     };
 
@@ -145,8 +148,8 @@ export default function SignInSide() {
                                 helperText={hasErrors.password ? "Field is required" : ""}
                             />
                             <FormControlLabel
-                                control={<Checkbox value="remember" color="warning" />}
-                                label="Remember me"
+                                control={<Checkbox value={true} color="warning" />}
+                                label="Remember me" name="rememberMe"
                             />
                             <Button
                                 type="submit"
