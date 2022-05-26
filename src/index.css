@@ -1,4 +1,9 @@
 .footer {
     position: sticky;
+    margin-bottom: 50px;
+}
+
+.footer .p-3 {
+    padding: 0rem !important;
 }
 
