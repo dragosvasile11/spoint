@@ -6,7 +6,7 @@ import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
-import Map from "./components/Map";
+import StreetViewMap from "./components/StreetViewMap";
 
 const App = () => (
   <Router>
@@ -14,9 +14,7 @@ const App = () => (
           <Route path="/" element={
               <>
                   <Header/>
-
                   <Card/>
-
                   <div>
                     <p>Checking</p>
                       <p>Checking</p>
@@ -40,7 +38,7 @@ const App = () => (
               </>
           } />
           <Route path="/guess" element = {
-                  <Map />
+                  <StreetViewMap />
           } />
       </Routes>
   </Router>
