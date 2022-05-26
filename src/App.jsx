@@ -6,7 +6,7 @@ import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
-import Map from "./components/Map";
+import StreetViewMap from "./components/StreetViewMap";
 
 const App = () => (
   <Router>
@@ -45,6 +45,9 @@ const App = () => (
               <>
                   <h1>ABOUT PAGE</h1>
               </>
+          } />
+          <Route path="/guess" element = {
+                  <StreetViewMap />
           } />
       </Routes>
   </Router>
