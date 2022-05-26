@@ -26,16 +26,24 @@ const Map = () => {
         zoom: 1
     };
     return (
-        <div style={{
-            width: '800px',
-            height: '400px',
-            backgroundColor: '#eeeeee'
-        }}>
-            <ReactStreetview
-                apiKey={googleMapsApiKey}
-                streetViewPanoramaOptions={streetViewPanoramaOptions}
-            />
-        </div>
+        <>
+            <div style={{
+                width: '800px',
+                height: '400px',
+                backgroundColor: '#eeeeee'
+            }}>
+                <ReactStreetview
+                    apiKey={googleMapsApiKey}
+                    streetViewPanoramaOptions={streetViewPanoramaOptions}
+                />
+            </div>
+            <div style={BUTTON_WRAPPER_STYLES}>
+
+            </div>
+
+
+        </>
+
     )
 };
 
