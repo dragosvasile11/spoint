@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import Header from "../src/components/Header";
@@ -17,7 +17,6 @@ const App = () => (
                   <p>Checking</p>
                   <p>Checking</p>
                   <p>Checking</p>
-                  <Map />
                   <Card/>
                   <div>
                     <p>Checking</p>
@@ -29,6 +28,7 @@ const App = () => (
                       <p>Checking</p>
                   </div>
                   <Footer />
+                  <a id="bottom">SOME TEXT HERE</a>
               </>
           } />
           <Route path="/signUp-form" element={
