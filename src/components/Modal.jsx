@@ -1,5 +1,5 @@
 import React from 'react';
-import CornerMap from "./CornerMap";
+import GoogleMap from "./GoogleMap";
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -30,7 +30,7 @@ const Modal = ({ open, children , onClose}) => {
             <div style={OVERLAY_STYLE}/>
             <div style={MODAL_STYLES}>
                 <button onClick={onClose}>Close</button>
-                <CornerMap />
+                <GoogleMap />
             </div>
         </>
     );
