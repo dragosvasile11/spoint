@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import ReactStreetview from "react-streetview";
+import {MDBBtn} from "mdb-react-ui-kit";
+import Modal from "./Modal";
+
 
 const Map = () => {
     const googleMapsApiKey = '';
+    const [isOpen, setIsOpen] = useState(false)
 
     const streetViewPanoramaOptions = {
         position: {lat: 44.439004, lng: 26.112520},
