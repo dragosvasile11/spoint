@@ -28,9 +28,8 @@ const Map = () => {
     return (
         <>
             <div style={{
-                width: '800px',
-                height: '400px',
-                backgroundColor: '#eeeeee'
+                width: '100vw',
+                height: '100vh',
             }}>
                 <ReactStreetview
                     apiKey={googleMapsApiKey}
