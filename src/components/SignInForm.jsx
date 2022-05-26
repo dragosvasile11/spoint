@@ -145,7 +145,7 @@ export default function SignInSide() {
                                 helperText={hasErrors.password ? "Field is required" : ""}
                             />
                             <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
+                                control={<Checkbox value="remember" color="warning" />}
                                 label="Remember me"
                             />
                             <Button
@@ -153,17 +153,18 @@ export default function SignInSide() {
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
+                                color="warning"
                             >
                                 Sign In
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="/" variant="body2">
+                                    <Link href="/" variant="body2" color="#ED6C02">
                                         Forgot password?
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="/signUp-form" variant="body2">
+                                    <Link href="/signUp-form" variant="body2" color="#ED6C02">
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>
