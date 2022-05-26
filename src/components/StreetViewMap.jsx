@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
 import ReactStreetview from "react-streetview";
-import {MDBBtn} from "mdb-react-ui-kit";
+import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
 import Modal from "./Modal";
 
 
@@ -45,6 +45,13 @@ const StreetViewMap = () => {
             <div style={BUTTON_WRAPPER_STYLES}>
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Give it a Guess!</MDBBtn>
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
+            </div>
+            <div style={{ position: 'absolute',
+                zIndex: 1,
+                alignSelf: 'flex-end',
+                marginTop: '-10vh',
+                marginLeft: '1%' }}>
+                <MDBIcon icon="map-marked-alt" size="3x" color="warning"/>
             </div>
         </>
 
