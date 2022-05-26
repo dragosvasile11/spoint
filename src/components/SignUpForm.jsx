@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,10 +13,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Route, Redirect } from 'react-router'
 
-
-
-    function Copyright(props) {
+function Copyright(props) {
         return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
                 {'Copyright © '}
@@ -31,9 +30,47 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
     const theme = createTheme();
 
-    export default function SignUp() {
+    const SignUp = () => {
+
+
+        const [firstName, setFirstName] = useState("")
+        const [lastName, setLastName] = useState("")
+        const [email, setEmail] = useState("")
+        const [password, setPassword] = useState("")
+        const [confirmPassword, setConfirmPassword] = useState("")
+
+        const [hasErrors, setHasErrors] = useState({
+            firstName: false,
+            lastName: false,
+            email: false,
+            password: false,
+            confirmPassword: false})
+
+        const validate = () => {
+            let temp = {}
+
+            temp.firstName = (firstName === "");
+            temp.lastName = lastName === "";
+            temp.email = !email.includes("@");
+            // !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+            temp.password = password === "";
+            temp.confirmPassword = password !== confirmPassword
+
+            setHasErrors(temp)
+            return temp
+        }
+
         const handleSubmit = (event) => {
             event.preventDefault();
+            let temp = validate()
+            for (const [key, value] of Object.entries(temp)) {
+                console.log(key + " " + value)
+                if (value) {
+                    console.log("FORM INCOMPLETE")
+                    return
+                }
+            }
+
             const data = new FormData(event.currentTarget);
             console.log({
                 firstName: data.get('firstName'),
@@ -41,8 +78,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                 email: data.get('email'),
                 password: data.get('password'),
                 confirmPassword: data.get('confirmPassword'),
+                allowExtraEmails: data.get('allowExtraEmails'),
             });
-        };
+        }
+
 
         return (
             <ThemeProvider theme={theme}>
@@ -69,11 +108,20 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                                     <TextField
                                         autoComplete="given-name"
                                         name="firstName"
-                                        required
+                                        required={true}
                                         fullWidth
                                         id="firstName"
                                         label="First Name"
                                         autoFocus
+                                        onChange={(event) => {
+                                            setFirstName(event.target.value)
+                                            let temp = hasErrors
+                                            temp.firstName = (event.target.value === "")
+                                            setHasErrors(temp)
+                                        }}
+                                        error={hasErrors.firstName}
+                                        helperText={hasErrors.firstName ? "Field is required" : ""}
+                                        color = "warning"
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -84,6 +132,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                                         label="Last Name"
                                         name="lastName"
                                         autoComplete="family-name"
+                                        onChange={(event) => {
+                                            setLastName(event.target.value)
+                                            let temp = {...hasErrors}
+                                            temp.lastName = (event.target.value === "")
+                                            setHasErrors(temp)
+                                            console.log(hasErrors.lastName)
+                                        }}
+                                        error={hasErrors.lastName}
+                                        helperText={hasErrors.lastName ? "Field is required" : ""}
+                                        color = "warning"
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -94,6 +152,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                                         label="Email Address"
                                         name="email"
                                         autoComplete="email"
+                                        onChange={(event) => {
+                                            setEmail(event.target.value)
+                                            let temp = hasErrors
+                                            temp.email = event.target.value === "" || !email.includes("@");
+                                            setHasErrors(temp)
+                                            console.log(hasErrors.email)
+                                        }}
+                                        error={hasErrors.email}
+                                        helperText={ hasErrors.email ? "Please enter valid email" : ""}
+                                        color = "warning"
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -105,6 +173,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                                         type="password"
                                         id="password"
                                         autoComplete="new-password"
+                                        onChange={(event) => {
+                                            setPassword(event.target.value)
+                                            let temp = hasErrors
+                                            temp.password = (event.target.value === "")
+                                            setHasErrors(temp)
+                                        }}
+                                        error={hasErrors.password}
+                                        helperText={hasErrors.password ? "Field is required" : ""}
+                                        color = "warning"
                                     />
                                 </Grid>
                                     <Grid item xs={12}>
@@ -116,6 +193,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                                         type="password"
                                         id="confirmPassword"
                                         autoComplete="new-password"
+                                        onChange={(event) => {
+                                            setConfirmPassword(event.target.value)
+                                            let temp = hasErrors
+                                            temp.confirmPassword = (confirmPassword !== password)
+                                            setHasErrors(temp)
+                                        }}
+                                        error={confirmPassword !== password}
+                                        helperText={confirmPassword !== password ? "Passwords are not the same" : ""}
+                                        color = "warning"
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -133,7 +219,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
                             >
                                 Sign Up
                             </Button>
-                            <Grid container justifyContent="flex-end">
+                            <Grid container justifyContent="center">
                                 <Grid item>
                                     <Link to="/signIn-form" variant="body2">
                                         Already have an account? Sign in
@@ -148,4 +234,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
             </ThemeProvider>
         );
     }
+
+export default SignUp;
 
