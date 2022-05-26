@@ -18,11 +18,11 @@ const Footer = () => {
                         ><i className="fab fa-linkedin-in"/></a>
                         <a className="btn btn-outline-light btn-floating m-1" href="#" role="button"
                         ><i className="fab fa-github"/></a>
+                        <div className="text-center p-3">
+                            © 2022 Copyright:
+                            <a className="text-warning"> Spoint</a>
+                        </div>
                     </section>
-                </div>
-                <div className="text-center p-3" >
-                    © 2022 Copyright:
-                    <a className="text-white"> Spoint</a>
                 </div>
             </footer>
         </>
