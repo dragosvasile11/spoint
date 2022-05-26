@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from "@mui/material/Link";
+
 
 const Footer = () => {
     return (
@@ -20,7 +22,7 @@ const Footer = () => {
                         ><i className="fab fa-github"/></a>
                         <div className="text-center p-3">
                             © 2022 Copyright:
-                            <a className="text-warning"> Spoint</a>
+                            <Link className="text-warning" href="/about"> Spoint</Link>
                         </div>
                     </section>
                 </div>
