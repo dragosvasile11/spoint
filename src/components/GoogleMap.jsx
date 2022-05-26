@@ -45,7 +45,14 @@ class GoogleMap extends Component {
                     }
                     onClick={this.onClick}
                 >
-
+                    {this.state.markers.map((marker, index) => (
+                        <Marker
+                            key={index}
+                            title={marker.title}
+                            name={marker.name}
+                            position={marker.position}
+                        />
+                    ))}
                 </Map>
             </div>
         );
