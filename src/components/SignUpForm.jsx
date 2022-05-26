@@ -85,7 +85,7 @@ function Copyright(props) {
                 email: data.get('email'),
                 password: data.get('password'),
                 confirmPassword: data.get('confirmPassword'),
-                allowExtraEmails: data.get('allowExtraEmails'),
+                allowExtraEmails: !!data.get('allowExtraEmails'),
             });
         }
 
@@ -213,7 +213,7 @@ function Copyright(props) {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <FormControlLabel
-                                        control={<Checkbox value="allowExtraEmails" color="warning" />}
+                                        control={<Checkbox value={true} color="warning" />}
                                         label="I want to receive inspiration, marketing promotions and updates via email."
                                     />
                                 </Grid>
