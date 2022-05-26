@@ -28,12 +28,11 @@ const Modal = ({ open, children , onClose}) => {
     return (
         <>
             <div style={OVERLAY_STYLE}/>
-
             <div style={MODAL_STYLES}>
-
+                <button onClick={onClose}>Close</button>
+                <CornerMap />
             </div>
         </>
-
     );
 };
 
