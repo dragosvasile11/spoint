@@ -37,6 +37,7 @@ class GoogleMap extends Component {
                     className={"map"}
                     zoom={1.7}
                     disableDefaultUI={true}
+                    zoomControl={true}
                     initialCenter={
                         {
                             lat: 0,
