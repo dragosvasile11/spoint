@@ -12,3 +12,13 @@
     margin: 0px!important;
 }
 
+#scroll-to {
+    float: right;
+    display: inline;
+    margin-right: -7%;
+    padding: 10px;
+}
+
+#scroll-to.up{
+    transform : rotateX(180deg) !important;
+}
