@@ -41,11 +41,7 @@ const App = () => (
               </>
           } />
           <Route path="/guess" element = {
-              <>
-                  <div><Map /></div>
-                  <div><CornerMap /></div>
-              </>
-
+                  <Map />
           } />
       </Routes>
   </Router>
