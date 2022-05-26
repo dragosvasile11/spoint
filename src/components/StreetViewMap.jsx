@@ -5,8 +5,11 @@ import Modal from "./Modal";
 
 
 const BUTTON_WRAPPER_STYLES = {
-    position: 'relative',
-    zIndex: 1
+    position: 'absolute',
+    zIndex: 1,
+    alignSelf: 'flex-end',
+    marginTop: '-95vh',
+    marginLeft: '90%'
 }
 
 const OTHER_CONTENT_STYLES = {
