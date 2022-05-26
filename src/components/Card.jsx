@@ -4,7 +4,7 @@ import {MDBBtn, MDBProgress, MDBProgressBar} from "mdb-react-ui-kit";
 const Card = () => {
     return (
         <>
-            <div className="row row-cols-1 row-cols-md-3 g-4" style={{ padding: '5% 25% 5%', color: 'whitesmoke'}}>
+            <div id="cards-layout" className="row row-cols-1 row-cols-md-3 g-4" style={{ padding: '5% 25% 5%', color: 'whitesmoke'}}>
                 <div className="col" style={{ color: 'whitesmoke'}}>
                     <div className="card h-100" style={{ backgroundColor: '#2d2d2d' }} >
                         <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" className="card-img-top"
