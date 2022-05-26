@@ -10,6 +10,23 @@ class GoogleMap extends Component {
         };
         this.onClick = this.onClick.bind(this);
     }
+
+    onClick(t, map, coord) {
+        const { latLng } = coord;
+        const lat = latLng.lat();
+        const lng = latLng.lng();
+        this.setState(() => {
+            return {
+                markers: [
+                    {
+                        title: "",
+                        name: "",
+                        position: { lat, lng }
+                    }
+                ]
+            };
+        });
+    }
 }
 
 export default GoogleApiWrapper({
