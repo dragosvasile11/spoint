@@ -42,7 +42,7 @@ const StreetViewMap = () => {
             <div style={{
                 width: '100vw',
                 height: '100vh',
-                filter: 'invert(1)' + (sunGlassesOn ? "opacity(0.5)" : ""),
+                filter: 'invert(1)' + (sunGlassesOn ? "brightness(0.7)" : ""),
             }}>
                 <ReactStreetview
                     apiKey={googleMapsApiKey}
