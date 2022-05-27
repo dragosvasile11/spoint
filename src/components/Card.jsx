@@ -1,5 +1,6 @@
 import React from 'react';
 import {MDBBtn, MDBProgress, MDBProgressBar} from "mdb-react-ui-kit";
+import {Link} from "react-router-dom";
 
 const Card = () => {
     return (
@@ -21,7 +22,9 @@ const Card = () => {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>750/1000</p></div>
                         <div className="card-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <MDBBtn rounded color='warning'>PLAY</MDBBtn>
+                            <Link to="/guess">
+                                <MDBBtn rounded color='warning'>PLAY</MDBBtn>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -42,7 +45,9 @@ const Card = () => {
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>250/1000</p></div>
 
                         <div className="card-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <MDBBtn rounded color='warning'>PLAY</MDBBtn>
+                            <Link to="/guess">
+                                <MDBBtn rounded color='warning'>PLAY</MDBBtn>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -62,7 +67,9 @@ const Card = () => {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}><p>500/1000</p></div>
                         <div className="card-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <MDBBtn rounded color='warning'>PLAY</MDBBtn>
+                            <Link to="/guess">
+                                <MDBBtn rounded color='warning'>PLAY</MDBBtn>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
 import ReactStreetview from "react-streetview";
-import {MDBBtn} from "mdb-react-ui-kit";
+import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
 import Modal from "./Modal";
 import SunglassesButton from "./SunglassesButton";
 
@@ -56,6 +56,13 @@ const StreetViewMap = () => {
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
             </div>
             <SunglassesButton onClick={sunglassesOnClick}/>
+            <div style={{ position: 'absolute',
+                zIndex: 1,
+                alignSelf: 'flex-end',
+                marginTop: '-10vh',
+                marginLeft: '1%' }}>
+                <MDBIcon icon="map-marked-alt" size="3x" color="warning"/>
+            </div>
         </>
 
     )

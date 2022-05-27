@@ -7,6 +7,7 @@ import Card from "../src/components/Card";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
 import StreetViewMap from "./components/StreetViewMap";
+import GamePlay from "./components/GamePlay";
 
 const App = () => (
   <Router>
@@ -48,6 +49,11 @@ const App = () => (
           } />
           <Route path="/guess" element = {
                   <StreetViewMap />
+          } />
+          <Route path="/gameplay" element = {
+              <>
+              <GamePlay />
+              </>
           } />
       </Routes>
   </Router>
