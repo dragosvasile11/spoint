@@ -12,12 +12,13 @@ const SunglassesButton = ({ onClick }) => {
         border: "none",
         padding:'10px',
         paddingTop: '0',
+        color:'#FFA900'
     }
 
     return (
         <div id='sunglasses'>
             <button className='hover-button' type='button' onClick={() => onClick()} style={SUNGLASSES_STYLE}>
-                <i className="fas fa-glasses fa-4x" color="#FFA900"></i>
+                <i className="fas fa-glasses fa-4x"></i>
             </button>
         </div>
     );
