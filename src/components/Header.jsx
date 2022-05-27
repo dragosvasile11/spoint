@@ -51,7 +51,7 @@ const Header = () => {
                     <div className="mask text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
                         <div className="container d-flex align-items-center text-center h-100">
                             <div>
-                                <h1 className="mb-5">SPOT THE POINT!</h1>
+                                <h1 className="mb-5">A NEW POINT OF VIEW!</h1>
                                 <section>
                                     YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE
                                     IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST
