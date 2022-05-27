@@ -21,7 +21,7 @@ const ScrollUpDownButton = () => {
 
     return (
         <div id="scroll-to" className={scrollPosition > window.outerHeight / 2 ? "up" : ""}>
-            <a className="scrollto active btn-floating m-1 btn" href={scrollPosition === 0 ? "#bottom" : "#root"}>
+            <a className="hover-button scrollto active btn-floating m-1 btn" href={scrollPosition === 0 ? "#bottom" : "#root"}>
                 <ExpandCircleDownIcon color="warning" fontSize="large"/>
             </a>
         </div>
