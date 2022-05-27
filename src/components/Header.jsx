@@ -27,7 +27,7 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarExample01">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item active">
-                                    <Link className="nav-link" aria-current="page" to="/"><img src={logo} alt="Logo" /></Link>
+                                    <Link className="nav-link" aria-current="page" to="/"><img src={logo} alt="Logo" style={{maxWidth: "20%", height: "auto"}}/></Link>
                                 </li>
                             </ul>
 
