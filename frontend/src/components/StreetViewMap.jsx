@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import SunglassesButton from "./SunglassesButton";
 
 
-const BUTTON_WRAPPER_STYLES = {
+const buttonWrapperStyles = {
     position: 'absolute',
     zIndex: 1,
     alignSelf: 'flex-end',
@@ -13,11 +13,12 @@ const BUTTON_WRAPPER_STYLES = {
     marginLeft: '90%'
 }
 
-const OTHER_CONTENT_STYLES = {
-    position: 'relative',
-    zIndex: 2,
-    backgroundColor: 'red',
-    padding: '10px'
+const sunGlassesButtonStyles = {
+    position: 'absolute',
+    zIndex: 1,
+    alignSelf: 'flex-end',
+    marginTop: '-10vh',
+    marginLeft: '1%'
 }
 
 const StreetViewMap = () => {
@@ -37,34 +38,32 @@ const StreetViewMap = () => {
         addressControl: false,
         fullscreenControl: false,
     };
+
+    const sunGlassesSwitchStyles = {
+        width: '100vw',
+        height: '100vh',
+        filter: 'invert(1)' + (sunGlassesOn ? "brightness(0.7)" : ""),
+    }
+
     return (
         <>
-            <div style={{
-                width: '100vw',
-                height: '100vh',
-                filter: 'invert(1)' + (sunGlassesOn ? "brightness(0.7)" : ""),
-            }}>
+            <div style={sunGlassesSwitchStyles}>
                 <ReactStreetview
                     apiKey={googleMapsApiKey}
                     streetViewPanoramaOptions={streetViewPanoramaOptions}
                 />
             </div>
-            <div style={BUTTON_WRAPPER_STYLES} className="hover-button">
+            <div style={buttonWrapperStyles} className="hover-button">
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Give it a Guess!</MDBBtn>
             </div>
             <div>
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
             </div>
             <SunglassesButton onClick={sunglassesOnClick}/>
-            <div style={{ position: 'absolute',
-                zIndex: 1,
-                alignSelf: 'flex-end',
-                marginTop: '-10vh',
-                marginLeft: '1%' }}>
+            <div style={sunGlassesButtonStyles}>
                 <MDBIcon icon="map-marked-alt" size="3x" color="warning"/>
             </div>
         </>
-
     )
 };
 
