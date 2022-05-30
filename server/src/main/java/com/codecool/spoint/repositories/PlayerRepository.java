@@ -1,7 +1,7 @@
 package com.codecool.spoint.repositories;
 
-import com.codecool.spoint.models.User;
+import com.codecool.spoint.models.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PlayerRepository extends JpaRepository<User, Long> {
+public interface PlayerRepository extends JpaRepository<Player, Long> {
 }
