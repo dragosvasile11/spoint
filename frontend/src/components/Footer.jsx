@@ -1,35 +1,52 @@
-import Link from "@mui/material/Link";
+import React from 'react';
+import {
+    MDBFooter,
+    MDBContainer,
+    MDBIcon
+} from 'mdb-react-ui-kit';
 import ScrollUpDownButton from "./ScrollUpDownButton";
+import Link from "@mui/material/Link";
 
+const footerStyles = {
+    backgroundColor: 'rgba(0, 0, 0, 0.1)', height: '13vh'
+}
 
-const Footer = () => {
+export default function App() {
     return (
-        <>
-            <footer className="footer bg-dark text-center text-white fixed-bottom" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)', height: '13vh'}} >
-                <div id="footer-container" className="container p-4 pb-0">
-                    <section className="mb-4">
-                        <a className="btn btn-outline-light btn-floating m-1" href="frontend/src/components/Footer" role="button"
-                        ><i className="fab fa-facebook-f"/></a>
-                        <a className="btn btn-outline-light btn-floating m-1" href="frontend/src/components/Footer" role="button"
-                        ><i className="fab fa-twitter"/></a>
-                        <a className="btn btn-outline-light btn-floating m-1" href="frontend/src/components/Footer" role="button"
-                        ><i className="fab fa-google"/></a>
-                        <a className="btn btn-outline-light btn-floating m-1" href="frontend/src/components/Footer" role="button"
-                        ><i className="fab fa-instagram"/></a>
-                        <a className="btn btn-outline-light btn-floating m-1" href="frontend/src/components/Footer" role="button"
-                        ><i className="fab fa-linkedin-in"/></a>
-                        <a className="btn btn-outline-light btn-floating m-1" href="https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-java-dragosvasile11" role="button"
-                        ><i className="fab fa-github"/></a>
-                        <ScrollUpDownButton/>
-                        <div className="text-center p-3">
-                            © 2022 Copyright:
-                            <Link className="text-warning" href="/about"> Spoint</Link>
-                        </div>
-                    </section>
-                </div>
-            </footer>
-        </>
-    );
-};
+        <MDBFooter className='bg-dark text-center text-white fixed-bottom' style={footerStyles}>
+            <MDBContainer id="footer-container" className='p-4 pb-0'>
+                <section className='mb-4'>
+                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                        <MDBIcon fab icon='facebook-f' />
+                    </a>
 
-export default Footer;
+                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                        <MDBIcon fab icon='twitter' />
+                    </a>
+
+                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                        <MDBIcon fab icon='google' />
+                    </a>
+                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                        <MDBIcon fab icon='instagram' />
+                    </a>
+
+                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                        <MDBIcon fab icon='linkedin-in' />
+                    </a>
+
+                    <a className='btn btn-outline-light btn-floating m-1' href='https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-java-dragosvasile11' role='button'>
+                        <MDBIcon fab icon='github' />
+                    </a>
+                    <ScrollUpDownButton/>
+                    <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+                        © {new Date().getFullYear()} Copyright:
+                        <Link className="text-warning" href="/about">
+                            Spoint
+                        </Link>
+                    </div>
+                </section>
+            </MDBContainer>
+        </MDBFooter>
+    );
+}
