@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleMap from "./GoogleMap";
 
-const MODAL_STYLES = {
+const modalStyles = {
     position: 'fixed',
     top: '50%',
     left: '50%',
@@ -12,7 +12,7 @@ const MODAL_STYLES = {
     zIndex: 1000
 }
 
-const OVERLAY_STYLE = {
+const overlayStyles = {
     position: 'fixed',
     top: 0,
     left: 0,
@@ -22,13 +22,13 @@ const OVERLAY_STYLE = {
     zIndex: 1000
 }
 
-const Modal = ({ open, children , onClose}) => {
+const Modal = ({ open, onClose}) => {
     if (!open) return null
 
     return (
         <>
-            <div style={OVERLAY_STYLE}/>
-            <div style={MODAL_STYLES}>
+            <div style={overlayStyles}/>
+            <div style={modalStyles}>
                 <button onClick={onClose}>Close</button>
                 <GoogleMap />
             </div>
