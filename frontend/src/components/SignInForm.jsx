@@ -18,7 +18,7 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="/">
+            <Link color="inherit" href="/frontend/public">
                 Spoint
             </Link>{' '}
             {new Date().getFullYear()}
@@ -162,7 +162,7 @@ export default function SignInSide() {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="/" variant="body2" color="#ED6C02">
+                                    <Link href="/frontend/public" variant="body2" color="#ED6C02">
                                         Forgot password?
                                     </Link>
                                 </Grid>
