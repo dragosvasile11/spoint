@@ -22,5 +22,13 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
+    @GetMapping
+    public List<Player> getAllPlayers() {
+        return playerService.getAllPlayers();
+    }
 
+    @GetMapping("/{id}")
+    public Optional<Player> getPlayerById(@PathVariable("id") Long id) {
+        return playerService.getPlayerById(id);
+    }
 }
