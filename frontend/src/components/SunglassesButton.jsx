@@ -2,7 +2,7 @@ import React from "react";
 
 const SunglassesButton = ({ onClick }) => {
 
-    const SUNGLASSES_STYLE = {
+    const sunGlassesStyles = {
         position: 'absolute',
         zIndex: '1',
         alignSelf: 'flex-end',
@@ -17,7 +17,7 @@ const SunglassesButton = ({ onClick }) => {
 
     return (
         <div id='sunglasses'>
-            <button className='hover-button' type='button' onClick={() => onClick()} style={SUNGLASSES_STYLE}>
+            <button className='hover-button' type='button' onClick={() => onClick()} style={sunGlassesStyles}>
                 <i className="fas fa-glasses fa-4x"></i>
             </button>
         </div>
