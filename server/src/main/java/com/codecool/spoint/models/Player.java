@@ -9,18 +9,18 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "User")
-public class User {
+@Entity(name = "player")
+public class Player {
 
     @Id
     @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
+            name = "player_sequence",
+            sequenceName = "player_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
+            generator = "player_sequence"
     )
     @Column(name = "id", updatable = false)
     private Long id;
@@ -37,7 +37,7 @@ public class User {
     @Column(name = "password", nullable = false, columnDefinition = "TEXT", unique = true)
     private String password;
 
-    public User(String firstName, String lastName, String email, String password) {
+    public Player(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
