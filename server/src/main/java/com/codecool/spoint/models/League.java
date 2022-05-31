@@ -3,14 +3,15 @@ package com.codecool.spoint.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "league")
+@Entity(name = "League")
+@Table(name = "leagues")
 public class League {
 
     @Id
@@ -26,24 +27,20 @@ public class League {
     )
 
     @Column(name = "id", updatable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
 
-    @Column(name = "members", nullable = true, columnDefinition = "TEXT")
-    private List<Player> members;
-
-    @Column(name = "league_creator", nullable = false, columnDefinition = "TEXT")
-    private Player creator;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "league")
+    private Set<Player> members;
 
     @Column(name = "league_score", nullable = true, columnDefinition = "INTEGER")
     private int league_score;
 
-    public League(String name, Player creator) {
+    public League(String name) {
         this.name = name;
-        this.members = new ArrayList<>();
-        this.creator = creator;
+        this.members = new HashSet<>();
         this.league_score = 0;
     }
 }
