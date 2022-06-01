@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class LeagueService {
@@ -120,5 +121,15 @@ public class LeagueService {
         }
     }
 
+    public boolean checkIfLeagueExists(League league) {
+        List<League> leagues = getAllLeagues();
+
+        for (League checkLeague : leagues) {
+            if (checkLeague.getName().equals(league.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
