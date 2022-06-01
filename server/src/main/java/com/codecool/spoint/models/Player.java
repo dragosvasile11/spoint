@@ -1,5 +1,6 @@
 package com.codecool.spoint.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,7 +10,8 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "player")
+@Entity
+@Table(name = "players")
 public class Player {
 
     @Id
