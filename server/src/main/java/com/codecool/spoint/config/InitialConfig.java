@@ -22,6 +22,12 @@ public class InitialConfig {
         };
     }
 
-
-
+    @Bean
+    CommandLineRunner commandLineRunnerLeague (LeagueRepository repository) {
+        return args -> {
+            League league1 = new League("Snow Flaskes");
+            League league2 = new League("Reality Checkers");
+            repository.saveAll(List.of(league1, league2));
+        };
+    }
 }
