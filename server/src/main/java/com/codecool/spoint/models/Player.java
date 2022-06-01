@@ -1,5 +1,6 @@
 package com.codecool.spoint.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -55,9 +56,5 @@ public class Player {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-    }
-
-    public void addLeague(League league) {
-        this.league = league;
     }
 }
