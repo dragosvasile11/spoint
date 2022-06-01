@@ -65,5 +65,23 @@ public class LeagueService {
         return "League not found";
     }
 
+    public String updateLeagueName(Long id, League league) {
+        Optional<League> leagueToFind = leagueRepository.findById(id);
+        if (leagueToFind.isPresent()) {
+            List<League> leaguesToCheck = getAllLeagues();
+            for (League leagueToCheck : leaguesToCheck) {
+                if (leagueToCheck.getName().equals(league.getName())) {
+                    return "League name already taken";
+                }
+            }
+            League leagueToUpdate = leagueToFind.get();
+            leagueToUpdate.setName(league.getName() != null ? league.getName() : leagueToUpdate.getName());
+
+            leagueRepository.save(leagueToUpdate);
+            return "League name updated";
+        }
+        return "League not found";
+    }
+
 }
 
