@@ -91,7 +91,7 @@ public class LeagueService {
                 League league = getLeagueById(leagueId).get();
                 Player player = playerRepository.findById(player_id).get();
 
-                player.addLeague(league);
+                player.setLeague(league);
                 playerRepository.save(player);
                 return "Member added";
             }
