@@ -111,5 +111,14 @@ public class LeagueService {
         }
     }
 
+    public void updateScore(Long leagueId, Long score) {
+        if (getLeagueById(leagueId).isPresent()) {
+
+            League league = getLeagueById(leagueId).get();
+            league.updateScore(score);
+            leagueRepository.save(league);
+        }
+    }
+
 }
 
