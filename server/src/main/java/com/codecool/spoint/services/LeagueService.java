@@ -99,5 +99,17 @@ public class LeagueService {
         return "League not found";
     }
 
+    public void deleteLeagueMember(Long leagueId, Long player_id) {
+        if (getLeagueById(leagueId).isPresent()) {
+
+            if (playerRepository.findById(player_id).isPresent()) {
+                Player player = playerRepository.findById(player_id).get();
+                player.setLeague(null);
+                player.setCreatedBy(null);
+                playerRepository.save(player);
+            }
+        }
+    }
+
 }
 
