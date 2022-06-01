@@ -26,10 +26,10 @@ public class League {
             generator = "league_sequence"
     )
 
-    @Column(name = "id", updatable = false)
-    private long id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "members", nullable = true, columnDefinition = "TEXT")
@@ -38,8 +38,8 @@ public class League {
     @Column(name = "league_creator", nullable = false, columnDefinition = "TEXT")
     private Player creator;
 
-    @Column(name = "league_score", nullable = true, columnDefinition = "INTEGER")
-    private int league_score;
+    @Column(name = "league_score")
+    private Long league_score = 0L;
 
     public League(String name, Player creator) {
         this.name = name;
