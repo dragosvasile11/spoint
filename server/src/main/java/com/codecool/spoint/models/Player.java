@@ -1,6 +1,5 @@
 package com.codecool.spoint.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "Player")
 @Table(name = "players")
 public class Player {
 
@@ -33,7 +32,7 @@ public class Player {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
 
     @Column(name = "password", nullable = false)

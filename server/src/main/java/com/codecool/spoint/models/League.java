@@ -26,7 +26,7 @@ public class League {
             generator = "league_sequence"
     )
 
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)
