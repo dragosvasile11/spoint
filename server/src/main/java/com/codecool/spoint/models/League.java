@@ -44,8 +44,13 @@ public class League {
 
     public League(String name) {
         this.name = name;
-        this.members = new ArrayList<>();
-        this.creator = creator;
-        this.league_score = 0;
+    }
+
+    public void addMember(Player player) {
+        this.players.add(player);
+    }
+
+    public void updateScore(Long score) {
+        this.league_score += score;
     }
 }
