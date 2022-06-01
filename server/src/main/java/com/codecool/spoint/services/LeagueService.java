@@ -29,5 +29,21 @@ public class LeagueService {
     public Optional<League> getLeagueById(Long id) {
         return leagueRepository.findById(id);
     }
+
+    public String addLeague(League league, Long player_id) {
+        if (!checkIfLeagueExists(league)) {
+            if (playerRepository.findById(player_id).isPresent()) {
+                Player player = playerRepository.findById(player_id).get();
+
+                player.setLeague(league);
+                league.setCreator(player);
+                league.addMember(player);
+                leagueRepository.save(league);
+                return "League created";
+            }
+        }
+        return "League already exists";
+    }
+
 }
 
