@@ -40,6 +40,10 @@ public class Player {
     @Column(name = "score")
     private Long score = 0L;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn( name = "league_id")
+    @JsonIgnore
+    private League league;
 
     public Player(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
