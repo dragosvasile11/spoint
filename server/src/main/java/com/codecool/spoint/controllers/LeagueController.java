@@ -47,5 +47,11 @@ public class LeagueController {
         return leagueService.deleteLeague(id);
     }
 
+
+    @PatchMapping("/add-member/{league_id}/{player_id}")
+    public String addLeagueMember(@PathVariable("league_id") Long leagueId, @PathVariable("player_id") Long playerId) {
+        return leagueService.addLeagueMember(leagueId, playerId);
+    }
+
 }
 
