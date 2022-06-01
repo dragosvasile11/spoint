@@ -41,7 +41,8 @@ public class League {
     @Column(name = "league_score")
     private Long league_score = 0L;
 
-    public League(String name, Player creator) {
+
+    public League(String name) {
         this.name = name;
         this.members = new ArrayList<>();
         this.creator = creator;
