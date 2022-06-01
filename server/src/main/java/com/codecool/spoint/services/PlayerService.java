@@ -25,4 +25,14 @@ public class PlayerService {
     public Optional<Player> getPlayerById(Long id) {
         return playerRepository.findById(id);
     }
+
+    public void addPlayer(Player player) {
+        playerRepository.save(player);
+    }
+
+    public void deletePlayer(Long id) {
+        playerRepository.deleteById(id);
+    }
+
+
 }
