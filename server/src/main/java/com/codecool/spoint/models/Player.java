@@ -43,4 +43,8 @@ public class Player {
         this.email = email;
         this.password = password;
     }
+
+    public void addLeague(League league) {
+        this.league = league;
+    }
 }
