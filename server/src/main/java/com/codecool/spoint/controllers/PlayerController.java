@@ -43,4 +43,9 @@ public class PlayerController {
     public void deletePlayer(@PathVariable("id") Long id) {
         playerService.deletePlayer(id);
     }
+
+    @GetMapping("/check-if-player-exists")
+    public boolean checkIfPlayerExists(@RequestBody Player player) {
+        return playerService.checkIfPlayerExists(player);
+    }
 }
