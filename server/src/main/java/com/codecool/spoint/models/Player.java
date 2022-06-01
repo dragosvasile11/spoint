@@ -45,6 +45,10 @@ public class Player {
     @JsonIgnore
     private League league;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "creator")
+    @JsonIgnore
+    private League createdBy;
+
     public Player(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
