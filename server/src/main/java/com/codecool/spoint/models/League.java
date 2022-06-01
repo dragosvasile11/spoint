@@ -3,14 +3,15 @@ package com.codecool.spoint.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "league")
+@Entity(name = "League")
+@Table(name = "leagues")
 public class League {
 
     @Id
