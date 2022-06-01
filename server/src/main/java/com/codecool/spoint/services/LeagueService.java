@@ -83,5 +83,21 @@ public class LeagueService {
         return "League not found";
     }
 
+    public String addLeagueMember(Long leagueId, Long player_id) {
+        if (getLeagueById(leagueId).isPresent()) {
+
+            if (playerRepository.findById(player_id).isPresent()) {
+                League league = getLeagueById(leagueId).get();
+                Player player = playerRepository.findById(player_id).get();
+
+                player.addLeague(league);
+                playerRepository.save(player);
+                return "Member added";
+            }
+            return "Player not found";
+        }
+        return "League not found";
+    }
+
 }
 
