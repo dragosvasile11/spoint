@@ -37,6 +37,10 @@ public class Player {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "score")
+    private Long score = 0L;
+
+
     public Player(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
