@@ -53,12 +53,15 @@ public class LeagueController {
         return leagueService.addLeagueMember(leagueId, playerId);
     }
 
-
     @DeleteMapping("/delete-member/{league_id}/{player_id}")
     public void deleteLeagueMember(@PathVariable("league_id") Long leagueId, @PathVariable("player_id") Long playerId) {
         leagueService.deleteLeagueMember(leagueId, playerId);
     }
 
+    @PutMapping("/update-league-score/{id}")
+    public void updateLeagueScore(@PathVariable("id") Long id, @RequestBody Long score) {
+        leagueService.updateScore(id, score);
+    }
 
 }
 
