@@ -32,8 +32,8 @@ public class League {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "members", nullable = true, columnDefinition = "TEXT")
-    private List<Player> members;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "league")
+    private Set<Player> players = new HashSet<>();
 
     @Column(name = "league_creator", nullable = false, columnDefinition = "TEXT")
     private Player creator;
