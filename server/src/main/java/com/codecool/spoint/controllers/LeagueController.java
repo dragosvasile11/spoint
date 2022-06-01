@@ -31,5 +31,21 @@ public class LeagueController {
     public Optional<League> getLeagueById(@PathVariable("id") Long id) {
         return leagueService.getLeagueById(id);
     }
+
+    @PutMapping("/update/{id}")
+    public String updateLeagueName(@PathVariable("id") Long id,@RequestBody League league) {
+        return leagueService.updateLeagueName(id, league);
+    }
+
+    @PostMapping("/add/{creator_id}")
+    public String addLeague(@RequestBody League league, @PathVariable("creator_id")Long creator_id) {
+        return leagueService.addLeague(league, creator_id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteLeague(@PathVariable("id") Long id) {
+        return leagueService.deleteLeague(id);
+    }
+
 }
 
