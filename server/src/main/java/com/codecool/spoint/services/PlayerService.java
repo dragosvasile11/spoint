@@ -47,4 +47,14 @@ public class PlayerService {
         }
     }
 
+    public boolean checkIfPlayerExists(Player player) {
+        List<Player> players = getAllPlayers();
+
+        for (Player checkPlayer : players) {
+            if (checkPlayer.getEmail().equals(player.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
