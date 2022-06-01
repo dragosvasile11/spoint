@@ -25,16 +25,16 @@ public class Player {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false, columnDefinition = "TEXT", unique = true)
+    @Column(name = "password", nullable = false)
     private String password;
 
     public Player(String firstName, String lastName, String email, String password) {
