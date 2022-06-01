@@ -45,5 +45,25 @@ public class LeagueService {
         return "League already exists";
     }
 
+    public String deleteLeague(Long id) {
+        if (getLeagueById(id).isPresent()) {
+            League league = getLeagueById(id).get();
+            Set<Player> players = league.getPlayers();
+
+            for (Player player : players) {
+                player.setLeague(null);
+                player.setCreatedBy(null);
+                playerRepository.save(player);
+            }
+            league.setCreator(null);
+            league.setPlayers(null);
+            leagueRepository.save(league);
+
+            leagueRepository.delete(league);
+            return "League deleted";
+        }
+        return "League not found";
+    }
+
 }
 
