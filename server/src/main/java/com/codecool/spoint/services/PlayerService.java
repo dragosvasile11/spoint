@@ -19,7 +19,7 @@ public class PlayerService {
     }
 
     public List<Player> getAllPlayers() {
-        return playerRepository.findAll();
+        return playerRepository.findAllByOrderByIdAsc();
     }
 
     public Optional<Player> getPlayerById(Long id) {
