@@ -35,7 +35,8 @@ public class League {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "league")
     private Set<Player> players = new HashSet<>();
 
-    @Column(name = "league_creator", nullable = false, columnDefinition = "TEXT")
+    @OneToOne()
+    @JoinColumn(name = "created_by_player_id")
     private Player creator;
 
     @Column(name = "league_score")
