@@ -172,7 +172,7 @@ export default function SignInSide() {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="/frontend/public" variant="body2" color="#ED6C02">
+                                    <Link href="/" variant="body2" color="#ED6C02">
                                         Forgot password?
                                     </Link>
                                 </Grid>
