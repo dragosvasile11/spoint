@@ -8,6 +8,19 @@ import SignUpForm from "./components/SignUp/SignUpForm";
 import SignInForm from "./components/SignInForm";
 import StreetViewMap from "./components/StreetViewMap";
 import GamePlay from "./components/GamePlay";
+import {darkTheme, GlobalStyles, lightTheme, ThemeContext} from "./components/Contexts/ThemeContext";
+import React, {useEffect, useState} from "react";
+import {ThemeProvider} from "styled-components";
+import * as client from "./components/Contexts/Cookies"
+import Button from "@mui/material/Button";
+
+const App = () => {
+
+    const [theme, setTheme] = useState(client.getCookie("theme") ? client.getCookie("theme") : "light")
+
+    useEffect(() => {
+        client.setCookie("theme", theme)
+    }, [theme, setTheme])
 
 const App = () => (
   <Router>
