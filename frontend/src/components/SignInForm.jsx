@@ -12,7 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {ThemeContext} from "./Contexts/ThemeContext";
+import Switch from "./Switch";
 
 function Copyright(props) {
     return (
@@ -27,7 +29,6 @@ function Copyright(props) {
     );
 }
 
-const theme = createTheme();
 
 export default function SignInSide() {
 
@@ -74,8 +75,16 @@ export default function SignInSide() {
         });
     };
 
+    const { theme, setTheme } = useContext(ThemeContext)
+
+    const muiTheme = createTheme({
+        palette: {
+            mode: theme,
+        },
+    });
+
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={muiTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid
