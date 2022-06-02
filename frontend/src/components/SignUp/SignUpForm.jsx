@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {saveUser} from "./PostUser.js"
+import {ThemeContext} from "../Contexts/ThemeContext";
+import Switch from "../Switch";
 
 function Copyright(props) {
         return (
@@ -98,6 +100,7 @@ function Copyright(props) {
 
             <ThemeProvider theme={muiTheme}>
                 <div>
+                    <Switch/>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
                     <Box
