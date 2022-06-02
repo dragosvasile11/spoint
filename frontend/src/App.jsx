@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Card from "./components/Card";
-import SignUpForm from "./components/SignUpForm";
+import SignUpForm from "./components/SignUp/SignUpForm";
 import SignInForm from "./components/SignInForm";
 import StreetViewMap from "./components/StreetViewMap";
 import GamePlay from "./components/GamePlay";

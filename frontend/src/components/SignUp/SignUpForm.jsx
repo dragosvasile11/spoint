@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {saveUser} from "./PostUser.js"
 
 function Copyright(props) {
         return (
@@ -30,23 +31,6 @@ function Copyright(props) {
     const theme = createTheme();
 
     const SignUp = () => {
-
-        const saveUser = async (user) => {
-            const req = await fetch("http://localhost:8080/api/players/add", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: user
-            })
-            const response = await req
-            if (response.ok) {
-                console.log("USER REGISTERED")
-            } else {
-                console.log("REGISTRATION FAILED")
-            }
-        }
-
 
         const [firstName, setFirstName] = useState("")
         const [lastName, setLastName] = useState("")
