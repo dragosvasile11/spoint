@@ -78,14 +78,15 @@ function Copyright(props) {
             }
 
             const data = new FormData(event.currentTarget);
-            console.log({
-                firstName: data.get('firstName'),
-                lastName: data.get('lastName'),
-                email: data.get('email'),
-                password: data.get('password'),
-                confirmPassword: data.get('confirmPassword'),
-                allowExtraEmails: !!data.get('allowExtraEmails'),
-            });
+
+            const user = JSON.stringify({
+                firstName : data.get("firstName"),
+                lastName : data.get("lastName"),
+                email : data.get("email"),
+                password : data.get("password"),
+                allowExtraEmails : !!data.get("allowExtraEmails")
+            })
+            saveUser(user)
         }
 
 
