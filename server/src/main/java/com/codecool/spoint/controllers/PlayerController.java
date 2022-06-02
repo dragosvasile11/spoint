@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/players")
+@CrossOrigin
 public class PlayerController {
 
     private final PlayerService playerService;

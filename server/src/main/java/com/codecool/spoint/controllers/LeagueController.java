@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/leagues")
+@CrossOrigin
 public class LeagueController {
 
     private final LeagueService leagueService;
