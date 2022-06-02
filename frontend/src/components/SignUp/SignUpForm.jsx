@@ -86,8 +86,17 @@ function Copyright(props) {
         }
 
 
+        const { theme, setTheme } = useContext(ThemeContext)
+
+        const muiTheme = createTheme({
+            palette: {
+                mode: theme,
+            },
+        });
+
         return (
-            <ThemeProvider theme={theme}>
+
+            <ThemeProvider theme={muiTheme}>
                 <div>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
@@ -218,7 +227,7 @@ function Copyright(props) {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{ mt: 2, mb: 1 }}
                                 color="warning"
                             >
                                 Sign Up
