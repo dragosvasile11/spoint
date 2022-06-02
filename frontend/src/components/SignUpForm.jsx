@@ -51,8 +51,7 @@ function Copyright(props) {
 
             temp.firstName = (firstName === "");
             temp.lastName = lastName === "";
-            temp.email = !email.includes("@");
-            // !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+            temp.email = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
             temp.password = password === "";
             temp.confirmPassword = password !== confirmPassword
 
