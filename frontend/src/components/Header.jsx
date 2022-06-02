@@ -38,6 +38,9 @@ const Header = () => {
 
                             <ul className="navbar-nav flex-row">
                                 <li className="nav-item">
+                                    <Switch/>
+                                </li>
+                                <li className="nav-item">
                                     <Link className="nav-link pe-2" to="/signIn-form">
                                         <MDBBtn rounded color='warning'>
                                             ALREADY HAVE AN ACCOUNT?
