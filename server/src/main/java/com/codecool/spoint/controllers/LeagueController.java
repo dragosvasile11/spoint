@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/leagues")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class LeagueController {
 
     private final LeagueService leagueService;
