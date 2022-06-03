@@ -62,10 +62,13 @@ const StreetViewMap = () => {
     return (
         <>
             <div style={sunGlassesSwitchStyles}>
-                <ReactStreetview
-                    apiKey={googleMapsApiKey}
-                    streetViewPanoramaOptions={streetViewPanoramaOptions}
-                />
+                <LoadScript googleMapsApiKey={googleMapsApiKey}>
+                    <ReactStreetview
+                        apiKey={googleMapsApiKey}
+                        streetViewPanoramaOptions={streetViewPanoramaOptions}
+                    />
+                </LoadScript>
+
             </div>
             <div style={buttonWrapperStyles} className="hover-button">
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Give it a Guess!</MDBBtn>
