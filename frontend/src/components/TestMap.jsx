@@ -28,6 +28,7 @@ const GuessMap = ({coords}) => {
                     center={center}
                     onClick={onClick}
                 >
+                    {clicks.map((latLng, i) => (<Marker key={i} position={latLng} />))}
                 </GoogleMap>
             </LoadScript>
 
