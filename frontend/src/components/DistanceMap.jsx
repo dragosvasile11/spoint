@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {GoogleMap, LoadScript} from '@react-google-maps/api';
+import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import { useLocation } from 'react-router-dom'
 import {MDBBtn} from "mdb-react-ui-kit";
 import {Link} from "react-router-dom";
