@@ -31,7 +31,9 @@ const GuessMap = ({coords}) => {
                     {clicks.map((latLng, i) => (<Marker key={i} position={latLng} />))}
                 </GoogleMap>
             </LoadScript>
-
+            <Link to="/distance" state={{ from: {streetViewLat, streetViewLng, first}}}>
+                <MDBBtn rounded color='warning' onClick={() => setIsClicked(true)}>Click to send Marker!</MDBBtn>
+            </Link>
         </>
 
     )
