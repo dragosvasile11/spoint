@@ -8,6 +8,7 @@ const DistanceMap = () => {
     const [clicks, setClicks] = React.useState([]);
 
     const latLng1 = {lat: from.streetViewLat, lng: from.streetViewLng}
+    const latLng2 = {lat: from.first.lat, lng: from.first.lng}
     return (
         <>
         </>
