@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation} from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,6 +8,11 @@ import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
 import StreetViewMap from "./components/StreetViewMap";
 import GamePlay from "./components/GamePlay";
+import DistanceMap from "./components/DistanceMap";
+import {atom} from "jotai";
+import TestMap from "./components/TestMap";
+import GoogleMapComponent from "./components/GoogleMapComponent";
+import {MapContext} from "@react-google-maps/api";
 
 const App = () => (
   <Router>
