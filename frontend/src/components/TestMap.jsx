@@ -10,6 +10,12 @@ const GuessMap = ({coords}) => {
     const streetViewLng = coords.lng;
     const first = clicks[0];
 
+    const onClick = (e) => {
+        let lat = e.latLng.lat();
+        let lng = e.latLng.lng();
+        setClicks([{lat, lng}]);
+    };
+
     return (
         <>
         </>
