@@ -47,11 +47,12 @@ public class PlayerService {
         }
     }
 
-    public boolean checkIfPlayerExists(Player player) {
+    public boolean checkLogin(Player player) {
         List<Player> players = getAllPlayers();
 
         for (Player checkPlayer : players) {
-            if (checkPlayer.getEmail().equals(player.getEmail())) {
+            if (checkPlayer.getEmail().equals(player.getEmail()) &&
+                    checkPlayer.getPassword().equals(player.getPassword())) {
                 return true;
             }
         }
