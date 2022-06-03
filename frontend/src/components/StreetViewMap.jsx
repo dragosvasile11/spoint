@@ -38,6 +38,7 @@ const StreetViewMap = () => {
     const googleMapsApiKey = '';
     const [isOpen, setIsOpen] = useState(false)
     const [sunGlassesOn, setSunGlassesOn] = useState(false)
+    const coords = {lat: 41.88923618449196, lng: 12.49254339981923}
 
     const sunglassesOnClick = () => {
         setSunGlassesOn(!sunGlassesOn)
