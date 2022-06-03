@@ -13,8 +13,16 @@ const DistanceMap = () => {
     const latLng1 = {lat: from.streetViewLat, lng: from.streetViewLng}
     const latLng2 = {lat: from.first.lat, lng: from.first.lng}
     return (
-        <>
-        </>
+        <div >
+            <div style={{display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'}}>
+                <LoadScript googleMapsApiKey={""}>
+
+                </LoadScript>
+            </div>
+
+        </div>
     )
 }
 
