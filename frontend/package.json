@@ -17,6 +17,7 @@
     "haversine-distance": "^1.2.1",
     "jotai": "^1.7.0",
     "mdb-react-ui-kit": "^3.0.0",
+    "passive-events-support": "^1.0.33",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
