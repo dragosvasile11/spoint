@@ -30,6 +30,23 @@ const DistanceMap = () => {
                         {/*{clicks.map((latLng, i) => (<Marker key={i} position={latLng} />))}*/}
                         <Marker key={0} position={latLng1} />
                         <Marker key={1} position={latLng2} />
+                        // Draw a line showing the straight distance between the markers
+                        <Polyline
+                            path={[latLng1, latLng2]}
+                            geodesic={true}
+                            options={{
+                                strokeColor: "#ff2527",
+                                strokeOpacity: 2,
+                                strokeWeight: 5,
+                                icons: [
+                                    {
+                                        icon: "lineSymbol",
+                                        offset: "0",
+                                        repeat: "20px"
+                                    }
+                                ]
+                            }}
+                        />
                     </GoogleMap>
                 </LoadScript>
             </div>
