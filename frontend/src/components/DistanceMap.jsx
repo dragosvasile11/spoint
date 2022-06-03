@@ -18,7 +18,16 @@ const DistanceMap = () => {
                 justifyContent: 'center',
                 alignItems: 'center'}}>
                 <LoadScript googleMapsApiKey={""}>
+                    <GoogleMap
+                        options={{disableDefaultUI: true}}
+                        mapContainerStyle={containerStyle}
+                        className={"map"}
+                        zoom={2.4}
+                        defaultOptions={{mapTypeControl: false}}
+                        center={latLng1}
+                    >
 
+                    </GoogleMap>
                 </LoadScript>
             </div>
 
