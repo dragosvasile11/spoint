@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useContext, useEffect, useState} from "react";
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
+import { logUser } from "./LogUser";
 
 function Copyright(props) {
     return (
@@ -73,6 +74,14 @@ export default function SignInSide() {
             password: data.get('password'),
             rememberMe: !!data.get('rememberMe'),
         });
+
+        const user = JSON.stringify({
+            firstName : data.get("firstName"),
+            lastName : data.get("lastName"),
+            email : data.get("email"),
+            password : data.get("password"),
+        })
+        logUser(user)
     };
 
     const { theme, setTheme } = useContext(ThemeContext)
