@@ -26,7 +26,10 @@ const DistanceMap = () => {
                         defaultOptions={{mapTypeControl: false}}
                         center={latLng1}
                     >
-
+                        { /* Child components, such as markers, info windows, etc. */ }
+                        {/*{clicks.map((latLng, i) => (<Marker key={i} position={latLng} />))}*/}
+                        <Marker key={0} position={latLng1} />
+                        <Marker key={1} position={latLng2} />
                     </GoogleMap>
                 </LoadScript>
             </div>
