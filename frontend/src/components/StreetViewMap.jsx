@@ -26,6 +26,14 @@ const sunGlassesButtonStyles = {
     marginLeft: '1%'
 }
 
+const mapStyles = {
+    position: 'absolute',
+    zIndex: 1,
+    alignSelf: 'flex-end',
+    marginTop: '-47vh',
+    marginLeft: '68%'
+}
+
 const StreetViewMap = () => {
     const googleMapsApiKey = '';
     const [isOpen, setIsOpen] = useState(false)
