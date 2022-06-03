@@ -71,7 +71,7 @@ const StreetViewMap = () => {
 
             </div>
             <div style={buttonWrapperStyles} className="hover-button">
-                <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)}>Give it a Guess!</MDBBtn>
+                <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)} >Give it a Guess!</MDBBtn>
             </div>
             <div>
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
