@@ -8,6 +8,12 @@ const containerStyle = {
     height: '400px',
 };
 
+const center = {
+    lat: 0,
+    lng: 0
+};
+
+
 const GuessMap = ({coords}) => {
     const [clicks, setClicks] = React.useState([]);
     const [isClicked, setIsClicked] = useState(false)
