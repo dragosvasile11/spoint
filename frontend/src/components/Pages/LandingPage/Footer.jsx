@@ -4,7 +4,7 @@ import {
     MDBContainer,
     MDBIcon
 } from 'mdb-react-ui-kit';
-import ScrollUpDownButton from "./ScrollUpDownButton";
+import ScrollUpDownButton from "../../Buttons/ScrollUpDownButton";
 import Link from "@mui/material/Link";
 
 const footerStyles = {
@@ -16,22 +16,22 @@ export default function App() {
         <MDBFooter className='bg-dark text-center text-white fixed-bottom' style={footerStyles}>
             <MDBContainer id="footer-container" className='p-4 pb-0'>
                 <section className='mb-4'>
-                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                    <a className='btn btn-outline-light btn-floating m-1' href='src/components/Pages/LandingPage/Footer#' role='button'>
                         <MDBIcon fab icon='facebook-f' />
                     </a>
 
-                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                    <a className='btn btn-outline-light btn-floating m-1' href='src/components/Pages/LandingPage/Footer#' role='button'>
                         <MDBIcon fab icon='twitter' />
                     </a>
 
-                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                    <a className='btn btn-outline-light btn-floating m-1' href='src/components/Pages/LandingPage/Footer#' role='button'>
                         <MDBIcon fab icon='google' />
                     </a>
-                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                    <a className='btn btn-outline-light btn-floating m-1' href='src/components/Pages/LandingPage/Footer#' role='button'>
                         <MDBIcon fab icon='instagram' />
                     </a>
 
-                    <a className='btn btn-outline-light btn-floating m-1' href='#' role='button'>
+                    <a className='btn btn-outline-light btn-floating m-1' href='src/components/Pages/LandingPage/Footer#' role='button'>
                         <MDBIcon fab icon='linkedin-in' />
                     </a>
 
@@ -41,7 +41,7 @@ export default function App() {
                     <ScrollUpDownButton/>
                     <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                         © {new Date().getFullYear()} Copyright:
-                        <Link className="text-warning" href="/about">
+                        <Link className="text-warning" href="/src/components/Pages/About">
                             Spoint
                         </Link>
                     </div>

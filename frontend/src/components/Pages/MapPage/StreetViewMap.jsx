@@ -2,7 +2,7 @@ import React, {useState}  from 'react';
 import ReactStreetview from "react-streetview";
 import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
 import Modal from "./Modal";
-import SunglassesButton from "./SunglassesButton";
+import SunglassesButton from "../../Buttons/SunglassesButton";
 
 
 const buttonWrapperStyles = {

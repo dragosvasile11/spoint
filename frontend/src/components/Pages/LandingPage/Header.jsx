@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import background from "../images/background.jpg";
-import logo from "../images/logo.png";
+import background from "../../../images/background.jpg";
+import logo from "../../../images/logo.png";
 import { Link } from "react-router-dom"
 import {MDBBtn} from "mdb-react-ui-kit";
-import {ThemeContext} from "./Contexts/ThemeContext";
-import Switch from "../components/Switch";
+import {ThemeContext} from "../../Contexts/ThemeContext";
+import Switch from "../../Buttons/SwitchTheme/Switch";
 
 
 const Header = () => {

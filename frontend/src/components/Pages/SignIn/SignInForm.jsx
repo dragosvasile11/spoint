@@ -13,14 +13,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useContext, useEffect, useState} from "react";
-import {ThemeContext} from "./Contexts/ThemeContext";
-import Switch from "./Switch";
+import {ThemeContext} from "../../Contexts/ThemeContext";
+import Switch from "../../Buttons/SwitchTheme/Switch";
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="/about">
+            <Link color="inherit" href="/src/components/Pages/About">
                 Spoint
             </Link>{' '}
             {new Date().getFullYear()}
@@ -172,7 +172,7 @@ export default function SignInSide() {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="/" variant="body2" color="#ED6C02">
+                                    <Link href="/src/components/Pages" variant="body2" color="#ED6C02">
                                         Forgot password?
                                     </Link>
                                 </Grid>

@@ -1,12 +1,12 @@
 import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Card from "./components/Card";
-import SignUpForm from "./components/SignUp/SignUpForm";
-import SignInForm from "./components/SignInForm";
-import StreetViewMap from "./components/StreetViewMap";
-import GamePlay from "./components/GamePlay";
+import Header from "./components/Pages/LandingPage/Header";
+import Footer from "./components/Pages/LandingPage/Footer";
+import Card from "./components/Assets/Card";
+import SignUpForm from "./components/Pages/SignUp/SignUpForm";
+import SignInForm from "./components/Pages/SignIn/SignInForm";
+import StreetViewMap from "./components/Pages/MapPage/StreetViewMap";
+import GamePlay from "./components/Pages/ProfilePage/GamePlay";
 import {darkTheme, GlobalStyles, lightTheme, ThemeContext} from "./components/Contexts/ThemeContext";
 import React, {useEffect, useState} from "react";
 import {ThemeProvider} from "styled-components";

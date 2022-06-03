@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Box from "@mui/material/Box";
-import {ThemeContext} from "./Contexts/ThemeContext";
+import {ThemeContext} from "../../Contexts/ThemeContext";
 import {MaterialUISwitch} from "./ThemeSwitchButton";
 
 const Switch = () => {
