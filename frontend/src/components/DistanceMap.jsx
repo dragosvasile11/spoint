@@ -50,6 +50,12 @@ const DistanceMap = () => {
                     </GoogleMap>
                 </LoadScript>
             </div>
+            <div style={{backgroundColor: "blue",
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'}}>
+                <h1>DISTANCE: {Math.round(haversine(latLng1, latLng2) / 1000)} KM</h1>
+            </div>
 
         </div>
     )
