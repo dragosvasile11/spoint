@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
+import React, {useState} from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation} from "react-router-dom";
 
 import Header from "./components/Pages/LandingPage/Header";
 import Footer from "./components/Pages/LandingPage/Footer";
@@ -12,6 +13,11 @@ import React, {useEffect, useState} from "react";
 import {ThemeProvider} from "styled-components";
 import * as client from "./components/Contexts/Cookies"
 import Button from "@mui/material/Button";
+import DistanceMap from "./components/DistanceMap";
+import {atom} from "jotai";
+import TestMap from "./components/TestMap";
+import GoogleMapComponent from "./components/GoogleMapComponent";
+import {MapContext} from "@react-google-maps/api";
 
 const App = () => {
 
@@ -21,9 +27,10 @@ const App = () => {
         client.setCookie("theme", theme)
     }, [theme, setTheme])
 
+
     return (
 
-  <Router>
+  <>
       <ThemeContext.Provider value={ { theme, setTheme } }>
           <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
               <GlobalStyles/>
@@ -72,10 +79,16 @@ const App = () => {
                       <GamePlay />
                       </>
                   } />
+                  <Route path="/distance" element={
+                      <>
+                          <DistanceMap />
+                      </>
+
+                  }/>
               </Routes>
           </ThemeProvider>
       </ThemeContext.Provider>
-  </Router>
+  </>
 )};
 
 export default App;

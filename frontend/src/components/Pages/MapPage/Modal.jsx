@@ -1,5 +1,9 @@
-import React from 'react';
-import GoogleMap from "./GoogleMap";
+import React, {useState} from 'react';
+import GoogleMap from "./GoogleMapComponent";
+import {MDBBtn} from "mdb-react-ui-kit";
+import DistanceMap from "./DistanceMap";
+import Card from "./Card";
+import TestMap from "./TestMap";
 
 const modalStyles = {
     position: 'fixed',
@@ -22,7 +26,8 @@ const overlayStyles = {
     zIndex: 1000
 }
 
-const Modal = ({ open, onClose}) => {
+const Modal = ({ open, position, onClose}) => {
+
     if (!open) return null
 
     return (
@@ -30,7 +35,10 @@ const Modal = ({ open, onClose}) => {
             <div style={overlayStyles}/>
             <div style={modalStyles}>
                 <button onClick={onClose}>Close</button>
-                <GoogleMap />
+
+                <MDBBtn rounded color='warning' >I have chosen!</MDBBtn>
+
+                <TestMap position={position} />
             </div>
         </>
     );
