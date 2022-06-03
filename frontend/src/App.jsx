@@ -15,53 +15,60 @@ import GoogleMapComponent from "./components/GoogleMapComponent";
 import {MapContext} from "@react-google-maps/api";
 
 const App = () => (
-  <Router>
-      <Routes>
-          <Route path="/" element={
-              <>
-                  <Header/>
-                  <p>Checking</p>
-                  <p>Checking</p>
-                  <p>Checking</p>
-                  <Card/>
-                  <div>
+        <Routes>
+            <Route path="/" element={
+                <>
+                    <Header/>
                     <p>Checking</p>
-                      <p>Checking</p>
-                      <p>Checking</p>
-                      <p>Checking</p>
-                      <p>Checking</p>
-                      <p>Checking</p>
-                      <p>Checking</p>
-                  </div>
-                  <Footer />
-                  <a id="bottom">SOME TEXT HERE</a>
-              </>
-          } />
-          <Route path="/signUp-form" element={
-              <>
-                  <SignUpForm/>
-              </>
-          } />
-          <Route path="/signIn-form" element={
-              <>
-                  <SignInForm/>
-              </>
-          } />
-          <Route path="/about" element={
-              <>
-                  <h1>ABOUT PAGE</h1>
-              </>
-          } />
-          <Route path="/guess" element = {
-                  <StreetViewMap />
-          } />
-          <Route path="/gameplay" element = {
-              <>
-              <GamePlay />
-              </>
-          } />
-      </Routes>
-  </Router>
-);
+                    <p>Checking</p>
+                    <p>Checking</p>
+                    <Card/>
+                    <div>
+                        <p>Checking</p>
+                        <p>Checking</p>
+                        <p>Checking</p>
+                        <p>Checking</p>
+                        <p>Checking</p>
+                        <p>Checking</p>
+                        <p>Checking</p>
+                    </div>
+                    <Footer/>
+                    <a id="bottom">SOME TEXT HERE</a>
+                </>
+            }/>
+            <Route path="/signUp-form" element={
+                <>
+                    <SignUpForm/>
+                </>
+            }/>
+            <Route path="/signIn-form" element={
+                <>
+                    <SignInForm/>
+                </>
+            }/>
+            <Route path="/about" element={
+                <>
+                    <h1>ABOUT PAGE</h1>
+                </>
+            }/>
+            <Route path="/guess" element={
+                <StreetViewMap/>
+            }/>
+            <Route path="/gameplay" element={
+                <>
+                    <GamePlay/>
+                </>
+            }/>
+            <Route path="/distance" element={
+                <>
+                    <DistanceMap />
+                </>
+
+            }/>
+        </Routes>
+
+
+    );
+
 
 export default App;
