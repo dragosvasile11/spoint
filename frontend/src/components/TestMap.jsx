@@ -19,7 +19,16 @@ const GuessMap = ({coords}) => {
     return (
         <>
             <LoadScript googleMapsApiKey={""}>
-
+                <GoogleMap
+                    options={{disableDefaultUI: true}}
+                    mapContainerStyle={containerStyle}
+                    className={"map"}
+                    zoom={1}
+                    defaultOptions={{mapTypeControl: true}}
+                    center={center}
+                    onClick={onClick}
+                >
+                </GoogleMap>
             </LoadScript>
 
         </>
