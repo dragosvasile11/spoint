@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,13 +13,15 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Route, Redirect } from 'react-router'
+import {saveUser} from "./PostUser.js"
+import {ThemeContext} from "../Contexts/ThemeContext";
+import Switch from "../Switch";
 
 function Copyright(props) {
         return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
                 {'Copyright © '}
-                <Link color="inherit" href="/frontend/public">
+                <Link color="inherit" href="/about">
                     Spoint
                 </Link>{' '}
                 {new Date().getFullYear()}
@@ -28,10 +30,7 @@ function Copyright(props) {
         );
     }
 
-    const theme = createTheme();
-
     const SignUp = () => {
-
 
         const [firstName, setFirstName] = useState("")
         const [lastName, setLastName] = useState("")
@@ -51,8 +50,7 @@ function Copyright(props) {
 
             temp.firstName = (firstName === "");
             temp.lastName = lastName === "";
-            temp.email = !email.includes("@");
-            // !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+            temp.email = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
             temp.password = password === "";
             temp.confirmPassword = password !== confirmPassword
 
@@ -71,7 +69,6 @@ function Copyright(props) {
             event.preventDefault();
             let temp = validate()
             for (const [key, value] of Object.entries(temp)) {
-                console.log(key + " " + value)
                 if (value) {
                     console.log("FORM INCOMPLETE")
                     return
@@ -79,20 +76,31 @@ function Copyright(props) {
             }
 
             const data = new FormData(event.currentTarget);
-            console.log({
-                firstName: data.get('firstName'),
-                lastName: data.get('lastName'),
-                email: data.get('email'),
-                password: data.get('password'),
-                confirmPassword: data.get('confirmPassword'),
-                allowExtraEmails: !!data.get('allowExtraEmails'),
-            });
+
+            const user = JSON.stringify({
+                firstName : data.get("firstName"),
+                lastName : data.get("lastName"),
+                email : data.get("email"),
+                password : data.get("password"),
+                allowExtraEmails : !!data.get("allowExtraEmails")
+            })
+            saveUser(user)
         }
 
 
+        const { theme, setTheme } = useContext(ThemeContext)
+
+        const muiTheme = createTheme({
+            palette: {
+                mode: theme,
+            },
+        });
+
         return (
-            <ThemeProvider theme={theme}>
+
+            <ThemeProvider theme={muiTheme}>
                 <div>
+                    <Switch/>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
                     <Box
@@ -222,7 +230,7 @@ function Copyright(props) {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{ mt: 2, mb: 1 }}
                                 color="warning"
                             >
                                 Sign Up

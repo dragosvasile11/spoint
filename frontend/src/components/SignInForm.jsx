@@ -12,13 +12,15 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {ThemeContext} from "./Contexts/ThemeContext";
+import Switch from "./Switch";
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="/frontend/public">
+            <Link color="inherit" href="/about">
                 Spoint
             </Link>{' '}
             {new Date().getFullYear()}
@@ -27,7 +29,6 @@ function Copyright(props) {
     );
 }
 
-const theme = createTheme();
 
 export default function SignInSide() {
 
@@ -74,8 +75,16 @@ export default function SignInSide() {
         });
     };
 
+    const { theme, setTheme } = useContext(ThemeContext)
+
+    const muiTheme = createTheme({
+        palette: {
+            mode: theme,
+        },
+    });
+
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={muiTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid
@@ -93,6 +102,7 @@ export default function SignInSide() {
                     }}
                 />
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <Switch/>
                     <Box
                         sx={{
                             my: 8,
@@ -162,7 +172,7 @@ export default function SignInSide() {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="/frontend/public" variant="body2" color="#ED6C02">
+                                    <Link href="/" variant="body2" color="#ED6C02">
                                         Forgot password?
                                     </Link>
                                 </Grid>

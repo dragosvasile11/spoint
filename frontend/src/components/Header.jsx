@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import background from "../images/background.jpg";
 import logo from "../images/logo.png";
 import { Link } from "react-router-dom"
 import {MDBBtn} from "mdb-react-ui-kit";
+import {ThemeContext} from "./Contexts/ThemeContext";
+import Switch from "../components/Switch";
 
 
 const Header = () => {
+
+    const { theme, setTheme } = useContext(ThemeContext)
+
     return (
         <>
             <header>
@@ -32,6 +37,9 @@ const Header = () => {
                             </ul>
 
                             <ul className="navbar-nav flex-row">
+                                <li className="nav-item">
+                                    <Switch/>
+                                </li>
                                 <li className="nav-item">
                                     <Link className="nav-link pe-2" to="/signIn-form">
                                         <MDBBtn rounded color='warning'>

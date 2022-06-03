@@ -19,10 +19,42 @@ public class PlayerService {
     }
 
     public List<Player> getAllPlayers() {
-        return playerRepository.findAll();
+        return playerRepository.findAllByOrderByIdAsc();
     }
 
     public Optional<Player> getPlayerById(Long id) {
         return playerRepository.findById(id);
+    }
+
+    public void addPlayer(Player player) {
+        playerRepository.save(player);
+    }
+
+    public void deletePlayer(Long id) {
+        playerRepository.deleteById(id);
+    }
+
+    public void updatePlayer(Long id, Player player) {
+        Optional<Player> playerToFind = playerRepository.findById(id);
+        if (playerToFind.isPresent()) {
+            Player playerToUpdate = playerToFind.get();
+            playerToUpdate.setFirstName(player.getFirstName() != null ? player.getFirstName() : playerToUpdate.getFirstName());
+            playerToUpdate.setLastName(player.getLastName() != null ? player.getLastName() : playerToUpdate.getLastName());
+            playerToUpdate.setEmail(player.getEmail() != null ? player.getEmail() : playerToUpdate.getEmail());
+//            playerToUpdate.setLeague(player.getLeague() != null ? player.getLeague() : playerToUpdate.getLeague());
+
+            playerRepository.save(playerToUpdate);
+        }
+    }
+
+    public boolean checkIfPlayerExists(Player player) {
+        List<Player> players = getAllPlayers();
+
+        for (Player checkPlayer : players) {
+            if (checkPlayer.getEmail().equals(player.getEmail())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -27,22 +27,29 @@ public class Player {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "score")
+    private Long score = 0L;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "league_id")
+    @JoinColumn( name = "league_id")
     @JsonIgnore
     private League league;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "creator")
+    @JsonIgnore
+    private League createdBy;
 
     public Player(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

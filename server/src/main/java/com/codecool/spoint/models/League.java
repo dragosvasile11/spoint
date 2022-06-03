@@ -29,18 +29,29 @@ public class League {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "league")
-    private Set<Player> members;
+    private Set<Player> players = new HashSet<>();
 
-    @Column(name = "league_score", nullable = true, columnDefinition = "INTEGER")
-    private int league_score;
+    @OneToOne()
+    @JoinColumn(name = "created_by_player_id")
+    private Player creator;
+
+    @Column(name = "league_score")
+    private Long league_score = 0L;
+
 
     public League(String name) {
         this.name = name;
-        this.members = new HashSet<>();
-        this.league_score = 0;
+    }
+
+    public void addMember(Player player) {
+        this.players.add(player);
+    }
+
+    public void updateScore(Long score) {
+        this.league_score += score;
     }
 }
