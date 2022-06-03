@@ -8,6 +8,7 @@ const GuessMap = ({coords}) => {
     const [isClicked, setIsClicked] = useState(false)
     const streetViewLat = coords.lat;
     const streetViewLng = coords.lng;
+    const first = clicks[0];
 
     return (
         <>
