@@ -77,7 +77,7 @@ const StreetViewMap = () => {
                 <GuessMap coords={coords} />
             </div>
             <div>
-                <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
+                <Modal open={isOpen} position={streetViewPanoramaOptions.position} onClose={() => setIsOpen(false)}> modal </Modal>
             </div>
             <SunglassesButton onClick={sunglassesOnClick}/>
             <div style={sunGlassesButtonStyles}>
