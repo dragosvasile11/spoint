@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
-import GoogleMap from "./GoogleMapComponent";
 import {MDBBtn} from "mdb-react-ui-kit";
-import DistanceMap from "./DistanceMap";
-import Card from "./Card";
-import TestMap from "./TestMap";
+import TestMap from "./ResultsPageMap/TestMap";
 
 const modalStyles = {
     position: 'fixed',

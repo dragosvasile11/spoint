@@ -1,13 +1,10 @@
 import React, {useState}  from 'react';
 import ReactStreetview from "react-streetview";
 import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
-import Modal from "./Modal";
-import SunglassesButton from "./SunglassesButton";
-import TestMap from "./TestMap";
-import DistanceMap from "./DistanceMap";
+import Modal from "../Modal";
+import SunglassesButton from "../../../Buttons/SunglassesButton";
 import {LoadScript} from "@react-google-maps/api";
-import {Link} from "react-router-dom";
-import GuessMap from "./TestMap";
+import GuessMap from "../ResultsPageMap/TestMap";
 
 
 const buttonWrapperStyles = {
