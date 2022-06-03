@@ -73,6 +73,9 @@ const StreetViewMap = () => {
             <div style={buttonWrapperStyles} className="hover-button">
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)} >Give it a Guess!</MDBBtn>
             </div>
+            <div style={mapStyles}>
+                <GuessMap coords={coords} />
+            </div>
             <div>
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}> modal </Modal>
             </div>
