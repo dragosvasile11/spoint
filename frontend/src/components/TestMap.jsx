@@ -18,6 +18,10 @@ const GuessMap = ({coords}) => {
 
     return (
         <>
+            <LoadScript googleMapsApiKey={""}>
+
+            </LoadScript>
+
         </>
 
     )
