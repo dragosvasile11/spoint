@@ -45,7 +45,7 @@ const StreetViewMap = () => {
     }
 
     const streetViewPanoramaOptions = {
-        position: {lat: 44.439004, lng: 26.112520},
+        position: {lat: 41.88923618449196, lng: 12.49254339981923},
         pov: {heading: 100, pitch: 0},
         zoom: 1,
         zoomControl: true,
