@@ -45,8 +45,8 @@ public class PlayerController {
         playerService.deletePlayer(id);
     }
 
-    @GetMapping("/check-if-player-exists")
-    public boolean checkIfPlayerExists(@RequestBody Player player) {
-        return playerService.checkIfPlayerExists(player);
+    @PostMapping("/check-if-player-exists")
+    public boolean checkLogin(@RequestBody Player player) {
+        return playerService.checkLogin(player);
     }
 }
