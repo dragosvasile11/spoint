@@ -6,6 +6,9 @@ import {Link} from "react-router-dom";
 const GuessMap = ({coords}) => {
     const [clicks, setClicks] = React.useState([]);
     const [isClicked, setIsClicked] = useState(false)
+    const streetViewLat = coords.lat;
+    const streetViewLng = coords.lng;
+
     return (
         <>
         </>
