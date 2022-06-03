@@ -3,6 +3,7 @@ import {GoogleMap, LoadScript, Marker, Polyline} from '@react-google-maps/api';
 import { useLocation } from 'react-router-dom'
 import {MDBBtn} from "mdb-react-ui-kit";
 import {Link} from "react-router-dom";
+import haversine from 'haversine-distance'
 
 const DistanceMap = () => {
     const location = useLocation()
