@@ -1,0 +1,40 @@
+.footer {
+    position: sticky;
+    margin-bottom: 50px;
+}
+
+.footer .p-3 {
+    padding: 0rem !important;
+}
+
+#cards-layout {
+
+    margin: 0px!important;
+}
+
+#scroll-to {
+    float: right;
+    display: inline;
+    margin-right: -7%;
+    padding: 10px;
+}
+
+#scroll-to.up{
+    transform : rotateX(180deg) !important;
+}
+
+#footer-container {
+    padding: 1%!important
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .hover-button {
+        transition: transform .15s ease;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .hover-button :hover {
+        transform: scale(1.1);
+    }
+}
