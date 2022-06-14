@@ -14,20 +14,20 @@ import java.util.List;
 public class InitialConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerStudent (PlayerRepository repository) {
+    CommandLineRunner commandLineRunnerStudent (PlayerRepository playerRepository) {
         return args -> {
             Player player1 = new Player("John", "Doe", "john.doe@mail.com", "1234");
             Player player2 = new Player("George", "Bush", "bush@mail.com", "1234");
-            repository.saveAll(List.of(player1, player2));
+            playerRepository.saveAll(List.of(player1, player2));
         };
     }
 
     @Bean
-    CommandLineRunner commandLineRunnerLeague (LeagueRepository repository) {
+    CommandLineRunner commandLineRunnerLeague (LeagueRepository leagueRepository) {
         return args -> {
             League league1 = new League("Snow Flaskes");
             League league2 = new League("Reality Checkers");
-            repository.saveAll(List.of(league1, league2));
+            leagueRepository.saveAll(List.of(league1, league2));
         };
     }
 }
