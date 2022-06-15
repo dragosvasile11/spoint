@@ -20,4 +20,20 @@ public class ProgressService {
     public Optional<Progress> getProgressById(Long id) {
         return progressRepository.findById(id);
     }
+
+    public void addProgress(Progress progress) {
+        progressRepository.save(progress);
+    }
+
+    public void updateProgress(Long id, Progress progress) {
+        Optional<Progress> progressToFind = progressRepository.findById(id);
+        if (progressToFind.isPresent()) {
+            Progress progressToUpdate = progressToFind.get();
+            progressToUpdate.setFamousPlaceStage(progress.getFamousPlaceStage());
+//            progressToUpdate.setRomaniaStage(progress.getRomaniaStage());
+//            progressToUpdate.setWorldStage(progress.getWorldStage());
+
+            progressRepository.save(progressToUpdate);
+        }
+    }
 }
