@@ -71,7 +71,7 @@ const Header = () => {
                                     <p>Join million other players worldwide.</p>
                                 </section>
                                 <Link to="/signUp-form">
-                                    <MDBBtn rounded color='warning'>
+                                    <MDBBtn rounded color='warning' size={"lg"}>
                                         PLAY NOW FOR FREE
                                     </MDBBtn>
                                 </Link>
