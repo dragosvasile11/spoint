@@ -71,7 +71,7 @@ const StreetViewMap = () => {
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)} >Give it a Guess!</MDBBtn>
             </div>
             <div style={mapStyles}>
-                <GuessMap coords={coords} />
+                <GuessMap st />
             </div>
             <div>
                 <Modal open={isOpen} position={streetViewPanoramaOptions.position} onClose={() => setIsOpen(false)}> modal </Modal>

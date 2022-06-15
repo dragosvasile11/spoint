@@ -22,6 +22,20 @@ const App = () => {
         client.setCookie("theme", theme)
     }, [theme, setTheme])
 
+    const url = 'http://localhost:8080/api/locations/3';
+    const [location, setLocation] = useState(null);
+
+    useEffect( () => {
+        async function fetchData() {
+            await fetch(url)
+                .then(res => {
+                    return res.json();
+                }).then(data => {
+                    setLocation(data);
+                })
+        }
+        fetchData();
+    }, [url])
 
     return (
 
@@ -55,7 +69,7 @@ const App = () => {
                       </>
                   } />
                   <Route path="/guess" element = {
-                          <StreetViewMap />
+                          <StreetViewMap location={location}/>
                   } />
                   <Route path="/gameplay" element = {
                       <>
