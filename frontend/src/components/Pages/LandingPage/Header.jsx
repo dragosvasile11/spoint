@@ -55,15 +55,20 @@ const Header = () => {
                     style={{ backgroundImage: `url(${background})`, height: '100vh' }}
                 >
                     <div className="mask text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
-                        <div className="container d-flex align-items-center text-center h-100">
+                        <div className="container d-flex align-items-center text-center h-100" style={{ justifyContent: "center" }}>
                             <div>
-                                <h1 className="mb-5" >A NEW POINT OF VIEW!</h1>
-                                <section>
-                                    YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE
-                                    IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST
-                                    YOUR WIT AND CURIOSITY AT HAND.
+                                {/*<h1 className="mb-5" >A NEW POINT OF VIEW!</h1>*/}
+                                <h1 className="mb-5" >DISCOVER THE WORLD!</h1>
+                                {/*<section>*/}
+                                {/*    YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE*/}
+                                {/*    IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST*/}
+                                {/*    YOUR WIT AND CURIOSITY AT HAND.*/}
 
-                                    <p>LUCKY FOR YOU, YOU'RE IN THE RIGHT PLACE !</p>
+                                {/*    <p>LUCKY FOR YOU, YOU'RE IN THE RIGHT PLACE !</p>*/}
+                                {/*</section>*/}
+                                <section>
+                                    Find clues and guess where you are in the world.
+                                    <p>Join million other players worldwide.</p>
                                 </section>
                                 <Link to="/signUp-form">
                                     <MDBBtn rounded color='warning'>
