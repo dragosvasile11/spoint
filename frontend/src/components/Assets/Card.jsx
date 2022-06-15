@@ -30,7 +30,7 @@ const cardFooterStyle = {
     alignItems: 'center'
 }
 
-const Card = () => {
+const Card = ({progress}) => {
     return (
         <>
             <div id="cards-layout" className="row row-cols-1 row-cols-md-3 g-4" style={cardsLayoutStyle}>
@@ -43,8 +43,8 @@ const Card = () => {
                         </div>
                         <div style={progressBarPadding}>
                             <MDBProgress height='12' style={progressBarStyle}>
-                                <MDBProgressBar width='75' valuemin={0} valuemax={100}>
-                                    75%
+                                <MDBProgressBar width={progress.famousPlaceStage * 20} valuemin={0} valuemax={100}>
+                                    {progress.famousPlaceStage * 20}%
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>
