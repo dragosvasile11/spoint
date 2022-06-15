@@ -24,4 +24,9 @@ public class ProgressController {
         return progressService.getProgressById(id);
     }
 
+    @PostMapping("/add")
+    public void add(@RequestBody Progress progress) {
+        progressService.addProgress(progress);
+    }
+
 }
