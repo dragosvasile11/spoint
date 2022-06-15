@@ -30,4 +30,14 @@ public class InitialConfig {
             leagueRepository.saveAll(List.of(league1, league2));
         };
     }
+
+    @Bean
+    CommandLineRunner commandLineRunnerProgress (ProgressRepository progressRepository) {
+        return args -> {
+            Progress progress1 = new Progress(0, 0, 0);
+            Progress progress2 = new Progress(1, 0, 0);
+            progressRepository.saveAll(List.of(progress1, progress2));
+        };
+    }
+
 }
