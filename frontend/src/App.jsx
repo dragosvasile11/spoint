@@ -22,12 +22,28 @@ const App = () => {
         client.setCookie("theme", theme)
     }, [theme, setTheme])
 
-    const url = 'http://localhost:8080/api/locations/3';
+    const progressURL = 'http://localhost:8080/api/progress/2';
+    const [progress, setProgress] = useState(null);
+
+    useEffect( () => {
+        async function fetchData1() {
+            await fetch(progressURL)
+                .then(res => {
+                    return res.json();
+                }).then(data => {
+                    setProgress(data);
+                })
+        }
+        fetchData1();
+    }, [progressURL])
+
+
+    const locationURL = `http://localhost:8080/api/locations/${progress + 1}`;
     const [location, setLocation] = useState(null);
 
     useEffect( () => {
         async function fetchData() {
-            await fetch(url)
+            await fetch(locationURL)
                 .then(res => {
                     return res.json();
                 }).then(data => {
@@ -35,7 +51,7 @@ const App = () => {
                 })
         }
         fetchData();
-    }, [url])
+    }, [locationURL])
 
     return (
 
@@ -47,8 +63,13 @@ const App = () => {
                   <Route path="/" element={
                       <>
                           <Header/>
-                          <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
-                          <Card/>
+
+                          <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
+                          {/*<Card />*/}
+                          <h1>adsdas</h1>
+                          <h1>adsdas</h1>
+                          <h1>adsdas</h1>
+                          <h1>adsdas</h1>
                           <Footer />
                           <a id="bottom">SOME TEXT HERE</a>
                       </>
@@ -73,7 +94,7 @@ const App = () => {
                   } />
                   <Route path="/gameplay" element = {
                       <>
-                      <GamePlay />
+                      <GamePlay progress={progress}/>
                       </>
                   } />
                   <Route path="/distance" element={
