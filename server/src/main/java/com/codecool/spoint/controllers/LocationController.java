@@ -19,4 +19,8 @@ public class LocationController {
         this.locationService = locationService;
     }
 
+    @GetMapping("/{id}")
+    public Optional<Location> getLocationById(@PathVariable("id") Long id) {
+        return locationService.getLocationById(id);
+    }
 }
