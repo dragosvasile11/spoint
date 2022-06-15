@@ -18,4 +18,10 @@ public class ProgressController {
     public ProgressController(ProgressService progressService) {
         this.progressService = progressService;
     }
+
+    @GetMapping("/{id}")
+    public Optional<Progress> getProgressById(@PathVariable("id") Long id) {
+        return progressService.getProgressById(id);
+    }
+
 }
