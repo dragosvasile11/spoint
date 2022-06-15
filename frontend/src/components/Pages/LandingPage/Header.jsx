@@ -15,6 +15,7 @@ const Header = () => {
         <>
             <header>
                 <nav className="navbar navbar-expand-lg fixed-top navbar-scroll">
+                    <Switch/>
                     <div className="container-fluid">
                         <button
                             className="navbar-toggler ps-0"
@@ -36,10 +37,7 @@ const Header = () => {
                                 </li>
                             </ul>
 
-                            <ul className="navbar-nav flex-row">
-                                <li className="nav-item">
-                                    <Switch/>
-                                </li>
+                            <ul className="navbar-nav flex-row" style={{ marginTop: "1%"}}>
                                 <li className="nav-item">
                                     <Link className="nav-link pe-2" to="/signIn-form">
                                         <MDBBtn rounded color='warning'>
@@ -59,7 +57,7 @@ const Header = () => {
                     <div className="mask text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
                         <div className="container d-flex align-items-center text-center h-100">
                             <div>
-                                <h1 className="mb-5">A NEW POINT OF VIEW!</h1>
+                                <h1 className="mb-5" >A NEW POINT OF VIEW!</h1>
                                 <section>
                                     YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE
                                     IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST
