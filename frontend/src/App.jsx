@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import {Link, Route, Routes} from "react-router-dom";
 import Header from "./components/Pages/LandingPage/Header";
 import Footer from "./components/Pages/LandingPage/Footer";
-import Card from "./components/Assets/Card";
 import SignUpForm from "./components/Pages/SignUp/SignUpForm";
 import SignInForm from "./components/Pages/SignIn/SignInForm";
 import StreetViewMap from "./components/Pages/Maps/PlayPageMaps/StreetViewMap";
@@ -34,7 +33,6 @@ const App = () => {
                       <>
                           <Header/>
                           <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
-                          <Card/>
                           <Footer />
                           <a id="bottom">SOME TEXT HERE</a>
                       </>
