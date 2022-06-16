@@ -8,21 +8,22 @@ const slides = [
         user: "Terra",
         date: "10/29/2021",
         image:
-            "https://source.unsplash.com/random/?map,nature,dark"
+            "https://source.unsplash.com/rEn-AdBr3Ig"
     },
     {
         message: "The app is rapidly getting new features and improvements! It's on its way to become amazing! Love it!",
         user: "Douglas",
         date: "11/30/2021",
         image:
-            "https://source.unsplash.com/random/?background,nature,map,dark"
+            "https://source.unsplash.com/SWgr-gqPyBA"
     },
     {
         message: "Great fun game that is also educational.",
         user: "D Klinger",
         date: "10/25/2021",
         image:
-            "https://source.unsplash.com/random/?nature,map,night,dark"
+            // "https://source.unsplash.com/random/?nature,map,night"
+            "https://source.unsplash.com/iDzKdNI7Qgc"
     },
     // {
     //     title: "Four",
