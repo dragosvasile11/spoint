@@ -55,10 +55,12 @@ const Header = () => {
                     style={{ backgroundImage: `url(${background})`, height: '100vh' }}
                 >
                     <div className="mask text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
-                        <div className="container d-flex align-items-center text-center h-100" style={{ justifyContent: "center" }}>
+                        <div className="container d-flex align-items-center text-center h-75" style={{ justifyContent: "center" }}>
                             <div>
                                 {/*<h1 className="mb-5" >A NEW POINT OF VIEW!</h1>*/}
-                                <h1 className="mb-5" >DISCOVER THE WORLD!</h1>
+                                <Fade right>
+                                    <h1 className="mb-5" ><i>DISCOVER THE WORLD!</i></h1>
+                                </Fade>
                                 {/*<section>*/}
                                 {/*    YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE*/}
                                 {/*    IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST*/}
@@ -66,15 +68,21 @@ const Header = () => {
 
                                 {/*    <p>LUCKY FOR YOU, YOU'RE IN THE RIGHT PLACE !</p>*/}
                                 {/*</section>*/}
-                                <section>
-                                    Find clues and guess where you are in the world.
-                                    <p>Join million other players worldwide.</p>
-                                </section>
-                                <Link to="/signUp-form">
-                                    <MDBBtn rounded color='warning' size={"lg"}>
-                                        PLAY NOW FOR FREE
-                                    </MDBBtn>
-                                </Link>
+                                <Fade left>
+                                    <i>
+                                        <h4>
+                                            Find clues and guess where you are in the world.
+                                            <p>Join million other players worldwide.</p>
+                                        </h4>
+                                    </i>
+                                </Fade>
+                                <Fade bottom>
+                                    <Link to="/signUp-form">
+                                        <MDBBtn rounded color='warning' size={"lg"} style={{ marginTop: "1%" }}>
+                                            <i>PLAY NOW FOR FREE</i>
+                                        </MDBBtn>
+                                    </Link>
+                                </Fade>
                             </div>
                         </div>
                     </div>
