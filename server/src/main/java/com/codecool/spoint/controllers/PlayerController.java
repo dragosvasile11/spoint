@@ -48,7 +48,7 @@ public class PlayerController {
     }
 
     @PostMapping("/check-if-player-exists")
-    public boolean checkLogin(@RequestBody Player player) {
+    public Optional<LoginToken> checkLogin(@RequestBody Player player) {
         return playerService.checkLogin(player);
     }
 }
