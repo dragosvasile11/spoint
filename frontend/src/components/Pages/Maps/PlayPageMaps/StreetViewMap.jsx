@@ -5,6 +5,9 @@ import Modal from "../Modal";
 import SunglassesButton from "../../../Buttons/SunglassesButton";
 import {LoadScript} from "@react-google-maps/api";
 import GuessMap from "../ResultsPageMap/TestMap";
+import {progressAtom} from "../ResultsPageMap/DistanceMap";
+import {useAtom} from "jotai";
+import {Link} from "react-router-dom";
 
 
 const buttonWrapperStyles = {
@@ -31,7 +34,8 @@ const mapStyles = {
     marginLeft: '68%'
 }
 
-const StreetViewMap = ({location}) => {
+const StreetViewMap = () => {
+    const [progress1] = useAtom(progressAtom);
     const googleMapsApiKey = '';
     const [isOpen, setIsOpen] = useState(false)
     const [sunGlassesOn, setSunGlassesOn] = useState(false)
