@@ -20,6 +20,30 @@ const DistanceMap = () => {
 
     const latLng1 = {lat: from.streetViewLat, lng: from.streetViewLng}
     const latLng2 = {lat: from.first.lat, lng: from.first.lng}
+
+    const [progress1, setProgress] = useAtom(progressAtom);
+
+    const famousPlaceProgressURL = 'http://localhost:8080/api/progress/update/1/famous';
+    const [famousPlaceProgress, setfamousPlaceProgress] = useState(null);
+
+    function updateProgress() {
+        setProgress(number => number + 1);
+
+        async function fetchData() {
+            await fetch(famousPlaceProgressURL)
+                .then(res => {
+                    return res.json();
+                }).then(data => {
+                    setfamousPlaceProgress(data);
+                    console.log(data + "in famous")
+
+                })
+        }
+        fetchData();
+
+    }
+
+
     return (
         <div >
             <div style={{display: 'flex',
