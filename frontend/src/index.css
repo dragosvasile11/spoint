@@ -34,3 +34,15 @@ body {
         transform: scale(1.1);
     }
 }
+
+@media (hover: hover) and (pointer: fine) {
+    .card {
+        transition: transform .5s ease;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        transform: scale(1.1);
+    }
+}
