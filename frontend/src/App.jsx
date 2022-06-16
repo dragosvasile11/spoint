@@ -90,15 +90,9 @@ const App = () => {
                           <br/>
                           <AppStoresBadges/>
                           <br/>
-
                           <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
-                          {/*<Card />*/}
-                          <h1>adsdas</h1>
-                          <h1>adsdas</h1>
-                          <h1>adsdas</h1>
-                          <h1>adsdas</h1>
                           <Footer />
-                          <a id="bottom">SOME TEXT HERE</a>
+                          <a id="bottom"></a>
                       </>
                   } />
                   <Route path="/signUp-form" element={
