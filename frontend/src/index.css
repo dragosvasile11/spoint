@@ -1,6 +1,9 @@
-.footer {
-    position: sticky;
-    margin-bottom: 50px;
+/*.footer {*/
+/*    position: sticky;*/
+/*    margin-bottom: 50px;*/
+/*}*/
+body {
+    xpadding-top :1000px;
 }
 
 .footer .p-3 {
@@ -10,13 +13,6 @@
 #cards-layout {
 
     margin: 0px!important;
-}
-
-#scroll-to {
-    float: right;
-    display: inline;
-    margin-right: -7%;
-    padding: 10px;
 }
 
 #scroll-to.up{
