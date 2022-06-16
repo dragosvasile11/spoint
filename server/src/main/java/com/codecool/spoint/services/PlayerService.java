@@ -1,11 +1,15 @@
 package com.codecool.spoint.services;
 
+import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
 import com.codecool.spoint.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -49,15 +53,20 @@ public class PlayerService {
         }
     }
 
-    public boolean checkLogin(Player player) {
+    public Optional<LoginToken> checkLogin(Player player) {
         List<Player> players = getAllPlayers();
 
         for (Player checkPlayer : players) {
             if (checkPlayer.getEmail().equals(player.getEmail()) &&
                     checkPlayer.getPassword().equals(player.getPassword())) {
-                return true;
+
+                return Optional.of(new LoginToken(
+                        checkPlayer.getId(),
+                        checkPlayer.getFirstName(),
+                        checkPlayer.getLastName(),
+                        checkPlayer.getEmail()));
             }
         }
-        return false;
+        return Optional.empty();
     }
 }
