@@ -34,15 +34,17 @@ public class PlayerService {
         playerRepository.deleteById(id);
     }
 
-    public void updatePlayer(Long id, Player player) {
+    public void updatePlayer(Long id, Map<String, Object> updates) {
         Optional<Player> playerToFind = playerRepository.findById(id);
+
         if (playerToFind.isPresent()) {
             Player playerToUpdate = playerToFind.get();
-            playerToUpdate.setFirstName(player.getFirstName() != null ? player.getFirstName() : playerToUpdate.getFirstName());
-            playerToUpdate.setLastName(player.getLastName() != null ? player.getLastName() : playerToUpdate.getLastName());
-            playerToUpdate.setEmail(player.getEmail() != null ? player.getEmail() : playerToUpdate.getEmail());
-//            playerToUpdate.setLeague(player.getLeague() != null ? player.getLeague() : playerToUpdate.getLeague());
 
+            updates.forEach((key, value) -> {
+                Field field = ReflectionUtils.findField(Player.class, key);
+                    field.setAccessible(true);
+                    ReflectionUtils.setField(field, playerToUpdate, value);
+            });
             playerRepository.save(playerToUpdate);
         }
     }
