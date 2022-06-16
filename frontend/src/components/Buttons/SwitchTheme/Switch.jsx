@@ -19,7 +19,7 @@ const Switch = () => {
 };
 
 const boxStyles = {
-    position: "fixed",
+    position: "absolute",
     top: "0",
     right: "0",
     margin: "1%" }
