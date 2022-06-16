@@ -40,6 +40,23 @@ const StreetViewMap = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [sunGlassesOn, setSunGlassesOn] = useState(false)
 
+    const locationURL = `http://localhost:8080/api/locations/${progress1 + 1}`;
+    const [location, setLocation] = useState(null);
+
+    useEffect( () => {
+        console.log("ads")
+        async function fetchData() {
+            await fetch(locationURL)
+                .then(res => {
+                    return res.json();
+                }).then(data => {
+                    setLocation(data);
+                    console.log(data);
+                })
+        }
+        fetchData();
+    }, [locationURL])
+
     const sunglassesOnClick = () => {
         setSunGlassesOn(!sunGlassesOn)
     }
