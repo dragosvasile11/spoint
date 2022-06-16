@@ -43,8 +43,8 @@ const Card = ({progress}) => {
                         </div>
                         <div style={progressBarPadding}>
                             <MDBProgress height='12' style={progressBarStyle}>
-                                <MDBProgressBar width={progress.famousPlaceStage * 20} valuemin={0} valuemax={100}>
-                                    {progress.famousPlaceStage * 20}%
+                                <MDBProgressBar width={progress * 20} valuemin={0} valuemax={100}>
+                                    {progress * 20}%
                                 </MDBProgressBar>
                             </MDBProgress>
                         </div>

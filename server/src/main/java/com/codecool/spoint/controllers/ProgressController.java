@@ -28,11 +28,17 @@ public class ProgressController {
     public void add(@RequestBody Progress progress) {
         progressService.addProgress(progress);
     }
+
     @PutMapping("/update/{id}")
     public void updateProgressById(
             @PathVariable("id") Long id,
             @RequestBody Progress progress
     ) {
         progressService.updateProgress(id, progress);
+    }
+
+    @GetMapping("update/{id}/famous")
+    public Optional<Progress> getUpdatedProgressById(@PathVariable("id") Long id) {
+        return progressService.getUpdatedProgressById(id);
     }
 }

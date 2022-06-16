@@ -38,7 +38,7 @@ public class InitialConfig {
     @Bean
     CommandLineRunner commandLineRunnerProgress (ProgressRepository progressRepository) {
         return args -> {
-            Progress progress1 = new Progress(0, 0, 0);
+            Progress progress1 = new Progress(1, 0, 0);
             Progress progress2 = new Progress(1, 0, 0);
             progressRepository.saveAll(List.of(progress1, progress2));
         };
@@ -48,7 +48,7 @@ public class InitialConfig {
     CommandLineRunner commandLineRunnerLocation (LocationRepository locationRepository) {
         return args -> {
             Location location1 = new Location(41.88681699884825, 12.489867356141033);
-            Location location2 = new Location(51.500232577452806, -0.1280190147592774);
+            Location location2 = new Location(51.5016002435697, -0.1261057896943814);
             Location location3 = new Location(41.401493377336934, 2.172874982126398);
             Location location4 = new Location(40.70560573166003, -74.00791460008375);
             Location location5 = new Location(44.39029978067226, 26.07444242736911);

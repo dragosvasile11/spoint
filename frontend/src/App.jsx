@@ -15,10 +15,12 @@ import Content from "./components/Pages/LandingPage/Content";
 import Accordion from "./components/Assets/Accordion";
 import {Fade} from "react-reveal";
 import AppStoresBadges from "./components/Assets/AppStoresBadges";
+import { progressAtom } from "./components/Pages/Maps/ResultsPageMap/DistanceMap";
+import {useAtom} from "jotai";
 
-
+let count = 0;
 const App = () => {
-
+    const [progress1, setProgress1] = useAtom(progressAtom);
     const [theme, setTheme] = useState(client.getCookie("theme") ? client.getCookie("theme") : "light")
 
     useEffect(() => {
@@ -42,92 +44,85 @@ const App = () => {
                 "SPoint is available in 10 different languages. You can select language in the website footer under \"Change language\".",
                 "Yes, we offer a free account where you can play SPoint for free and enjoy most of our different game modes. For unlimited play and to unlock additional features, we offer a pro account starting at a monthly cost of $1.99 and with a free 7 day trial."
     ]}
-    const progressURL = 'http://localhost:8080/api/progress/2';
+
+    const progressURL = 'http://localhost:8080/api/progress/1';
     const [progress, setProgress] = useState(null);
 
     useEffect( () => {
-        async function fetchData1() {
+        async function fetchData() {
             await fetch(progressURL)
                 .then(res => {
                     return res.json();
                 }).then(data => {
                     setProgress(data);
-                })
-        }
-        fetchData1();
-    }, [progressURL])
-
-
-    const locationURL = `http://localhost:8080/api/locations/${progress + 1}`;
-    const [location, setLocation] = useState(null);
-
-    useEffect( () => {
-        async function fetchData() {
-            await fetch(locationURL)
-                .then(res => {
-                    return res.json();
-                }).then(data => {
-                    setLocation(data);
+                    console.log(data + "in app")
                 })
         }
         fetchData();
-    }, [locationURL])
+    }, [progressURL])
 
-    return (
+    if (progress) {
+        if (count === 0) {
+            setProgress1(progress.famousPlaceStage)
+            count++;
+        }
 
-  <>
-      <ThemeContext.Provider value={ { theme, setTheme } }>
-          <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
-              <GlobalStyles/>
-              <Routes>
-                  <Route path="/" element={
-                      <>
-                          <Header/>
-                          <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
-                          <Content/>
-                          <br/>
-                          <Accordion content={content}/>
-                          <br/>
-                          <AppStoresBadges/>
-                          <br/>
-                          <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
-                          <Footer />
-                          <a id="bottom"></a>
-                      </>
-                  } />
-                  <Route path="/signUp-form" element={
-                      <>
-                          <SignUpForm/>
-                      </>
-                  } />
-                  <Route path="/signIn-form" element={
-                      <>
-                          <SignInForm/>
-                      </>
-                  } />
-                  <Route path="/about" element={
-                      <>
-                          <h1>ABOUT PAGE</h1>
-                      </>
-                  } />
-                  <Route path="/guess" element = {
-                          <StreetViewMap location={location}/>
-                  } />
-                  <Route path="/gameplay" element = {
-                      <>
-                      <GamePlay progress={progress}/>
-                      </>
-                  } />
-                  <Route path="/distance" element={
-                      <>
-                          <DistanceMap />
-                      </>
+        return (
+            <>
+                <ThemeContext.Provider value={ { theme, setTheme } }>
+                    <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
+                        <GlobalStyles/>
+                        <Routes>
+                            <Route path="/" element={
+                                <>
+                                    <Header/>
+                                    <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
+                                    <Content/>
+                                    <br/>
+                                    <Accordion content={content}/>
+                                    <br/>
+                                    <AppStoresBadges/>
+                                    <br/>
+                                    <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
+                                    <Footer />
+                                    <a id="bottom"></a>
+                                </>
+                            } />
+                            <Route path="/signUp-form" element={
+                                <>
+                                    <SignUpForm/>
+                                </>
+                            } />
+                            <Route path="/signIn-form" element={
+                                <>
+                                    <SignInForm/>
+                                </>
+                            } />
+                            <Route path="/about" element={
+                                <>
+                                    <h1>ABOUT PAGE</h1>
+                                </>
+                            } />
+                            <Route path="/guess" element = {
+                                <StreetViewMap />
+                            } />
+                            <Route path="/gameplay" element = {
+                                <>
+                                    <GamePlay progress={progress1}/>
+                                </>
+                            } />
+                            <Route path="/distance" element={
+                                <>
+                                    <DistanceMap />
+                                </>
 
-                  }/>
-              </Routes>
-          </ThemeProvider>
-      </ThemeContext.Provider>
-  </>
-)};
+                            }/>
+                        </Routes>
+                    </ThemeProvider>
+                </ThemeContext.Provider>
+            </>
+        )
+    }
+};
 
 export default App;
