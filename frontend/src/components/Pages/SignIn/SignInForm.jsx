@@ -69,11 +69,6 @@ export default function SignInSide() {
         }
 
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-            rememberMe: !!data.get('rememberMe'),
-        });
 
         const user = JSON.stringify({
             firstName : data.get("firstName"),
@@ -83,6 +78,18 @@ export default function SignInSide() {
         })
         logUser(user)
     };
+
+    const checkLogin = async (user) => {
+        const req = await fetch("http://localhost:8080/api/players/check-if-player-exists", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: user
+        })
+
+        return await req.json()
+    }
 
     const { theme, setTheme } = useContext(ThemeContext)
 
