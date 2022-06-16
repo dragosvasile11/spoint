@@ -61,47 +61,53 @@ const StreetViewMap = () => {
         setSunGlassesOn(!sunGlassesOn)
     }
 
-    const streetViewPanoramaOptions = {
-        position: {lat: location.lat, lng: location.lng},
-        pov: {heading: 100, pitch: 0},
-        zoom: 1,
-        zoomControl: true,
-        addressControl: false,
-        fullscreenControl: false,
-    };
-
     const sunGlassesSwitchStyles = {
         width: '100vw',
         height: '100vh',
         filter: 'invert(1)' + (sunGlassesOn ? "brightness(0.7)" : ""),
     }
 
-    return (
-        <>
-            <div style={sunGlassesSwitchStyles}>
-                <LoadScript googleMapsApiKey={googleMapsApiKey}>
-                    <ReactStreetview
-                        apiKey={googleMapsApiKey}
-                        streetViewPanoramaOptions={streetViewPanoramaOptions}
-                    />
-                </LoadScript>
+    if(location) {
+        const streetViewPanoramaOptions = {
+            position: {lat: location.lat, lng: location.lng},
+            pov: {heading: 100, pitch: 0},
+            zoom: 1,
+            zoomControl: true,
+            addressControl: false,
+            fullscreenControl: false,
+        };
 
-            </div>
-            <div style={buttonWrapperStyles} className="hover-button">
-                <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)} >Give it a Guess!</MDBBtn>
-            </div>
-            <div style={mapStyles}>
-                <GuessMap coords={streetViewPanoramaOptions.position} />
-            </div>
-            <div>
-                <Modal open={isOpen} position={streetViewPanoramaOptions.position} onClose={() => setIsOpen(false)}> modal </Modal>
-            </div>
-            <SunglassesButton onClick={sunglassesOnClick}/>
-            <div style={sunGlassesButtonStyles}>
-                <MDBIcon icon="map-marked-alt" size="3x" color="warning"/>
-            </div>
-        </>
-    )
+        return (
+            <>
+                <div style={sunGlassesSwitchStyles}>
+                    <LoadScript googleMapsApiKey={googleMapsApiKey}>
+                        <ReactStreetview
+                            apiKey={googleMapsApiKey}
+                            streetViewPanoramaOptions={streetViewPanoramaOptions}
+                        />
+                    </LoadScript>
+
+                </div>
+                <div style={buttonWrapperStyles} className="hover-button">
+                    <Link to="/gameplay">
+                        <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)} >Close game!</MDBBtn>
+                    </Link>
+
+                </div>
+                <div style={mapStyles}>
+                    <GuessMap coords={streetViewPanoramaOptions.position} />
+                </div>
+                <div>
+                    <Modal open={isOpen} position={streetViewPanoramaOptions.position} onClose={() => setIsOpen(false)}> modal </Modal>
+                </div>
+                <SunglassesButton onClick={sunglassesOnClick}/>
+                <div style={sunGlassesButtonStyles}>
+                    <MDBIcon icon="map-marked-alt" size="3x" color="warning" />
+                </div>
+            </>
+        )
+    }
+
 };
 
 export default StreetViewMap;
