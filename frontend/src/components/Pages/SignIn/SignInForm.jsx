@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
-import {getCookie, setCookie} from "../../Contexts/Cookies";
+import {getCookie, getCookieObject, setCookie} from "../../Contexts/Cookies";
 
 function Copyright(props) {
     return (
@@ -61,7 +61,6 @@ export default function SignInSide() {
 
         let temp = validate()
         for (const [key, value] of Object.entries(temp)) {
-            console.log(key + " " + value)
             if (value) {
                 console.log("FORM INCOMPLETE")
                 return
@@ -78,10 +77,10 @@ export default function SignInSide() {
         })
 
         checkLogin(user).then(token => {
+
             token["rememberMe"] = data.get("rememberMe")
-            setCookie("loginToken", token)
-            const test = getCookie("loginToken")
-            console.log(test.toString())
+            setCookie("loginToken", JSON.stringify(token))
+            console.log(getCookieObject("loginToken"))
         })
     };
 
