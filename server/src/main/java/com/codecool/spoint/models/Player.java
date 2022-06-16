@@ -42,6 +42,9 @@ public class Player {
     @Column(name = "score")
     private Long score = 0L;
 
+    @Column(name = "allow_emails")
+    private boolean allowEmails;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn( name = "league_id")
     @JsonIgnore
@@ -51,10 +54,11 @@ public class Player {
     @JsonIgnore
     private League createdBy;
 
-    public Player(String firstName, String lastName, String email, String password) {
+    public Player(String firstName, String lastName, String email, String password, boolean allowEmails) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.allowEmails = allowEmails;
     }
 }
