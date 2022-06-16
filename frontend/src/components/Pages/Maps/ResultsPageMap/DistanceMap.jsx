@@ -1,7 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {GoogleMap, LoadScript, Marker, Polyline} from '@react-google-maps/api';
-import { useLocation } from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import haversine from 'haversine-distance'
+import {MDBBtn} from "mdb-react-ui-kit";
+import { atom, useAtom } from 'jotai';
+
+export const progressAtom = atom(0);
 
 const containerStyle = {
     width: '60%',
@@ -9,6 +13,7 @@ const containerStyle = {
 };
 
 const DistanceMap = () => {
+
     const location = useLocation()
     const { from } = location.state
     const [clicks, setClicks] = React.useState([]);
