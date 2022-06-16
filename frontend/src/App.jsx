@@ -68,114 +68,61 @@ const App = () => {
         }
 
         return (
-          <>
-              <ThemeContext.Provider value={ { theme, setTheme } }>
-                  <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
-                      <GlobalStyles/>
-                      <Routes>
-                          <Route path="/" element={
-                              <>
-                                  <Header/>
-                                  <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
-                                  {/*<Card />*/}
-                                  <h1>{progress1} -check progress</h1>
-                                  <h1>adsdas</h1>
-                                  <h1>adsdas</h1>
-                                  <h1>adsdas</h1>
-                                  <Footer />
-                                  <a id="bottom">SOME TEXT HERE</a>
-                              </>
-                          } />
-                          <Route path="/signUp-form" element={
-                              <>
-                                  <SignUpForm/>
-                              </>
-                          } />
-                          <Route path="/signIn-form" element={
-                              <>
-                                  <SignInForm/>
-                              </>
-                          } />
-                          <Route path="/about" element={
-                              <>
-                                  <h1>ABOUT PAGE</h1>
-                              </>
-                          } />
-                          <Route path="/guess" element = {
-                                  <StreetViewMap />
-                          } />
-                          <Route path="/gameplay" element = {
-                              <>
-                                  <GamePlay progress={progress1}/>
-                              </>
-                          } />
-                          <Route path="/distance" element={
-                              <>
-                                  <DistanceMap />
-                              </>
-                          }/>
-                      </Routes>
-                  </ThemeProvider>
-              </ThemeContext.Provider>
-          </>
+            <>
+                <ThemeContext.Provider value={ { theme, setTheme } }>
+                    <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
+                        <GlobalStyles/>
+                        <Routes>
+                            <Route path="/" element={
+                                <>
+                                    <Header/>
+                                    <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
+                                    <Content/>
+                                    <br/>
+                                    <Accordion content={content}/>
+                                    <br/>
+                                    <AppStoresBadges/>
+                                    <br/>
+                                    <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
+                                    <Footer />
+                                    <a id="bottom"></a>
+                                </>
+                            } />
+                            <Route path="/signUp-form" element={
+                                <>
+                                    <SignUpForm/>
+                                </>
+                            } />
+                            <Route path="/signIn-form" element={
+                                <>
+                                    <SignInForm/>
+                                </>
+                            } />
+                            <Route path="/about" element={
+                                <>
+                                    <h1>ABOUT PAGE</h1>
+                                </>
+                            } />
+                            <Route path="/guess" element = {
+                                <StreetViewMap />
+                            } />
+                            <Route path="/gameplay" element = {
+                                <>
+                                    <GamePlay progress={progress1}/>
+                                </>
+                            } />
+                            <Route path="/distance" element={
+                                <>
+                                    <DistanceMap />
+                                </>
+
+                            }/>
+                        </Routes>
+                    </ThemeProvider>
+                </ThemeContext.Provider>
+            </>
         )
     }
 };
-    return (
-
-  <>
-      <ThemeContext.Provider value={ { theme, setTheme } }>
-          <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
-              <GlobalStyles/>
-              <Routes>
-                  <Route path="/" element={
-                      <>
-                          <Header/>
-                          <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
-                          <Content/>
-                          <br/>
-                          <Accordion content={content}/>
-                          <br/>
-                          <AppStoresBadges/>
-                          <br/>
-                          <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
-                          <Footer />
-                          <a id="bottom"></a>
-                      </>
-                  } />
-                  <Route path="/signUp-form" element={
-                      <>
-                          <SignUpForm/>
-                      </>
-                  } />
-                  <Route path="/signIn-form" element={
-                      <>
-                          <SignInForm/>
-                      </>
-                  } />
-                  <Route path="/about" element={
-                      <>
-                          <h1>ABOUT PAGE</h1>
-                      </>
-                  } />
-                  <Route path="/guess" element = {
-                          <StreetViewMap location={location}/>
-                  } />
-                  <Route path="/gameplay" element = {
-                      <>
-                      <GamePlay progress={progress}/>
-                      </>
-                  } />
-                  <Route path="/distance" element={
-                      <>
-                          <DistanceMap />
-                      </>
-
-                  }/>
-              </Routes>
-          </ThemeProvider>
-      </ThemeContext.Provider>
-  </>
-)};
 
 export default App;
