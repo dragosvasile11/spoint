@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useContext, useEffect, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,11 +12,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useContext, useEffect, useState} from "react";
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
-import { logUser } from "./LogUser";
+import {getCookie, setCookie} from "../../Contexts/Cookies";
 
 function Copyright(props) {
     return (
@@ -76,7 +76,13 @@ export default function SignInSide() {
             email : data.get("email"),
             password : data.get("password"),
         })
-        logUser(user)
+
+        checkLogin(user).then(token => {
+            token["rememberMe"] = data.get("rememberMe")
+            setCookie("loginToken", token)
+            const test = getCookie("loginToken")
+            console.log(test.toString())
+        })
     };
 
     const checkLogin = async (user) => {
