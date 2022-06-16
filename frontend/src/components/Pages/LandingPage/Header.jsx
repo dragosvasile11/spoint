@@ -5,11 +5,12 @@ import { Link } from "react-router-dom"
 import {MDBBtn} from "mdb-react-ui-kit";
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
+import {Fade} from "react-reveal";
+import CoverFlow3D from "../../Assets/coverFlow3D/CoverFlow3D";
+import ScrollUpDownButton from "../../Buttons/ScrollUpDownButton";
 
 
 const Header = () => {
-
-    const { theme, setTheme } = useContext(ThemeContext)
 
     return (
         <>
@@ -86,10 +87,21 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
+                    <Fade bottom>
+                        <div style={coverFlowPosition}>
+                            <CoverFlow3D/>
+                        </div>
+                    </Fade>
+                    <ScrollUpDownButton/>
                 </div>
             </header>
         </>
     );
 };
+
+const coverFlowPosition = {
+    position: "relative",
+    top: "65%"
+}
 
 export default Header;
