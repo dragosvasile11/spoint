@@ -9,13 +9,19 @@ const Switch = () => {
     const {theme, setTheme} = useContext(ThemeContext)
 
     return (
-        <Box style={{margin: "1%"}}>
+        <Box style={ boxStyles }>
             <FormControlLabel
                 control={<MaterialUISwitch onChange={() => setTheme(theme === "light" ? "dark" : "light")}/>} checked={theme === "dark"}
-                label={theme === "dark" ? "DARK MODE" : "LIGHT MODE"}
+                label=""
             />
         </Box>
     );
 };
+
+const boxStyles = {
+    position: "absolute",
+    top: "0",
+    right: "0",
+    margin: "1%" }
 
 export default Switch;

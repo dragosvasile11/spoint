@@ -19,12 +19,21 @@ const ScrollUpDownButton = () => {
     }, [window.scrollY]);
 
     return (
-        <div id="scroll-to" className={scrollPosition > window.outerHeight / 2 ? "up" : ""}>
+        <div id="scroll-to"
+             className={scrollPosition > window.outerHeight / 2 ? "up" : ""}
+             style={ buttonPosition }
+        >
             <a className="hover-button scrollto active btn-floating m-1 btn" href={scrollPosition === 0 ? "#bottom" : "#root"}>
                 <ExpandCircleDownIcon style={{color: "FFA900"}} fontSize="large"/>
             </a>
         </div>
     );
 };
+
+const buttonPosition = {
+    position: "fixed",
+    bottom: "1%",
+    marginLeft: "95%"
+}
 
 export default ScrollUpDownButton;

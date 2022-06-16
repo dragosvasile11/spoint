@@ -101,9 +101,9 @@ function Copyright(props) {
             <ThemeProvider theme={muiTheme}>
                 <div>
                     <Switch/>
-                <Container component="main" maxWidth="xs">
-                    <CssBaseline />
-                    <Box
+                    <Container component="main" maxWidth="xs">
+                        <CssBaseline />
+                        <Box
                         sx={{
                             marginTop: 8,
                             display: 'flex',

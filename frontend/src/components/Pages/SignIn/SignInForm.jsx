@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useContext, useEffect, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,11 +12,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useContext, useEffect, useState} from "react";
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
-import { logUser } from "./LogUser";
+import {getCookie, getCookieObject, setCookie} from "../../Contexts/Cookies";
 
 function Copyright(props) {
     return (
@@ -61,7 +61,6 @@ export default function SignInSide() {
 
         let temp = validate()
         for (const [key, value] of Object.entries(temp)) {
-            console.log(key + " " + value)
             if (value) {
                 console.log("FORM INCOMPLETE")
                 return
@@ -69,11 +68,6 @@ export default function SignInSide() {
         }
 
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-            rememberMe: !!data.get('rememberMe'),
-        });
 
         const user = JSON.stringify({
             firstName : data.get("firstName"),
@@ -81,8 +75,26 @@ export default function SignInSide() {
             email : data.get("email"),
             password : data.get("password"),
         })
-        logUser(user)
+
+        checkLogin(user).then(token => {
+
+            token["rememberMe"] = data.get("rememberMe")
+            setCookie("loginToken", JSON.stringify(token))
+            console.log(getCookieObject("loginToken"))
+        })
     };
+
+    const checkLogin = async (user) => {
+        const req = await fetch("http://localhost:8080/api/players/check-if-player-exists", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: user
+        })
+
+        return await req.json()
+    }
 
     const { theme, setTheme } = useContext(ThemeContext)
 
@@ -102,7 +114,7 @@ export default function SignInSide() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'url(https://source.unsplash.com/random)',
+                        backgroundImage: 'url(https://source.unsplash.com/random/?nature)',
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

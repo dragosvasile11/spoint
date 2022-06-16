@@ -1,11 +1,13 @@
 package com.codecool.spoint.controllers;
 
+import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
 import com.codecool.spoint.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -35,9 +37,9 @@ public class PlayerController {
         playerService.addPlayer(player);
     }
 
-    @PutMapping("/update/{id}")
-    public void updatePlayerById(@PathVariable("id") Long id, @RequestBody Player player) {
-        playerService.updatePlayer(id, player);
+    @PatchMapping("/update/{id}")
+    public void updatePlayerById(@PathVariable("id") Long id, @RequestBody Map<String, Object> updates) {
+        playerService.updatePlayer(id, updates);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -46,7 +48,7 @@ public class PlayerController {
     }
 
     @PostMapping("/check-if-player-exists")
-    public boolean checkLogin(@RequestBody Player player) {
+    public Optional<LoginToken> checkLogin(@RequestBody Player player) {
         return playerService.checkLogin(player);
     }
 }

@@ -5,16 +5,18 @@ import { Link } from "react-router-dom"
 import {MDBBtn} from "mdb-react-ui-kit";
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
+import {Fade} from "react-reveal";
+import CoverFlow3D from "../../Assets/coverFlow3D/CoverFlow3D";
+import ScrollUpDownButton from "../../Buttons/ScrollUpDownButton";
 
 
 const Header = () => {
-
-    const { theme, setTheme } = useContext(ThemeContext)
 
     return (
         <>
             <header>
                 <nav className="navbar navbar-expand-lg fixed-top navbar-scroll">
+                    <Switch/>
                     <div className="container-fluid">
                         <button
                             className="navbar-toggler ps-0"
@@ -36,10 +38,7 @@ const Header = () => {
                                 </li>
                             </ul>
 
-                            <ul className="navbar-nav flex-row">
-                                <li className="nav-item">
-                                    <Switch/>
-                                </li>
+                            <ul className="navbar-nav flex-row" style={{ marginTop: "1%"}}>
                                 <li className="nav-item">
                                     <Link className="nav-link pe-2" to="/signIn-form">
                                         <MDBBtn rounded color='warning'>
@@ -57,28 +56,52 @@ const Header = () => {
                     style={{ backgroundImage: `url(${background})`, height: '100vh' }}
                 >
                     <div className="mask text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
-                        <div className="container d-flex align-items-center text-center h-100">
+                        <div className="container d-flex align-items-center text-center h-75" style={{ justifyContent: "center" }}>
                             <div>
-                                <h1 className="mb-5">A NEW POINT OF VIEW!</h1>
-                                <section>
-                                    YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE
-                                    IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST
-                                    YOUR WIT AND CURIOSITY AT HAND.
+                                {/*<h1 className="mb-5" >A NEW POINT OF VIEW!</h1>*/}
+                                <Fade right>
+                                    <h1 className="mb-5" ><i>DISCOVER THE WORLD!</i></h1>
+                                </Fade>
+                                {/*<section>*/}
+                                {/*    YOUR EVER WONDERED WHAT ADVENTURES YOU CAN EXPERIENCE*/}
+                                {/*    IF YOU RANDOMLY FIND YOURSELF IN AN UNKNOWN PLACE WITH JUST*/}
+                                {/*    YOUR WIT AND CURIOSITY AT HAND.*/}
 
-                                    <p>LUCKY FOR YOU, YOU'RE IN THE RIGHT PLACE !</p>
-                                </section>
-                                <Link to="/signUp-form">
-                                    <MDBBtn rounded color='warning'>
-                                        PLAY NOW FOR FREE
-                                    </MDBBtn>
-                                </Link>
+                                {/*    <p>LUCKY FOR YOU, YOU'RE IN THE RIGHT PLACE !</p>*/}
+                                {/*</section>*/}
+                                <Fade left>
+                                    <i>
+                                        <h4>
+                                            Find clues and guess where you are in the world.
+                                            <p>Join million other players worldwide.</p>
+                                        </h4>
+                                    </i>
+                                </Fade>
+                                <Fade bottom>
+                                    <Link to="/signUp-form">
+                                        <MDBBtn rounded color='warning' size={"lg"} style={{ marginTop: "1%" }}>
+                                            <i>PLAY NOW FOR FREE</i>
+                                        </MDBBtn>
+                                    </Link>
+                                </Fade>
                             </div>
                         </div>
                     </div>
+                    <Fade bottom>
+                        <div style={coverFlowPosition}>
+                            <CoverFlow3D/>
+                        </div>
+                    </Fade>
+                    <ScrollUpDownButton/>
                 </div>
             </header>
         </>
     );
 };
+
+const coverFlowPosition = {
+    position: "relative",
+    top: "65%"
+}
 
 export default Header;
