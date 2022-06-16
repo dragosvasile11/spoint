@@ -88,7 +88,16 @@ const DistanceMap = () => {
                 alignItems: 'center'}}>
                 <h1>DISTANCE: {Math.round(haversine(latLng1, latLng2) / 1000)} KM</h1>
             </div>
-
+            <div>
+                <Link to="/guess">
+                    <MDBBtn rounded color='warning' onClick={updateProgress}>Go to next round! </MDBBtn>
+                </Link>
+            </div>
+            <div>
+                <Link to="/gameplay">
+                    <MDBBtn rounded color='warning'>Close game!</MDBBtn>
+                </Link>
+            </div>
         </div>
     )
 }
