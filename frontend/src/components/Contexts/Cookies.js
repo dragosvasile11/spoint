@@ -9,8 +9,12 @@ export const setCookie = (name, value) => {
     })
 }
 
-export const getCookie = (name, value) => {
-    return Cookie.get(name, value)
+export const getCookie = (name) => {
+    return Cookie.get(name)
+}
+
+export const getCookieObject = (name) => {
+    return JSON.parse(Cookie.get(name))
 }
 
 export const removeCookie = (name) => {
