@@ -36,4 +36,14 @@ public class ProgressService {
             progressRepository.save(progressToUpdate);
         }
     }
+
+    public Optional<Progress> getUpdatedProgressById(Long id) {
+        Optional<Progress> progressToFind = progressRepository.findById(id);
+        if (progressToFind.isPresent()) {
+            Progress progressToUpdate = progressToFind.get();
+            progressToUpdate.setFamousPlaceStage(progressToUpdate.getFamousPlaceStage() + 1);
+            progressRepository.save(progressToUpdate);
+        }
+        return progressRepository.findById(id);
+    }
 }
