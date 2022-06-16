@@ -16,8 +16,8 @@ public class InitialConfig {
     @Bean
     CommandLineRunner commandLineRunnerStudent (PlayerRepository repository) {
         return args -> {
-            Player player1 = new Player("John", "Doe", "john.doe@mail.com", "1234");
-            Player player2 = new Player("George", "Bush", "bush@mail.com", "1234");
+            Player player1 = new Player("John", "Doe", "john.doe@mail.com", "1234", true);
+            Player player2 = new Player("George", "Bush", "bush@mail.com", "1234", false);
             repository.saveAll(List.of(player1, player2));
         };
     }
