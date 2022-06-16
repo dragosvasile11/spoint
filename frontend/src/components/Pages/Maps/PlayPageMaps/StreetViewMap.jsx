@@ -1,4 +1,4 @@
-import React, {useState}  from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactStreetview from "react-streetview";
 import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
 import Modal from "../Modal";
