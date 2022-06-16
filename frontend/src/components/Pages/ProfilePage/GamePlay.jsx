@@ -6,11 +6,11 @@ const componentsStyle = {
     backgroundColor: '#383333'
 }
 
-const GamePlay = () => {
+const GamePlay = ({progress}) => {
     return (
         <div style={componentsStyle}>
             <NavBar />
-            <Card />
+            <Card progress={progress}/>
         </div>
     );
 };

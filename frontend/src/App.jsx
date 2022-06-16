@@ -6,13 +6,7 @@ import SignUpForm from "./components/Pages/SignUp/SignUpForm";
 import SignInForm from "./components/Pages/SignIn/SignInForm";
 import StreetViewMap from "./components/Pages/Maps/PlayPageMaps/StreetViewMap";
 import GamePlay from "./components/Pages/ProfilePage/GamePlay";
-import {
-    backgroundColorStyle,
-    darkTheme,
-    GlobalStyles,
-    lightTheme,
-    ThemeContext
-} from "./components/Contexts/ThemeContext";
+import {darkTheme, GlobalStyles, lightTheme, ThemeContext} from "./components/Contexts/ThemeContext";
 import {ThemeProvider} from "styled-components";
 import * as client from "./components/Contexts/Cookies"
 import Button from "@mui/material/Button";
@@ -48,6 +42,36 @@ const App = () => {
                 "SPoint is available in 10 different languages. You can select language in the website footer under \"Change language\".",
                 "Yes, we offer a free account where you can play SPoint for free and enjoy most of our different game modes. For unlimited play and to unlock additional features, we offer a pro account starting at a monthly cost of $1.99 and with a free 7 day trial."
     ]}
+    const progressURL = 'http://localhost:8080/api/progress/2';
+    const [progress, setProgress] = useState(null);
+
+    useEffect( () => {
+        async function fetchData1() {
+            await fetch(progressURL)
+                .then(res => {
+                    return res.json();
+                }).then(data => {
+                    setProgress(data);
+                })
+        }
+        fetchData1();
+    }, [progressURL])
+
+
+    const locationURL = `http://localhost:8080/api/locations/${progress + 1}`;
+    const [location, setLocation] = useState(null);
+
+    useEffect( () => {
+        async function fetchData() {
+            await fetch(locationURL)
+                .then(res => {
+                    return res.json();
+                }).then(data => {
+                    setLocation(data);
+                })
+        }
+        fetchData();
+    }, [locationURL])
 
     return (
 
@@ -66,8 +90,15 @@ const App = () => {
                           <br/>
                           <AppStoresBadges/>
                           <br/>
+
+                          <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
+                          {/*<Card />*/}
+                          <h1>adsdas</h1>
+                          <h1>adsdas</h1>
+                          <h1>adsdas</h1>
+                          <h1>adsdas</h1>
                           <Footer />
-                          <h1 id={"bottom"}></h1>
+                          <a id="bottom">SOME TEXT HERE</a>
                       </>
                   } />
                   <Route path="/signUp-form" element={
@@ -86,11 +117,11 @@ const App = () => {
                       </>
                   } />
                   <Route path="/guess" element = {
-                          <StreetViewMap />
+                          <StreetViewMap location={location}/>
                   } />
                   <Route path="/gameplay" element = {
                       <>
-                      <GamePlay />
+                      <GamePlay progress={progress}/>
                       </>
                   } />
                   <Route path="/distance" element={

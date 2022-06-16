@@ -31,18 +31,17 @@ const mapStyles = {
     marginLeft: '68%'
 }
 
-const StreetViewMap = () => {
+const StreetViewMap = ({location}) => {
     const googleMapsApiKey = '';
     const [isOpen, setIsOpen] = useState(false)
     const [sunGlassesOn, setSunGlassesOn] = useState(false)
-    const coords = {lat: 41.88923618449196, lng: 12.49254339981923}
 
     const sunglassesOnClick = () => {
         setSunGlassesOn(!sunGlassesOn)
     }
 
     const streetViewPanoramaOptions = {
-        position: {lat: 41.88923618449196, lng: 12.49254339981923},
+        position: {lat: location.lat, lng: location.lng},
         pov: {heading: 100, pitch: 0},
         zoom: 1,
         zoomControl: true,
@@ -71,7 +70,7 @@ const StreetViewMap = () => {
                 <MDBBtn rounded color='warning' onClick={() => setIsOpen(true)} >Give it a Guess!</MDBBtn>
             </div>
             <div style={mapStyles}>
-                <GuessMap coords={coords} />
+                <GuessMap coords={streetViewPanoramaOptions.position} />
             </div>
             <div>
                 <Modal open={isOpen} position={streetViewPanoramaOptions.position} onClose={() => setIsOpen(false)}> modal </Modal>

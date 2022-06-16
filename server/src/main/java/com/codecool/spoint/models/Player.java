@@ -54,6 +54,10 @@ public class Player {
     @JsonIgnore
     private League createdBy;
 
+    @OneToOne
+    @JoinColumn(name = "progress_id")
+    private Progress progress;
+
     public Player(String firstName, String lastName, String email, String password, boolean allowEmails) {
         this.firstName = firstName;
         this.lastName = lastName;
