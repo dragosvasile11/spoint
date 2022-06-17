@@ -66,7 +66,7 @@ export default function CustomizedAccordions({content}) {
         <ThemeProvider theme={muiTheme}>
             <div>
                 {content.titles.map((value, index) => {
-                    return <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+                    return <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
                         <AccordionSummary aria-controls={`panel${index}d-content`} id={`panel${index}d-header`}>
                             <Typography>{value}</Typography>
                         </AccordionSummary>
