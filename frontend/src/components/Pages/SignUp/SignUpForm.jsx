@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {saveUser} from "./PostUser.js"
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
+import {useNavigate} from "react-router"
 
 function Copyright(props) {
         return (
@@ -45,6 +46,8 @@ function Copyright(props) {
             password: false,
             confirmPassword: false})
 
+        const navigate = useNavigate();
+
         const validate = () => {
             let temp = {}
 
@@ -65,7 +68,7 @@ function Copyright(props) {
             }
         }, [lastName, email, password, confirmPassword])
 
-        const handleSubmit = (event) => {
+        function handleSubmit(event) {
             event.preventDefault();
             let temp = validate()
             for (const [key, value] of Object.entries(temp)) {
@@ -84,7 +87,11 @@ function Copyright(props) {
                 password : data.get("password"),
                 allowExtraEmails : !!data.get("allowExtraEmails")
             })
-            saveUser(user)
+            saveUser(user).then(userRegistered => {
+                if (userRegistered) {
+                    navigate("../signIn-form", { replace: true })
+                }
+            })
         }
 
 
@@ -152,7 +159,6 @@ function Copyright(props) {
                                             let temp = {...hasErrors}
                                             temp.lastName = (event.target.value === "")
                                             setHasErrors(temp)
-                                            console.log(hasErrors.lastName)
                                         }}
                                         error={hasErrors.lastName}
                                         helperText={hasErrors.lastName ? "Field is required" : ""}
@@ -172,7 +178,6 @@ function Copyright(props) {
                                             let temp = hasErrors
                                             temp.email = event.target.value === "" || !email.includes("@");
                                             setHasErrors(temp)
-                                            console.log(hasErrors.email)
                                         }}
                                         error={hasErrors.email}
                                         helperText={ hasErrors.email ? "Please enter valid email" : ""}
