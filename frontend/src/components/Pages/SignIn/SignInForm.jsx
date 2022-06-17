@@ -16,6 +16,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
 import {getCookie, getCookieObject, setCookie} from "../../Contexts/Cookies";
+import {useNavigate} from "react-router"
 
 function Copyright(props) {
     return (
@@ -39,6 +40,8 @@ export default function SignInSide() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const navigate = useNavigate()
+
     const validate = () => {
         let temp = {}
 
@@ -56,7 +59,7 @@ export default function SignInSide() {
         }
     }, [email, password])
 
-    const handleSubmit = (event) => {
+    function handleSubmit(event) {
         event.preventDefault();
 
         let temp = validate()
@@ -78,11 +81,15 @@ export default function SignInSide() {
 
         checkLogin(user).then(token => {
 
-            token["rememberMe"] = data.get("rememberMe")
-            setCookie("loginToken", JSON.stringify(token))
-            console.log(getCookieObject("loginToken"))
+            if (token) {
+
+                token["rememberMe"] = data.get("rememberMe")
+                setCookie("loginToken", JSON.stringify(token))
+                console.log(getCookieObject("loginToken"))
+                navigate("../gameplay", {replace: true})
+            }
         })
-    };
+    }
 
     const checkLogin = async (user) => {
         const req = await fetch("http://localhost:8080/api/players/check-if-player-exists", {
