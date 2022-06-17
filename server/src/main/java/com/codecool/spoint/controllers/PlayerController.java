@@ -33,8 +33,8 @@ public class PlayerController {
     }
 
     @PostMapping("/add")
-    public void addPlayer(@RequestBody Player player) {
-        playerService.addPlayer(player);
+    public boolean addPlayer(@RequestBody Player player) {
+        return playerService.addPlayer(player);
     }
 
     @PatchMapping("/update/{id}")

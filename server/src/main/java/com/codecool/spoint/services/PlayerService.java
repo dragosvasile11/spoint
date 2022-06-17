@@ -30,8 +30,13 @@ public class PlayerService {
         return playerRepository.findById(id);
     }
 
-    public void addPlayer(Player player) {
-        playerRepository.save(player);
+    public boolean addPlayer(Player player) {
+        try {
+            playerRepository.save(player);
+        } catch (Throwable SqlExceptionHelper) {
+            return false;
+        }
+        return true;
     }
 
     public void deletePlayer(Long id) {
