@@ -17,7 +17,10 @@ export const getCookie = (name) => {
 }
 
 export const getCookieObject = (name) => {
-    return JSON.parse(Cookie.get(name))
+    if (Cookie.get(name)) {
+        return JSON.parse(Cookie.get(name))
+    }
+    return false
 }
 
 export const removeCookie = (name) => {
