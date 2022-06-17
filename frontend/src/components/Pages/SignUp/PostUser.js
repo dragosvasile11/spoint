@@ -7,9 +7,6 @@ export const saveUser = async (user) => {
             body: user
         })
         const response = await req
-        if (response.ok) {
-            console.log("USER REGISTERED")
-        } else {
-            console.log("REGISTRATION FAILED")
-        }
+
+        return await req.json()
     }
