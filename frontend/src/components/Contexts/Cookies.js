@@ -1,6 +1,9 @@
 import Cookie from "js-cookie";
 
 export const setCookie = (name, value) => {
+    if (typeof value === "object") {
+        value = JSON.stringify(value)
+    }
     Cookie.set(name, value , {
         expires: 300,
         secure: true,
