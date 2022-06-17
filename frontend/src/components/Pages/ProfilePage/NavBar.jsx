@@ -36,8 +36,8 @@ export default function NavBar() {
                     <MDBCollapse show={showNav} navbar id='navbarColor02'>
                         <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
                             <MDBNavbarItem className='active'>
-                                <MDBNavbarLink aria-current='page' href='#'>
-                                    <MDBIcon far icon="user" size="2x"/>
+                                <MDBNavbarLink aria-current='page' href="#" onClick={ () => change() } >
+                                    <img className="rounded-circle" src={ userData.avatarImage } alt={"avatar"} style={{ width: "50px"}} />
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                         </MDBNavbarNav>
