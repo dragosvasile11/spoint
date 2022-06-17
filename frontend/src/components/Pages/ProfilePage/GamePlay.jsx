@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from "../../Assets/Card";
 import NavBar from "./NavBar";
+import Switch from "../../Buttons/SwitchTheme/Switch";
 
 const GamePlay = ({progress}) => {
 
@@ -9,6 +10,7 @@ const GamePlay = ({progress}) => {
             <NavBar />
             <h2 style={textAlignment}><b><i>Start your <p style={{ color: "#FFA900", display: "inline"}}>SPoint</p> journey here !</i></b></h2>
             <Card progress={progress}/>
+            <Switch/>
         </div>
     );
 };
@@ -22,6 +24,6 @@ const componentsStyle = {
 
 const textAlignment = {
     textAlign: "center",
-    padding: "0.5%"
+    padding: "3%"
 }
 export default GamePlay;
