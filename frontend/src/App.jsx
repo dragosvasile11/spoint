@@ -17,6 +17,8 @@ import {Fade} from "react-reveal";
 import AppStoresBadges from "./components/Assets/AppStoresBadges";
 import { progressAtom } from "./components/Pages/Maps/ResultsPageMap/DistanceMap";
 import {useAtom} from "jotai";
+import ProtectedPages from "./components/UserPages";
+import VisitorPages from "./components/VisitorPages";
 
 let count = 0;
 const App = () => {
@@ -73,49 +75,55 @@ const App = () => {
                     <ThemeProvider theme = {theme === "light" ? lightTheme : darkTheme}>
                         <GlobalStyles/>
                         <Routes>
-                            <Route path="/" element={
-                                <>
-                                    <Header/>
-                                    <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
-                                    <Content/>
-                                    <br/>
-                                    <Accordion content={content}/>
-                                    <br/>
-                                    <AppStoresBadges/>
-                                    <br/>
-                                    <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
-                                    <Footer />
-                                    <a id="bottom"></a>
-                                </>
-                            } />
-                            <Route path="/signUp-form" element={
-                                <>
-                                    <SignUpForm/>
-                                </>
-                            } />
-                            <Route path="/signIn-form" element={
-                                <>
-                                    <SignInForm/>
-                                </>
-                            } />
+                            <Route element={<VisitorPages/> }>
+                                <Route path="/" element={
+                                    <>
+                                        <Header/>
+                                        <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
+                                        <Content/>
+                                        <br/>
+                                        <Accordion content={content}/>
+                                        <br/>
+                                        <AppStoresBadges/>
+                                        <br/>
+                                        <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
+                                        <Footer />
+                                        <a id="bottom"></a>
+                                    </>
+                                } />
+                                <Route path="/signUp-form" element={
+                                    <>
+                                        <SignUpForm/>
+                                    </>
+                                } />
+                                <Route path="/signIn-form" element={
+                                    <>
+                                        <SignInForm/>
+                                    </>
+                                } />
+                            </Route>
                             <Route path="/about" element={
                                 <>
                                     <h1>ABOUT PAGE</h1>
                                 </>
                             } />
-                            <Route path="/guess" element = {
-                                <StreetViewMap />
-                            } />
-                            <Route path="/gameplay" element = {
-                                <>
-                                    <GamePlay progress={progress1}/>
-                                </>
-                            } />
-                            <Route path="/distance" element={
-                                <>
-                                    <DistanceMap />
-                                </>
-
+                            <Route element={<ProtectedPages/>}>
+                                <Route path="/guess" element = {
+                                    <StreetViewMap />
+                                } />
+                                <Route path="/gameplay" element = {
+                                    <>
+                                        <GamePlay progress={progress1}/>
+                                    </>
+                                } />
+                                <Route path="/distance" element={
+                                    <>
+                                        <DistanceMap />
+                                    </>
+                                }/>
+                            </Route>
+                            <Route path={"/*"} element={
+                                <h1>404 NOT FOUND</h1>
                             }/>
                         </Routes>
                     </ThemeProvider>
