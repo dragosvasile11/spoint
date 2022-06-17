@@ -3,7 +3,7 @@ import {MDBBtn, MDBProgress, MDBProgressBar} from "mdb-react-ui-kit";
 import {Link} from "react-router-dom";
 
 const cardsLayoutStyle = {
-    padding: '5% 25% 5%',
+    padding: '0% 25% 0%',
     color: 'whitesmoke'
 }
 
