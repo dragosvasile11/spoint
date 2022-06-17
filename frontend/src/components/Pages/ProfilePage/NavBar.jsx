@@ -19,7 +19,10 @@ export default function NavBar() {
         <>
             <MDBNavbar expand='lg' dark bgColor='dark'>
                 <MDBContainer fluid>
-                    <MDBNavbarBrand href='#'>SPOINT</MDBNavbarBrand>
+                    <MDBNavbarBrand href='#'>
+                        <h4>SPOINT <div style={{ display: "inline", color: "#FFA900"}}>|</div></h4>
+                    </MDBNavbarBrand>
+                    <h4 style={ profileNameStyle }>{ userData.firstName }</h4>
                     <MDBNavbarToggler
                         type='button'
                         data-target='#navbarColor02'
