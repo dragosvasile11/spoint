@@ -58,7 +58,7 @@ public class Player {
     @JoinColumn(name = "progress_id")
     private Progress progress;
 
-    private String avatarName;
+    private String avatarImage;
 
     public Player(String firstName, String lastName, String email, String password, boolean allowEmails) {
         this.firstName = firstName;
@@ -66,6 +66,6 @@ public class Player {
         this.email = email;
         this.password = password;
         this.allowEmails = allowEmails;
-        this.avatarName = "defaultAvatar.png";
+        this.avatarImage = "defaultAvatar.png";
     }
 }
