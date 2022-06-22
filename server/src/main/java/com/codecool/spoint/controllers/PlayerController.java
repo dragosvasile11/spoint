@@ -38,7 +38,7 @@ public class PlayerController {
     }
 
     @PatchMapping("/update/{id}")
-    public void updatePlayerById(@PathVariable("id") Long id, @RequestBody Map<String, Object> updates) {
+    public void updatePlayerById(@PathVariable("id") Long id, @RequestBody Map updates) {
         playerService.updatePlayer(id, updates);
     }
 
