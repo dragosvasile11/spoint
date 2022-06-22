@@ -33,7 +33,7 @@ public class PlayerController {
     }
 
     @PostMapping("/add")
-    public boolean addPlayer(@RequestBody Player player) {
+    public Long addPlayer(@RequestBody Player player) {
         return playerService.addPlayer(player);
     }
 
