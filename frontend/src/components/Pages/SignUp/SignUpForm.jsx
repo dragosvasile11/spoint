@@ -17,6 +17,12 @@ import {saveUser} from "./PostUser.js"
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
 import {useNavigate} from "react-router"
+import {Fab} from "@mui/material";
+import AddIcon from "@material-ui/icons/Add";
+import { storage } from "../../../firebase";
+import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import LinearProgressWithLabel from "../../Assets/LinearProgressWithLabel";
 
 function Copyright(props) {
         return (
@@ -38,6 +44,8 @@ function Copyright(props) {
         const [email, setEmail] = useState("")
         const [password, setPassword] = useState("")
         const [confirmPassword, setConfirmPassword] = useState("")
+        const [imageUpload, setImageUpload] = useState(null)
+        const [uploadProgress, setUploadProgress] = useState(0)
 
         const [hasErrors, setHasErrors] = useState({
             firstName: false,
@@ -87,10 +95,46 @@ function Copyright(props) {
                 password : data.get("password"),
                 allowExtraEmails : !!data.get("allowExtraEmails")
             })
-            saveUser(user).then(userRegistered => {
-                if (userRegistered) {
-                    navigate("../signIn-form", { replace: true })
-                }
+            console.log(user)
+            saveUser(user)
+                .then(userRegisteredId => {
+                    if (userRegisteredId) {
+                        if (imageUpload) {
+                            const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+
+                            const uploadTask = uploadBytesResumable(imageRef, imageUpload);
+                                uploadTask.on("state_changed", (snapshot) => {
+                                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                    console.log('Upload is ' + progress + '% done');
+                                    setUploadProgress(prevState => progress)
+                                },
+                                    (error) => {
+
+                                    },
+                                    async () => {
+
+                                        await getDownloadURL(uploadTask.snapshot.ref)
+                                            .then(async (url) => {
+
+                                                navigate("../signIn-form", { replace: true })
+                                                const payload = JSON.stringify({
+                                                    avatarImageURL : url
+                                                })
+
+                                                const updateUser = await fetch(`http://localhost:8080/api/players/update/${userRegisteredId.toString()}`, {
+                                                    method: "PATCH",
+                                                    headers: { 'Content-Type': 'application/json'
+                                                    },
+                                                    body: payload
+                                                })
+                                        })
+                                    })
+                        } else {
+                            navigate("../signIn-form", { replace: true })
+                        }
+                    } else {
+                        navigate("../signIn-form", {replace: true})
+                    }
             })
         }
 
