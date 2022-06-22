@@ -268,6 +268,30 @@ function Copyright(props) {
                                         color = "warning"
                                     />
                                 </Grid>
+                                <Grid item xs={20} style={{ display: "inline-grid", justifyContent: "center" }}>
+
+                                    <label htmlFor="upload-photo">
+                                        <input
+                                            // style={{ display: "none" }}
+                                            id="upload-photo"
+                                            name="upload-photo"
+                                            type="file"
+                                            onChange={ (event) =>
+                                                setImageUpload(event.currentTarget.files[0])
+                                            }
+                                        />
+                                        <Fab
+                                            color="secondary"
+                                            size="small"
+                                            component="span"
+                                            aria-label="add"
+                                            variant="extended"
+                                        >
+                                            <AddIcon /> Upload photo
+                                        </Fab>
+                                    </label>
+                                    <LinearProgressWithLabel progress_value={uploadProgress}/>
+                                </Grid>
                                 <Grid item xs={12}>
                                     <FormControlLabel
                                         control={<Checkbox value={true} color="warning" />}
