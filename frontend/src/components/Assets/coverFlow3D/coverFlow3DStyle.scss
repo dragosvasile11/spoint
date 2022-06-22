@@ -6,7 +6,7 @@
 }
 
 .coverFlow {
-    height: 13rem;
+    height: 13vw;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -23,6 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 30vh;
 }
 
 .slides {
@@ -89,8 +90,8 @@
     align-content: center;
 
     transform-style: preserve-3d;
-    transform: perspective(1000px) translateX(calc(100% * var(--offset)))
-    rotateY(calc(-45deg * var(--dir)));
+    transform: perspective(3000px) translateX(calc(100% * var(--offset)))
+    rotateY(calc(-50deg * var(--dir)));
 }
 
 .slideContentInner {
@@ -102,7 +103,7 @@
 
 .slideUser,
 .slideMessage {
-    font-size: 0.8rem;
+    font-size: 0.8vw;
     font-weight: normal;
     letter-spacing: 0.2ch;
     //text-transform: uppercase;
@@ -115,7 +116,7 @@
 
 .slideDate {
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 0.8vw;
     letter-spacing: 0.2ch;
 }
 }
