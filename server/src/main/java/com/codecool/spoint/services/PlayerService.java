@@ -3,16 +3,11 @@ package com.codecool.spoint.services;
 import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
 import com.codecool.spoint.repositories.PlayerRepository;
-import org.hibernate.HibernateException;
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
-import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
-import javax.persistence.PersistenceException;
 import java.lang.reflect.Field;
-import java.sql.SQLDataException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -35,13 +30,13 @@ public class PlayerService {
         return playerRepository.findById(id);
     }
 
-    public boolean addPlayer(Player player) {
+    public Long addPlayer(Player player) {
         try {
             playerRepository.save(player);
         } catch (Throwable SqlExceptionHelper) {
-            return false;
+            return null;
         }
-        return true;
+        return player.getId();
     }
 
     public void deletePlayer(Long id) {
@@ -75,7 +70,7 @@ public class PlayerService {
                         checkPlayer.getFirstName(),
                         checkPlayer.getLastName(),
                         checkPlayer.getEmail(),
-                        checkPlayer.getAvatarImage()
+                        checkPlayer.getAvatarImageURL()
                 ));
             }
         }
