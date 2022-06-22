@@ -48,7 +48,7 @@ export default function AccountMenu() {
                         aria-expanded={open ? 'true' : undefined}
                     >
                         <Avatar sx={{ width: 40, height: 40 }}
-                                src={"/" + (token.avatarImage !== null ? token.avatarImage : "defaultAvatar.png") }
+                                src={(token.avatarImageURL !== null ? token.avatarImageURL : "defaultAvatar.png") }
                         >
                             {token.firstName.charAt()}
                         </Avatar>
@@ -91,7 +91,7 @@ export default function AccountMenu() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem>
-                    <Avatar src={ "/" + (token.avatarImage !== null ? token.avatarImage : "defaultAvatar.png") }/> My account
+                    <Avatar src={ (token.avatarImageURL !== null ? token.avatarImageURL : "defaultAvatar.png") }/> My account
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
