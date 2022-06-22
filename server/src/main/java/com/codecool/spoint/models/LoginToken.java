@@ -12,15 +12,15 @@ public class LoginToken {
     private String userEmail;
     private String hash;
     private boolean userValidated;
-    private String avatarImage;
+    private String avatarImageURL;
 
-    public LoginToken(Long id, String firstName, String lastName, String userEmail, String avatarImage) {
+    public LoginToken(Long id, String firstName, String lastName, String userEmail, String avatarImageURL) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userEmail = userEmail;
         this.hash = EncryptData.hash(userEmail);
         userValidated = true;
-        this.avatarImage = avatarImage;
+        this.avatarImageURL = avatarImageURL;
     }
 }
