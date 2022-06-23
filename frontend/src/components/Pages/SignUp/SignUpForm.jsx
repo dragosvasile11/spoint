@@ -171,7 +171,7 @@ function Copyright(props) {
                         <CssBaseline />
                         <Box
                         sx={{
-                            marginTop: 8,
+                            marginTop: 0,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -331,7 +331,7 @@ function Copyright(props) {
                             </Grid>
                         </Box>
                     </Box>
-                    <Copyright sx={{ mt: 5 }} />
+                    <Copyright sx={{ mt: 3 }} />
                 </Container>
                 </div>
             </ThemeProvider>
