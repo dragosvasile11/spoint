@@ -2,6 +2,7 @@ package com.codecool.spoint.services;
 
 import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
+import com.codecool.spoint.models.Role;
 import com.codecool.spoint.repositories.PlayerRepository;
 import com.codecool.spoint.repositories.RoleRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -36,14 +37,14 @@ public class PlayerService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Player player = playerRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Player player = playerRepository.findByEmail(email);
         if(player == null) {
             log.error("User not found in the database");
             throw new UsernameNotFoundException("User not found in the database");
         }
         else {
-            log.info("User found in the database: {}", username);
+            log.info("User found in the database: {}", email);
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         player.getRoles().forEach(role -> {
@@ -105,5 +106,12 @@ public class PlayerService implements UserDetailsService {
             }
         }
         return Optional.empty();
+    }
+
+    public void addRoleToAppUser(String email, String roleName) {
+        log.info("Adding role {} to user {}", roleName, email);
+        Player player = playerRepository.findByEmail(email);
+        Role role = roleRepository.findByName(roleName);
+        player.getRoles().add(role);
     }
 }

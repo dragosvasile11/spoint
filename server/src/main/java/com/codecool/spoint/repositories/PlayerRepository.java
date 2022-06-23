@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
     List<Player> findAllByOrderByIdAsc();
-    Player findByUsername(String username);
+    Player findByEmail(String email);
 }
