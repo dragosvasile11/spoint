@@ -111,17 +111,16 @@ function Copyright(props) {
                 password : data.get("password"),
                 allowExtraEmails : !!data.get("allowExtraEmails")
             })
-            console.log(user)
+
             saveUser(user)
-                .then(userRegisteredId => {
-                    if (userRegisteredId) {
+                .then(userToken => {
+                    if (userToken.userValidated) {
                         if (imageUpload) {
                             const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
 
                             const uploadTask = uploadBytesResumable(imageRef, imageUpload);
                                 uploadTask.on("state_changed", (snapshot) => {
                                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                                    console.log('Upload is ' + progress + '% done');
                                     setUploadProgress(prevState => progress)
                                 },
                                     (error) => {
@@ -137,7 +136,7 @@ function Copyright(props) {
                                                     avatarImageURL : url
                                                 })
 
-                                                const updateUser = await fetch(`http://localhost:8080/api/players/update/${userRegisteredId.toString()}`, {
+                                                const updateUser = await fetch(`http://localhost:8080/api/players/update/${userToken.id.toString()}`, {
                                                     method: "PATCH",
                                                     headers: { 'Content-Type': 'application/json'
                                                     },
