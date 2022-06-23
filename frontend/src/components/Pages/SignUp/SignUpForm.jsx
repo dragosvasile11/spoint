@@ -17,12 +17,15 @@ import {saveUser} from "./PostUser.js"
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
 import {useNavigate} from "react-router"
-import {Fab} from "@mui/material";
-import AddIcon from "@material-ui/icons/Add";
 import { storage } from "../../../firebase";
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import LinearProgressWithLabel from "../../Assets/LinearProgressWithLabel";
+import UploadImage from "../../Buttons/UploadImage";
+import AlertPopUp from "../../Assets/AlertPopUp";
+import Slide from '@mui/material/Slide';
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Copyright(props) {
         return (
@@ -268,24 +271,21 @@ function Copyright(props) {
                                         color = "warning"
                                     />
                                 </Grid>
-                                <Grid item xs={20} style={{ display: "inline-grid", justifyContent: "center" }}>
-
-                                    <label htmlFor="upload-photo">
-                                        <input
-                                            // style={{ display: "none" }}
-                                            id="upload-photo"
-                                            name="upload-photo"
-                                            type="file"
-                                            onChange={ (event) =>
-                                                setImageUpload(event.currentTarget.files[0])
-                                            }
-                                        />
-                                        <Fab
-                                            color="secondary"
-                                            size="small"
-                                            component="span"
-                                            aria-label="add"
-                                            variant="extended"
+                                <Grid item xs={12} style={{ display: "inline-flex", justifyContent: "center" }}>
+                                    <UploadImage onChange={(event) =>
+                                        setImageUpload(event.currentTarget.files[0])}/>
+                                </Grid>
+                                <Grid item xs={12} style={{ display: "inline-grid", justifyContent: "center" }}>
+                                    <Typography
+                                        component="h6"
+                                        variant="h7"
+                                    >
+                                        {imageUpload ? "Image: " + imageUpload.name : "No image uploaded"}
+                                        <IconButton
+                                            style={ {display: imageUpload ? "" : "none" }}
+                                            aria-label="delete"
+                                            onClick={() => setImageUpload(null)}
+                                            color={"warning"}
                                         >
                                             <AddIcon /> Upload photo
                                         </Fab>
