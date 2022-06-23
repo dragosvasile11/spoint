@@ -2,21 +2,44 @@ package com.codecool.spoint.config;
 
 import com.codecool.spoint.models.*;
 import com.codecool.spoint.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
 @Configuration
 public class InitialConfig {
 
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public InitialConfig(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @Bean
-    CommandLineRunner commandLineRunnerStudent (PlayerRepository playerRepository, ReviewRepository reviewRepository) {
+    CommandLineRunner commandLineRunnerStudent (PlayerRepository playerRepository, ReviewRepository reviewRepository, RoleRepository roleRepository) {
         return args -> {
+
+            Role role1 = new Role("ROLE_USER");
+            Role role2 = new Role("ROLE_PREMIUM_USER");
+            Role role3 = new Role("ROLE_ADMIN");
+            roleRepository.saveAll(List.of(role1, role2, role3));
+
             Player player1 = new Player("John", "Doe", "john.doe@mail.com", "1234", true, "3.jpg");
             Player player2 = new Player("George", "Bush", "bush@mail.com", "1234", false, "4.jpg");
             Player player3 = new Player("Steve", "Jobs", "jobs@mail.com", "1234", false, "2.jpg");
+
+            player1.setPassword(passwordEncoder.encode(player1.getPassword()));
+
+            player1.getRoles().add(role1);
+            player1.getRoles().add(role3);
+            player2.getRoles().add(role1);
+            player3.getRoles().add(role1);
+
             playerRepository.saveAll(List.of(player1, player2, player3));
 
             Review review1 = new Review(player1, "Really fun and interesting, love the community and the game in general. country streak mode is super fun and the learning world map is great too :)" , 3L);
