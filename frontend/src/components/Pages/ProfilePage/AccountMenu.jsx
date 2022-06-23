@@ -13,6 +13,8 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import {getCookieObject, removeCookie} from "../../Contexts/Cookies";
 import {useNavigate} from "react-router";
+import Button from "@mui/material/Button";
+import {Link} from "react-router-dom";
 
 export default function AccountMenu() {
 
@@ -96,7 +98,7 @@ export default function AccountMenu() {
                     <ListItemIcon>
                         <PersonAdd fontSize="small" />
                     </ListItemIcon>
-                    Leave a Game Review
+                    <Link to={"/review"}><Button type={"button"}>Leave a Game Review</Button></Link>
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
