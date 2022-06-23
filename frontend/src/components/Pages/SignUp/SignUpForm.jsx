@@ -42,6 +42,10 @@ function Copyright(props) {
 
     const SignUp = () => {
 
+        const handleAlertClose = () => {
+            setAlertProps({ ...alertProps, openAlert: false });
+        };
+
         const [firstName, setFirstName] = useState("")
         const [lastName, setLastName] = useState("")
         const [email, setEmail] = useState("")
@@ -49,6 +53,15 @@ function Copyright(props) {
         const [confirmPassword, setConfirmPassword] = useState("")
         const [imageUpload, setImageUpload] = useState(null)
         const [uploadProgress, setUploadProgress] = useState(0)
+        const [alertProps, setAlertProps] = useState({
+            openAlert: false,
+            handleAlertClose,
+            Transition: Slide,
+            message: "Email already exits",
+            duration: 2000,
+            vertical: 'top',
+            horizontal: 'left'
+        });
 
         const [hasErrors, setHasErrors] = useState({
             firstName: false,
@@ -136,7 +149,7 @@ function Copyright(props) {
                             navigate("../signIn-form", { replace: true })
                         }
                     } else {
-                        navigate("../signIn-form", {replace: true})
+                        setAlertProps({ ...alertProps, openAlert: true });
                     }
             })
         }
@@ -151,8 +164,8 @@ function Copyright(props) {
         });
 
         return (
-
             <ThemeProvider theme={muiTheme}>
+                <AlertPopUp props={alertProps}/>
                 <div>
                     <Switch/>
                     <Container component="main" maxWidth="xs">
