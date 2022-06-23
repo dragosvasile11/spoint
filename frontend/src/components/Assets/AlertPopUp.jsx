@@ -1,26 +1,26 @@
 import React from 'react';
 import {Snackbar} from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
 
-export default function AlertPopUp() {
-    const [open, setOpen] = React.useState(false);
+export default function AlertPopUp( {props} ) {
 
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
-    };
+    const {vertical, horizontal} = props;
 
     return (
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <AlertPopUp onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-                    This is a success message!
-                </AlertPopUp>
+            <Snackbar
+                open={props.openAlert}
+                autoHideDuration={props.duration}
+                onClose={props.handleAlertClose}
+                anchorOrigin={{ vertical, horizontal }}
+                TransitionComponent={props.Transition}
+                key={vertical + horizontal}
+            >
+                <MuiAlert
+                    onClose={props.handleAlertClose}
+                    severity="warning"
+                >
+                    {props.message}
+                </MuiAlert>
             </Snackbar>
     );
 }
