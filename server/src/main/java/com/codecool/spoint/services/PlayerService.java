@@ -63,6 +63,7 @@ public class PlayerService implements UserDetailsService {
 
     public Optional<LoginToken> addPlayer(Player player) {
         try {
+            player.setPassword(passwordEncoder.encode(player.getPassword()));
             playerRepository.save(player);
         } catch (Throwable SqlExceptionHelper) {
             return Optional.empty();
@@ -91,7 +92,6 @@ public class PlayerService implements UserDetailsService {
 
     public Optional<LoginToken> checkLogin(Player player) {
         List<Player> players = getAllPlayers();
-
         for (Player checkPlayer : players) {
             if (checkPlayer.getEmail().equals(player.getEmail()) &&
                     checkPlayer.getPassword().equals(player.getPassword())) {
