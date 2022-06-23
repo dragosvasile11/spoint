@@ -17,6 +17,8 @@ import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
 import {getCookie, getCookieObject, setCookie} from "../../Contexts/Cookies";
 import {useNavigate} from "react-router"
+import AlertPopUp from "../../Assets/AlertPopUp";
+import Slide from "@mui/material/Slide";
 
 function Copyright(props) {
     return (
@@ -34,11 +36,24 @@ function Copyright(props) {
 
 export default function SignInSide() {
 
+    const handleAlertClose = () => {
+        setAlertProps({ ...alertProps, openAlert: false });
+    };
+
     const [hasErrors, setHasErrors] = useState({
                                         email: false,
                                         password: false})
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [alertProps, setAlertProps] = useState({
+        openAlert: false,
+        handleAlertClose,
+        Transition: Slide,
+        message: "Email or password incorrect",
+        duration: 2000,
+        vertical: 'bottom',
+        horizontal: 'right'
+    });
 
     const navigate = useNavigate()
 
@@ -85,8 +100,10 @@ export default function SignInSide() {
 
                 token["rememberMe"] = data.get("rememberMe")
                 setCookie("loginToken", JSON.stringify(token))
-                console.log(getCookieObject("loginToken"))
                 navigate("../gameplay", {replace: true})
+
+            } else {
+                setAlertProps({ ...alertProps, openAlert: true });
             }
         })
     }
@@ -113,6 +130,7 @@ export default function SignInSide() {
 
     return (
         <ThemeProvider theme={muiTheme}>
+            <AlertPopUp props={alertProps}/>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid
