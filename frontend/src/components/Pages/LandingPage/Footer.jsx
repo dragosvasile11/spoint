@@ -6,6 +6,7 @@ import {
 } from 'mdb-react-ui-kit';
 import ScrollUpDownButton from "../../Buttons/ScrollUpDownButton";
 import Link from "@mui/material/Link";
+import SpointCopyright from "../../Assets/SpointCopyright";
 
 const footerStyles = {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -42,10 +43,7 @@ export default function App() {
                         <MDBIcon fab icon='github' />
                     </a>
                     <div className='text-center p-3'>
-                        © {new Date().getFullYear()} Copyright:
-                        <Link className="text-warning" href="/src/components/Pages/About">
-                            Spoint
-                        </Link>
+                        <SpointCopyright color={"white"}/>
                     </div>
                 </section>
             </MDBContainer>
