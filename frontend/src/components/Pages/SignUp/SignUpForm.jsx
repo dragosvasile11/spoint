@@ -287,9 +287,11 @@ function Copyright(props) {
                                             onClick={() => setImageUpload(null)}
                                             color={"warning"}
                                         >
-                                            <AddIcon /> Upload photo
-                                        </Fab>
-                                    </label>
+                                            <DeleteIcon/>
+                                        </IconButton>
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12}>
                                     <LinearProgressWithLabel progress_value={uploadProgress}/>
                                 </Grid>
                                 <Grid item xs={12}>
