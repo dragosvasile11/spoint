@@ -4,6 +4,8 @@ import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
 import com.codecool.spoint.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +18,12 @@ import java.util.Optional;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, PasswordEncoder passwordEncoder) {
         this.playerService = playerService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
@@ -33,6 +37,7 @@ public class PlayerController {
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public Optional<LoginToken> addPlayer(@RequestBody Player player) {
         return playerService.addPlayer(player);
     }
@@ -49,6 +54,13 @@ public class PlayerController {
 
     @PostMapping("/check-if-player-exists")
     public Optional<LoginToken> checkLogin(@RequestBody Player player) {
+        System.out.println(player.getPassword());
+        player.setPassword(passwordEncoder.encode(player.getPassword()));
         return playerService.checkLogin(player);
+    }
+
+    @GetMapping("/allow")
+    public String allow() {
+        return "You have entered allow route";
     }
 }
