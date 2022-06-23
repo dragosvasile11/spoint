@@ -20,7 +20,6 @@ export default function AccountMenu() {
     const open = Boolean(anchorEl);
     const token = getCookieObject("loginToken")
     const navigate = useNavigate()
-    console.log(token)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

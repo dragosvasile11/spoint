@@ -63,6 +63,10 @@ public class Player {
     @JoinColumn(name = "progress_id")
     private Progress progress;
 
+    @OneToOne
+    @JoinColumn(name = "review_id")
+    private Review review;
+
     @Column(name = "avatarImage_URL")
     private String avatarImageURL;
 

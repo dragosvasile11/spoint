@@ -23,4 +23,9 @@ public class LoginToken {
         userValidated = true;
         this.avatarImageURL = avatarImageURL;
     }
+
+    public LoginToken(Long id, boolean userValidated) {
+        this.id = id;
+        this.userValidated = userValidated;
+    }
 }

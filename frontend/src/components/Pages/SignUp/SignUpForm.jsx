@@ -17,12 +17,15 @@ import {saveUser} from "./PostUser.js"
 import {ThemeContext} from "../../Contexts/ThemeContext";
 import Switch from "../../Buttons/SwitchTheme/Switch";
 import {useNavigate} from "react-router"
-import {Fab} from "@mui/material";
-import AddIcon from "@material-ui/icons/Add";
 import { storage } from "../../../firebase";
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import LinearProgressWithLabel from "../../Assets/LinearProgressWithLabel";
+import UploadImage from "../../Buttons/UploadImage";
+import AlertPopUp from "../../Assets/AlertPopUp";
+import Slide from '@mui/material/Slide';
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Copyright(props) {
         return (
@@ -39,6 +42,10 @@ function Copyright(props) {
 
     const SignUp = () => {
 
+        const handleAlertClose = () => {
+            setAlertProps({ ...alertProps, openAlert: false });
+        };
+
         const [firstName, setFirstName] = useState("")
         const [lastName, setLastName] = useState("")
         const [email, setEmail] = useState("")
@@ -46,6 +53,15 @@ function Copyright(props) {
         const [confirmPassword, setConfirmPassword] = useState("")
         const [imageUpload, setImageUpload] = useState(null)
         const [uploadProgress, setUploadProgress] = useState(0)
+        const [alertProps, setAlertProps] = useState({
+            openAlert: false,
+            handleAlertClose,
+            Transition: Slide,
+            message: "Email already exits",
+            duration: 2000,
+            vertical: 'top',
+            horizontal: 'left'
+        });
 
         const [hasErrors, setHasErrors] = useState({
             firstName: false,
@@ -95,17 +111,16 @@ function Copyright(props) {
                 password : data.get("password"),
                 allowExtraEmails : !!data.get("allowExtraEmails")
             })
-            console.log(user)
+
             saveUser(user)
-                .then(userRegisteredId => {
-                    if (userRegisteredId) {
+                .then(userToken => {
+                    if (userToken.userValidated) {
                         if (imageUpload) {
                             const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
 
                             const uploadTask = uploadBytesResumable(imageRef, imageUpload);
                                 uploadTask.on("state_changed", (snapshot) => {
                                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                                    console.log('Upload is ' + progress + '% done');
                                     setUploadProgress(prevState => progress)
                                 },
                                     (error) => {
@@ -121,7 +136,7 @@ function Copyright(props) {
                                                     avatarImageURL : url
                                                 })
 
-                                                const updateUser = await fetch(`http://localhost:8080/api/players/update/${userRegisteredId.toString()}`, {
+                                                const updateUser = await fetch(`http://localhost:8080/api/players/update/${userToken.id.toString()}`, {
                                                     method: "PATCH",
                                                     headers: { 'Content-Type': 'application/json'
                                                     },
@@ -133,7 +148,7 @@ function Copyright(props) {
                             navigate("../signIn-form", { replace: true })
                         }
                     } else {
-                        navigate("../signIn-form", {replace: true})
+                        setAlertProps({ ...alertProps, openAlert: true });
                     }
             })
         }
@@ -148,15 +163,15 @@ function Copyright(props) {
         });
 
         return (
-
             <ThemeProvider theme={muiTheme}>
+                <AlertPopUp props={alertProps}/>
                 <div>
                     <Switch/>
                     <Container component="main" maxWidth="xs">
                         <CssBaseline />
                         <Box
                         sx={{
-                            marginTop: 8,
+                            marginTop: 0,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -268,28 +283,27 @@ function Copyright(props) {
                                         color = "warning"
                                     />
                                 </Grid>
-                                <Grid item xs={20} style={{ display: "inline-grid", justifyContent: "center" }}>
-
-                                    <label htmlFor="upload-photo">
-                                        <input
-                                            // style={{ display: "none" }}
-                                            id="upload-photo"
-                                            name="upload-photo"
-                                            type="file"
-                                            onChange={ (event) =>
-                                                setImageUpload(event.currentTarget.files[0])
-                                            }
-                                        />
-                                        <Fab
-                                            color="secondary"
-                                            size="small"
-                                            component="span"
-                                            aria-label="add"
-                                            variant="extended"
+                                <Grid item xs={12} style={{ display: "inline-flex", justifyContent: "center" }}>
+                                    <UploadImage onChange={(event) =>
+                                        setImageUpload(event.currentTarget.files[0])}/>
+                                </Grid>
+                                <Grid item xs={12} style={{ display: "inline-grid", justifyContent: "center" }}>
+                                    <Typography
+                                        component="h6"
+                                        variant="h7"
+                                    >
+                                        {imageUpload ? "Image: " + imageUpload.name : "No image uploaded"}
+                                        <IconButton
+                                            style={ {display: imageUpload ? "" : "none" }}
+                                            aria-label="delete"
+                                            onClick={() => setImageUpload(null)}
+                                            color={"warning"}
                                         >
-                                            <AddIcon /> Upload photo
-                                        </Fab>
-                                    </label>
+                                            <DeleteIcon/>
+                                        </IconButton>
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12}>
                                     <LinearProgressWithLabel progress_value={uploadProgress}/>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -317,7 +331,7 @@ function Copyright(props) {
                             </Grid>
                         </Box>
                     </Box>
-                    <Copyright sx={{ mt: 5 }} />
+                    <Copyright sx={{ mt: 3 }} />
                 </Container>
                 </div>
             </ThemeProvider>

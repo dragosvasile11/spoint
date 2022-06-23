@@ -1,13 +1,7 @@
 package com.codecool.spoint.config;
 
-import com.codecool.spoint.models.League;
-import com.codecool.spoint.models.Location;
-import com.codecool.spoint.models.Player;
-import com.codecool.spoint.models.Progress;
-import com.codecool.spoint.repositories.LeagueRepository;
-import com.codecool.spoint.repositories.LocationRepository;
-import com.codecool.spoint.repositories.PlayerRepository;
-import com.codecool.spoint.repositories.ProgressRepository;
+import com.codecool.spoint.models.*;
+import com.codecool.spoint.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +12,18 @@ import java.util.List;
 public class InitialConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerStudent (PlayerRepository playerRepository) {
+    CommandLineRunner commandLineRunnerStudent (PlayerRepository playerRepository, ReviewRepository reviewRepository) {
         return args -> {
             Player player1 = new Player("John", "Doe", "john.doe@mail.com", "1234", true, "3.jpg");
             Player player2 = new Player("George", "Bush", "bush@mail.com", "1234", false, "4.jpg");
-            playerRepository.saveAll(List.of(player1, player2));
+            Player player3 = new Player("Steve", "Jobs", "jobs@mail.com", "1234", false, "2.jpg");
+            playerRepository.saveAll(List.of(player1, player2, player3));
+
+            Review review1 = new Review(player1, "Really fun and interesting, love the community and the game in general. country streak mode is super fun and the learning world map is great too :)" , 3L);
+            Review review2 = new Review(player2, "The app is rapidly getting new features and improvements! It's on its way to become amazing! Love it!" , 5L);
+            Review review3 = new Review(player3, "Great fun game that is also educational." , 3L);
+
+            reviewRepository.saveAll(List.of(review1, review2, review3));
         };
     }
 

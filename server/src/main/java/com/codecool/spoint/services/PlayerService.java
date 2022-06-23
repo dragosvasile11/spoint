@@ -60,13 +60,13 @@ public class PlayerService implements UserDetailsService {
         return playerRepository.findById(id);
     }
 
-    public Long addPlayer(Player player) {
+    public Optional<LoginToken> addPlayer(Player player) {
         try {
             playerRepository.save(player);
         } catch (Throwable SqlExceptionHelper) {
-            return null;
+            return Optional.empty();
         }
-        return player.getId();
+        return Optional.of(new LoginToken(player.getId(), true));
     }
 
     public void deletePlayer(Long id) {
