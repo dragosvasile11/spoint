@@ -3,23 +3,33 @@ package com.codecool.spoint.services;
 import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
 import com.codecool.spoint.repositories.PlayerRepository;
+import com.codecool.spoint.repositories.RoleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
+import javax.transaction.Transactional;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @Service
+@Transactional
+@Slf4j
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PlayerService(PlayerRepository playerRepository) {
+    public PlayerService(PlayerRepository playerRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.playerRepository = playerRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Player> getAllPlayers() {
