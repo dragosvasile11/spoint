@@ -8,9 +8,10 @@ function LinearProgressWithLabel( { progress_value } ) {
         <>
         <Box sx={{display: progress_value ? "flex" : "none" , alignItems: 'center', margin: "1vw"}}>
             <Box sx={{ width: '100%', mr: 1 }}>
-                <LinearProgress variant="determinate" {...progress_value}
+                <LinearProgress variant="determinate"
                                 style={{ borderRadius: "10px" }}
-                                suppressHydrationWarning={true}
+                                color={"warning"}
+                                value={progress_value}
 
                 />
             </Box>
