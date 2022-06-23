@@ -19,6 +19,7 @@ import { progressAtom } from "./components/Pages/Maps/ResultsPageMap/DistanceMap
 import {useAtom} from "jotai";
 import ProtectedPages from "./components/UserPages";
 import VisitorPages from "./components/VisitorPages";
+import Review from "./components/Pages/Review";
 
 let count = 0;
 const App = () => {
@@ -80,6 +81,7 @@ const App = () => {
                                     <>
                                         <Header/>
                                         <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
+
                                         <Content/>
                                         <br/>
                                         <Accordion content={content}/>
@@ -105,6 +107,11 @@ const App = () => {
                             <Route path="/about" element={
                                 <>
                                     <h1>ABOUT PAGE</h1>
+                                </>
+                            } />
+                            <Route path="/review" element={
+                                <>
+                                    <Review/>
                                 </>
                             } />
                             <Route element={<ProtectedPages/>}>
