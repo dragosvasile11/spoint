@@ -5,6 +5,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import static javax.persistence.FetchType.EAGER;
+
 @Getter
 @Setter
 @Builder
@@ -64,6 +69,9 @@ public class Player {
 
     @Column(name = "avatarImage_URL")
     private String avatarImageURL;
+
+    @ManyToMany(fetch = EAGER)
+    private Collection<Role> roles = new ArrayList<>();
 
     public Player(String firstName, String lastName, String email, String password, boolean allowEmails, String avatarImageURL) {
         this.firstName = firstName;
