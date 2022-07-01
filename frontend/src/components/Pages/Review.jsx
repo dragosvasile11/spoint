@@ -20,9 +20,9 @@ import ratings3 from "../../images/ratings3.png";
 import ratings4 from "../../images/ratings4.png";
 import ratings5 from "../../images/rating5.png";
 import {Fade, Slide} from 'react-reveal';
+import BackButton from "../Buttons/BackButton";
 
 const Review = () => {
-    const admin = true
 
     const CHARACTER_LIMIT = 200;
     const [values, setValues] = useState("");
@@ -63,164 +63,150 @@ const Review = () => {
         return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
     }
 
-    if (admin) {
-
-        return (
-            <>
+    return (
+        <>
+            <ThemeProvider theme={muiTheme}>
+                <BackButton backToLink={"/gameplay"}/>
                 <Switch/>
-                <ThemeProvider theme={muiTheme}>
-                    <Container component="main" maxWidth="xl" style={{ lineHeight: "1", paddingLeft: "2vw", marginLeft: "0" }}>
-                        <CssBaseline />
+                <Container component="main" maxWidth="xl" style={{ lineHeight: "1", paddingLeft: "2vw", marginLeft: "0" }}>
+                    <CssBaseline />
+                        <Box
+                            sx={{
+                                marginTop: 4,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'left',
+                            }}
+                        >
+                            <Avatar sx={{ m:1, bgcolor: 'primary.main', width: 75, height: 75 }} xs={10}>
+                                <FavoriteIcon fontSize={"large"} color={"error"}/>
+                            </Avatar>
                             <Box
                                 sx={{
-                                    marginTop: 4,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'left',
+                                    display: "flex",
+                                    position: "fixed",
+                                    justifyContent: "right",
+                                    right: "0",
+                                    bottom: "0"
                                 }}
                             >
-                                <Avatar sx={{ m:1, bgcolor: 'primary.main', width: 75, height: 75 }} xs={10}>
-                                    <FavoriteIcon fontSize={"large"} color={"error"}/>
-                                </Avatar>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        position: "fixed",
-                                        justifyContent: "right",
-                                        right: "-3vw",
-                                        bottom: "-3.8%"
-                                    }}
-                                >
-                                    <Slide bottom>
-                                        <img src={ratings3} alt="Logo" style={{maxWidth: "85%", height: "auto"}}></img>
-                                    </Slide>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        position: "fixed",
-                                        justifyContent: "left",
-                                        left: "-0.5vw",
-                                        bottom: "0"
-                                    }}
-                                >
-                                    <Slide left>
-                                        <img src={ratings4} alt="Logo" style={{maxWidth: "100%", height: "auto"}}></img>
-                                    </Slide>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        position: "fixed",
-                                        justifyContent: "",
-                                        right: "20vw",
-                                        top: "5vw"
-                                    }}
-                                >
-                                    <Slide top>
-                                        <img src={ratings5} alt="Logo" style={{maxWidth: "90%", height: "auto"}}></img>
-                                    </Slide>
-                                </Box>
-                                <Typography component="h1" variant="h5">
-                                    Leave us a review
-                                </Typography>
-                                <Box component="form" Validate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                                    <Grid container spacing={5}>
-                                        <Grid item xs={10} sm={5}>
-                                            <TextField
-                                                name="message"
-                                                required={true}
-                                                fullWidth
-                                                multiline={true}
-                                                rows={5}
-                                                inputProps={{ maxLength: CHARACTER_LIMIT }}
-                                                id="message"
-                                                label="Message"
-                                                autoFocus
-                                                color = "warning"
-                                                helperText={`${values.length}/${CHARACTER_LIMIT}`}
-                                                onChange={ handleChange }
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} display={"inline-flex"}>
-                                            <Rating
-                                                name="rating"
-                                                value={rating}
-                                                precision={0.5}
-                                                getLabelText={getLabelText}
-                                                onChange={(event, newValue) => {
-                                                    setRating(newValue);
-                                                }}
-                                                onChangeActive={(event, newHover) => {
-                                                    setRatingHover(newHover);
-                                                }}
-                                                emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-                                            />
-                                            {rating !== null && (
-                                                <Box sx={{ ml: 2 }} style={{ marginTop: "4px" }}>
-                                                    {labels[ratingHover !== -1 ? ratingHover : rating]}
-                                                </Box>
-                                            )}
-                                        </Grid>
-                                    </Grid>
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        sx={{ mt: 4, mb: 1 }}
-                                        color="warning"
-                                    >
-                                        Post Review
-                                    </Button>
-                                </Box>
-                                <Link href="/gameplay" variant="body2" color="#ED6C02" width={"auto"} style={{ paddingLeft: "2vw", zIndex: "1"}}>
-                                    Go Back
-                                </Link>
-                        </Box>
-                    </Container>
-                    <Box sx={{
-                        display: "flex",
-                        textAlign: "center",
-                        justifyContent: "center",
-                    }}>
-
-                            <Typography
-                                component="h5"
-                                variant="h5"
-                                fontSize={"1.3vw"}
-                                width={"20vw"}
-                                display={ "inline-block" }
-                                position={"absolute"}
-                                bottom={"10vh"}
-                                style={{ borderStyle: "solid", borderColor: "orange", borderRadius: "10px", fontStyle: "oblique"}}
+                                <Slide right>
+                                    <img src={ratings3} alt="Logo" style={{maxWidth: "85%", height: "auto"}}></img>
+                                </Slide>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    position: "fixed",
+                                    justifyContent: "left",
+                                    left: "-0.5vw",
+                                    bottom: "0"
+                                }}
                             >
-                                <Fade bottom>
-                                    <div>
-                                    "Until you understand your customers,
-                                    deeply and genuinely,
-                                    you cannot truly serve them"
-                                    </div>
-                                </Fade>
+                                <Slide left>
+                                    <img src={ratings4} alt="Logo" style={{maxWidth: "100%", height: "auto"}}></img>
+                                </Slide>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    position: "fixed",
+                                    justifyContent: "",
+                                    right: "20vw",
+                                    top: "5vw"
+                                }}
+                            >
+                                <Slide top>
+                                    <img src={ratings5} alt="Logo" style={{maxWidth: "90%", height: "auto"}}></img>
+                                </Slide>
+                            </Box>
+                            <Typography component="h1" variant="h5">
+                                Leave us a review
                             </Typography>
-
+                            <Box component="form" Validate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                                <Grid container spacing={5}>
+                                    <Grid item xs={10} sm={5}>
+                                        <TextField
+                                            name="message"
+                                            required={true}
+                                            fullWidth
+                                            multiline={true}
+                                            rows={5}
+                                            inputProps={{ maxLength: CHARACTER_LIMIT }}
+                                            id="message"
+                                            label="Message"
+                                            autoFocus
+                                            color = "warning"
+                                            helperText={`${values.length}/${CHARACTER_LIMIT}`}
+                                            onChange={ handleChange }
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} display={"inline-flex"}>
+                                        <Rating
+                                            name="rating"
+                                            value={rating}
+                                            precision={0.5}
+                                            getLabelText={getLabelText}
+                                            onChange={(event, newValue) => {
+                                                setRating(newValue);
+                                            }}
+                                            onChangeActive={(event, newHover) => {
+                                                setRatingHover(newHover);
+                                            }}
+                                            emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                                        />
+                                        {rating !== null && (
+                                            <Box sx={{ ml: 2 }} style={{ marginTop: "4px" }}>
+                                                {labels[ratingHover !== -1 ? ratingHover : rating]}
+                                            </Box>
+                                        )}
+                                    </Grid>
+                                </Grid>
+                                <Button
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{ mt: 4, mb: 1 }}
+                                    color="warning"
+                                >
+                                    Post Review
+                                </Button>
+                            </Box>
                     </Box>
-                    <Grid container justifyContent="center" position={"absolute"} bottom={"10px"}>
-                        <Grid item>
-                            <SpointCopyright sx={{ mt: 3 }} />
-                        </Grid>
+                </Container>
+                <Box sx={{
+                    display: "flex",
+                    textAlign: "center",
+                    justifyContent: "center",
+                }}>
+
+                        <Typography
+                            component="h5"
+                            variant="h5"
+                            fontSize={"1.3vw"}
+                            width={"20vw"}
+                            display={ "inline-block" }
+                            position={"absolute"}
+                            bottom={"10vh"}
+                            style={{ borderStyle: "solid", borderColor: "orange", borderRadius: "10px", fontStyle: "oblique"}}
+                        >
+                            <Fade bottom>
+                                <div>
+                                "Until you understand your customers,
+                                deeply and genuinely,
+                                you cannot truly serve them"
+                                </div>
+                            </Fade>
+                        </Typography>
+
+                </Box>
+                <Grid container justifyContent="center" position={"absolute"} bottom={"10px"}>
+                    <Grid item>
+                        <SpointCopyright sx={{ mt: 3 }} />
                     </Grid>
-                </ThemeProvider>
-            </>
-        );
-
-    } else {
-
-        return (
-            <>
-
-            </>
-        );
-
-    }
+                </Grid>
+            </ThemeProvider>
+        </>
+    );
 };
 
 export default Review;

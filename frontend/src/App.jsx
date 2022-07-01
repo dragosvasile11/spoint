@@ -13,13 +13,14 @@ import Button from "@mui/material/Button";
 import DistanceMap from "./components/Pages/Maps/ResultsPageMap/DistanceMap";
 import Content from "./components/Pages/LandingPage/Content";
 import Accordion from "./components/Assets/Accordion";
-import {Fade} from "react-reveal";
 import AppStoresBadges from "./components/Assets/AppStoresBadges";
 import { progressAtom } from "./components/Pages/Maps/ResultsPageMap/DistanceMap";
 import {useAtom} from "jotai";
 import ProtectedPages from "./components/UserPages";
 import VisitorPages from "./components/VisitorPages";
 import Review from "./components/Pages/Review";
+import Dashboard from "./components/Pages/AdminPages/Dashboard";
+import PageNotFound404 from "./components/Pages/PageNotFound404";
 
 let count = 0;
 const App = () => {
@@ -81,14 +82,14 @@ const App = () => {
                                     <>
                                         <Header/>
                                         <Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link>
-
+                                        <Link to={"/review"}><Button type={"button"}>Review</Button></Link>
+                                        <Link to={"/admin-dashboard"}><Button type={"button"}>Dashboard</Button></Link>
                                         <Content/>
                                         <br/>
                                         <Accordion content={content}/>
                                         <br/>
                                         <AppStoresBadges/>
                                         <br/>
-                                        <div><Link to={"/gameplay"}><Button type={"button"}>USERPAGE</Button></Link></div>
                                         <Footer />
                                         <a id="bottom"></a>
                                     </>
@@ -114,6 +115,11 @@ const App = () => {
                                     <Review/>
                                 </>
                             } />
+                            <Route path="/admin-dashboard" element={
+                                <>
+                                    <Dashboard/>
+                                </>
+                            } />
                             <Route element={<ProtectedPages/>}>
                                 <Route path="/guess" element = {
                                     <StreetViewMap />
@@ -130,7 +136,9 @@ const App = () => {
                                 }/>
                             </Route>
                             <Route path={"/*"} element={
-                                <h1>404 NOT FOUND</h1>
+                                <>
+                                    <PageNotFound404 />
+                                </>
                             }/>
                         </Routes>
                     </ThemeProvider>
