@@ -7,7 +7,7 @@ function SpointCopyright(props, {color}) {
     return (
         <>
 
-            <Typography variant="body2" color="text.secondary" align="center" fontSize={"1vw"} {...props}>
+            <Typography variant="body2" color="text.secondary" align="center" bottom={"0px"} fontSize={"1vw"} {...props}>
                 {'Copyright © '}
                 <Link color={ color ? color : "inherit"}
                       href="/about"
