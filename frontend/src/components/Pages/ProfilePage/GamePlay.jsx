@@ -3,6 +3,7 @@ import Card from "../../Assets/Card";
 import NavBar from "./NavBar";
 import Switch from "../../Buttons/SwitchTheme/Switch";
 import LeagueDrawer from "../../Assets/LeagueDrawer";
+import AccountMenu from "./AccountMenu";
 
 const GamePlay = ({progress}) => {
 
@@ -22,7 +23,7 @@ const GamePlay = ({progress}) => {
 
     return (
         <div style={componentsStyle}>
-            <NavBar />
+            <NavBar navMenu={<AccountMenu/>}/>
             {/*<LeagueDrawer isOpen={drawerOpen} toggleDrawer={toggleDrawer}/>*/}
             <h2 style={textAlignment}><b><i>Start your <p style={{ color: "#FFA900", display: "inline"}}>SPoint</p> journey here !</i></b></h2>
             <Card progress={progress}/>

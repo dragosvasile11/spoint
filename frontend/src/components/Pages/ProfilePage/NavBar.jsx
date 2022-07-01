@@ -10,22 +10,21 @@ import {
     MDBNavbarBrand,
     MDBCollapse
 } from 'mdb-react-ui-kit';
-import AccountMenu from "./AccountMenu";
 
 
-export default function NavBar() {
+
+export default function NavBar( { navMenu, theme } ) {
 
     const [showNav, setShowNav] = useState(false);
 
-
     return (
         <>
-            <MDBNavbar expand='lg' dark bgColor='dark'>
+            <MDBNavbar expand='lg' style={theme} bgColor={ theme.palette.mode === "dark" ? "dark" : "warning" }>
                 <MDBContainer fluid>
                     <MDBNavbarBrand href='#'>
-                        <h4>SPOINT <div style={{ display: "inline", color: "#FFA900"}}>|</div></h4>
+                        <h4 style={{color: "white"}}>SPOINT <div style={{ display: "inline", color: theme.palette.mode === "dark" ? "#FFA900" : "black"}}>|</div></h4>
                     </MDBNavbarBrand>
-                    <AccountMenu/>
+                    {navMenu}
                     <MDBNavbarToggler
                         type='button'
                         data-target='#navbarColor02'
