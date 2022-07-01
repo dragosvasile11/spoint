@@ -24,8 +24,7 @@ import LinearProgressWithLabel from "../../Assets/LinearProgressWithLabel";
 import UploadImage from "../../Buttons/UploadImage";
 import AlertPopUp from "../../Assets/AlertPopUp";
 import Slide from '@mui/material/Slide';
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from '@mui/icons-material/Delete';
+import BinButton from "../../Buttons/BinButton";
 
 function Copyright(props) {
         return (
@@ -293,14 +292,7 @@ function Copyright(props) {
                                         variant="h7"
                                     >
                                         {imageUpload ? "Image: " + imageUpload.name : "No image uploaded"}
-                                        <IconButton
-                                            style={ {display: imageUpload ? "" : "none" }}
-                                            aria-label="delete"
-                                            onClick={() => setImageUpload(null)}
-                                            color={"warning"}
-                                        >
-                                            <DeleteIcon/>
-                                        </IconButton>
+                                        <BinButton display={imageUpload} onClick={() => setImageUpload(null)}/>
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
