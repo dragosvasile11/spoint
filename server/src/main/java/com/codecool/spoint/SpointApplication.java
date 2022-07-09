@@ -12,9 +12,4 @@ public class SpointApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpointApplication.class, args);
 	}
-
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 }
