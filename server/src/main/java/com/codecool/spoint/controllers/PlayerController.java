@@ -2,44 +2,72 @@ package com.codecool.spoint.controllers;
 
 import com.codecool.spoint.models.LoginToken;
 import com.codecool.spoint.models.Player;
+import com.codecool.spoint.security.JwtRequest;
+import com.codecool.spoint.security.JwtResponse;
+import com.codecool.spoint.security.JwtTokenUtil;
 import com.codecool.spoint.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/players")
+@RequestMapping(path = "/")
 @CrossOrigin(origins = "http://localhost:3000")
 public class PlayerController {
+    private final AuthenticationManager authenticationManager;
 
+    private final JwtTokenUtil jwtTokenUtil;
     private final PlayerService playerService;
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PlayerController(PlayerService playerService, PasswordEncoder passwordEncoder) {
+    public PlayerController(PlayerService playerService, AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil) {
         this.playerService = playerService;
-        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
-    @GetMapping
-    public List<Player> getAllPlayers() {
-        return playerService.getAllPlayers();
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody Player player) {  // wildcard - player
+        if (!playerService.checkUsernameExist(player)) {
+            playerService.signUpUser(player);
+            return ResponseEntity.ok(player);
+        } else {
+            return (ResponseEntity<?>) ResponseEntity.status(500);
+        }
     }
 
-    @GetMapping("/{id}")
-    public Optional<Player> getPlayerById(@PathVariable("id") Long id) {
-        return playerService.getPlayerById(id);
+    @PostMapping(value = "/authenticate")
+    public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
+            throws Exception {
+        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        final UserDetails userDetails = playerService
+                .loadUserByUsername(authenticationRequest.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping("/add")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-    public Optional<LoginToken> addPlayer(@RequestBody Player player) {
-        return playerService.addPlayer(player);
+    private void authenticate(String username, String password) throws Exception {
+        Objects.requireNonNull(username);
+        Objects.requireNonNull(password);
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        } catch (DisabledException e) {
+            throw new Exception("USER_DISABLED", e);
+        } catch (BadCredentialsException e) {
+            throw new Exception("INVALID_CREDENTIALS", e);
+        }
     }
 
     @PatchMapping("/update/{id}")
