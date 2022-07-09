@@ -19,6 +19,7 @@ import {getCookie, getCookieObject, setCookie} from "../../Contexts/Cookies";
 import {useNavigate} from "react-router"
 import AlertPopUp from "../../Assets/AlertPopUp";
 import Slide from "@mui/material/Slide";
+import {apiPost} from "../../../dataHandler";
 
 function Copyright(props) {
     return (
@@ -41,9 +42,9 @@ export default function SignInSide() {
     };
 
     const [hasErrors, setHasErrors] = useState({
-                                        email: false,
-                                        password: false})
-    const [email, setEmail] = useState("")
+        username: false,
+        password: false})
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [alertProps, setAlertProps] = useState({
         openAlert: false,
@@ -60,65 +61,41 @@ export default function SignInSide() {
     const validate = () => {
         let temp = {}
 
-        temp.email = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(email);
+        temp.username = !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/).test(username);
         temp.password = password === "";
         setHasErrors(temp)
 
         return temp
     }
 
-    useEffect(() => {
-
-        if (email !== "") {
-            validate()
-        }
-    }, [email, password])
-
-    function handleSubmit(event) {
-        event.preventDefault();
-
-        let temp = validate()
-        for (const [key, value] of Object.entries(temp)) {
-            if (value) {
-                console.log("FORM INCOMPLETE")
-                return
-            }
-        }
-
-        const data = new FormData(event.currentTarget);
-
-        const user = JSON.stringify({
-            firstName : data.get("firstName"),
-            lastName : data.get("lastName"),
-            email : data.get("email"),
-            password : data.get("password"),
-        })
-
-        checkLogin(user).then(token => {
-
-            if (token) {
-
-                token["rememberMe"] = data.get("rememberMe")
-                setCookie("loginToken", JSON.stringify(token))
-                navigate("../gameplay", {replace: true})
-
-            } else {
-                setAlertProps({ ...alertProps, openAlert: true });
-            }
-        })
+    const handleSubmit = async e => {
+        e.preventDefault();
+        await loginUser({
+            username,
+            password
+        });
     }
 
-    const checkLogin = async (user) => {
-        const req = await fetch("http://localhost:8080/api/players/check-if-player-exists", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: user
-        })
-
-        return await req.json()
+    function setUpLogin(token) {
+        if(token) {
+            token["username"] = username
+            setCookie("loginToken", token)
+            // props.setCurrentUser(username);
+            navigate("../gameplay");
+        }
+        // else {
+        //     setError("Failed to log in.")
+        // }
     }
+
+    async function loginUser(loginData) {
+        return apiPost("http://localhost:8080/authenticate",loginData)
+            .then(r => {
+                setUpLogin(r)
+            });
+
+    }
+
 
     const { theme, setTheme } = useContext(ThemeContext)
 
@@ -169,20 +146,20 @@ export default function SignInSide() {
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="email"
+                                id="username"
                                 label="Email Address"
-                                name="email"
-                                autoComplete="email"
+                                name="username"
+                                autoComplete="username"
                                 autoFocus
                                 color="warning"
                                 onChange={(event) => {
-                                    setEmail(event.target.value)
+                                    setUsername(event.target.value)
                                     let temp = hasErrors
-                                    temp.email = (event.target.value === "")
+                                    temp.username = (event.target.value === "")
                                     setHasErrors(temp)
                                 }}
-                                error={hasErrors.email}
-                                helperText={hasErrors.email ? "Field is required" : ""}
+                                error={hasErrors.username}
+                                helperText={hasErrors.username ? "Field is required" : ""}
                             />
                             <TextField
                                 margin="normal"
@@ -213,6 +190,7 @@ export default function SignInSide() {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                                 color="warning"
+                                onClick={handleSubmit}
                             >
                                 Sign In
                             </Button>

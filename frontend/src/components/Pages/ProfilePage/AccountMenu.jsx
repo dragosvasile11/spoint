@@ -38,7 +38,7 @@ export default function AccountMenu() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <h4>{ token.firstName }</h4>
+                <h4>{ token.username }</h4>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -51,7 +51,7 @@ export default function AccountMenu() {
                         <Avatar sx={{ width: 40, height: 40 }}
                                 src={(token.avatarImageURL !== null ? token.avatarImageURL : "defaultAvatar.png") }
                         >
-                            {token.firstName.charAt()}
+                            {token.username.charAt()}
                         </Avatar>
                     </IconButton>
                 </Tooltip>
