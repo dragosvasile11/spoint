@@ -51,6 +51,9 @@ public class PlayerController {
     @PostMapping(value = "/authenticate")
     public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
             throws Exception {
+        System.out.println("***********************");
+        System.out.println(authenticationRequest.getUsername());
+        System.out.println(authenticationRequest.getPassword());
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final UserDetails userDetails = playerService
                 .loadUserByUsername(authenticationRequest.getUsername());
@@ -59,6 +62,8 @@ public class PlayerController {
     }
 
     private void authenticate(String username, String password) throws Exception {
+        System.out.println(username);
+        System.out.println(password);
         Objects.requireNonNull(username);
         Objects.requireNonNull(password);
         try {
