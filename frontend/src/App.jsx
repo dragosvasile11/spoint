@@ -140,6 +140,8 @@ const App = () => {
                                     <PageNotFound404 />
                                 </>
                             }/>
+                            <Route path="/register" element={<Registration/>}/>
+                            <Route path="/authenticate" element={<Login/>}/>
                         </Routes>
                     </ThemeProvider>
                 </ThemeContext.Provider>
