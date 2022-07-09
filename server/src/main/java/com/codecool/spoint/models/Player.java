@@ -2,11 +2,15 @@ package com.codecool.spoint.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import static javax.persistence.FetchType.EAGER;
 
@@ -17,7 +21,7 @@ import static javax.persistence.FetchType.EAGER;
 @AllArgsConstructor
 @Entity(name = "Player")
 @Table(name = "players")
-public class Player {
+public class Player implements UserDetails {
 
     @Id
     @SequenceGenerator(
@@ -39,7 +43,7 @@ public class Player {
     private String lastName;
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true)
-    private String email;
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -76,9 +80,36 @@ public class Player {
     public Player(String firstName, String lastName, String email, String password, boolean allowEmails, String avatarImageURL) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = email;
         this.password = password;
         this.allowEmails = allowEmails;
         this.avatarImageURL = avatarImageURL;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_USER");
+        return Collections.singletonList(simpleGrantedAuthority);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
