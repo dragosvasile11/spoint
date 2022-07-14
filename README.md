@@ -3,14 +3,47 @@
 
 ## About the project
 
-This is a geographical educational app, where users can learn and play in the same time. While exploring the Street View map, the user should guess the location, by marking on another map. 
+Spoint is a geographical educational app, where users can learn and play in the same time. While exploring the Street View map, the user should guess the location, by marking on another map. 
 
 ## Features
 
+- Landing page, where you can go to login/register pages, change light/night mode, see some details about the app and some reviews from the users.
 
+![2022-07-14_06-23_1](https://user-images.githubusercontent.com/89748211/178892606-227716f7-9831-4918-bed5-04154aab9e50.png)
 
-# Getting Started with Create React App
+<p align="center">![2022-07-14_06-25](https://user-images.githubusercontent.com/89748211/178892629-a5e28342-6dba-4a74-81dd-91bf5b4f8e19.png)</p>
 
+- Login page
+
+<p align="center">![2022-07-14_06-27](https://user-images.githubusercontent.com/89748211/178892715-ec50e394-8243-46b8-a50b-390d8c06c9cd.png)</p>
+
+- User's gameplay page, where you can choose a type of game
+
+<p align="center">![2022-07-14_06-27_1](https://user-images.githubusercontent.com/89748211/178892777-3ddadb77-9342-47e0-8679-d551a3c2fdce.png)</p>
+
+- User dropdown menu
+
+<p align="center">![2022-07-14_06-27_2](https://user-images.githubusercontent.com/89748211/178892849-69ff5943-8291-4107-b13b-065a87e4ed56.png)</p>
+
+- Guessing location page
+
+<p align="center">![2022-07-14_06-31](https://user-images.githubusercontent.com/89748211/178892923-e093a72b-5434-4e41-9590-116dbbec406d.png)</p>
+
+- Result page, where you receive the distance between location and your guess
+
+<p align="center">![2022-07-14_06-32](https://user-images.githubusercontent.com/89748211/178893036-9f525320-0e9d-469c-9e76-33fed4570ca1.png)</p>
+
+## Security
+
+Integration with Spring Security and add other filter for jwt token process.
+The secret key is stored in application.properties.
+
+## Database
+It uses a PostgreSQL database (for easy local test without losing test data after every restart), can be changed easily in the application.properties for any other database.
+
+## Getting started
+
+You'll need Java 17 installed.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -79,3 +112,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Try it out with Docker
+
+You'll need Docker installed.
