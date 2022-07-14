@@ -9,7 +9,7 @@ Spoint is a geographical educational app, where users can learn and play in the 
 
 - Landing page, where you can go to login/register pages, change light/night mode, see some details about the app and some reviews from the users.
 
-![2022-07-14_06-23_1](https://user-images.githubusercontent.com/89748211/178892606-227716f7-9831-4918-bed5-04154aab9e50.png)
+# ![2022-07-14_06-23_1](https://user-images.githubusercontent.com/89748211/178892606-227716f7-9831-4918-bed5-04154aab9e50.png)
 
 <p align="center">![2022-07-14_06-25](https://user-images.githubusercontent.com/89748211/178892629-a5e28342-6dba-4a74-81dd-91bf5b4f8e19.png)</p>
 
