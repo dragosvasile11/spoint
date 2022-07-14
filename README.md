@@ -1,3 +1,14 @@
+# <p align="center">![2022-07-14_06-23](https://user-images.githubusercontent.com/89748211/178892285-f27c41ee-8e10-4dbd-a07a-4c73920618ef.png)</p>
+
+
+## About the project
+
+This is a geographical educational app, where users can learn and play in the same time. While exploring the Street View map, the user should guess the location, by marking on another map. 
+
+## Features
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
